@@ -27,31 +27,25 @@ public class RottenFleshToolUseEvent {
                     if (!world.isClient()) {
                         stack.damage(consumeAmount, player, e -> e.sendToolBreakStatus(hand));
 
-                        // 恢复饥饿值和饱和度
                         player.getHungerManager().add(4, 0.8F);
 
-                        // 播放食用音效
                         world.playSound(null, player.getBlockPos(),
                                 SoundEvents.ENTITY_GENERIC_EAT,
-                                SoundCategory.PLAYERS, 1.0F, 0.8F); // 音调稍低
+                                SoundCategory.PLAYERS, 1.0F, 0.8F);
 
-                        // 30% 几率食物中毒（给予饥饿效果）
                         Random random = world.getRandom();
                         if (random.nextFloat() < 0.3F) {
-                            // 饥饿 II 效果，持续10秒（200 ticks）
                             player.addStatusEffect(new StatusEffectInstance(
                                     StatusEffects.HUNGER,
-                                    200, // 持续时间（tick）
-                                    1    // 效果等级（II级）
+                                    300,
+                                    1
                             ));
 
-                            // 播放中毒音效
                             world.playSound(null, player.getBlockPos(),
                                     SoundEvents.ENTITY_PLAYER_BURP,
                                     SoundCategory.PLAYERS, 1.0F, 0.5F);
                         }
 
-                        // 耐久耗尽时变成木棍
                         if (stack.getDamage() >= stack.getMaxDamage()) {
                             ItemStack stickStack = new ItemStack(Items.STICK);
                             if (!player.getInventory().insertStack(stickStack)) {
