@@ -16,10 +16,14 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
     public void generateTranslations(TranslationBuilder translationBuilder) {
         translationBuilder.add("itemGroup.strangetools.tools_group", "奇奇怪怪的工具-工具");
         translationBuilder.add("itemGroup.strangetools.armor_group", "奇奇怪怪的工具-盔甲");
+
         generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);
         generateItemTranslations(translationBuilder, ModItems.ARMOR_IDS);
-        for (String toolId : ModItems.TOOL_IDS) {
-            String[] parts = toolId.split("_");
+    }
+
+    private void generateItemTranslations(TranslationBuilder translationBuilder, List<String> itemIds) {
+        for (String itemId : itemIds) {
+            String[] parts = itemId.split("_");
             if (parts.length < 2) continue;
 
             String material = parts[0];
@@ -29,30 +33,12 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             String typeName = getTypeName(type);
 
             if (materialName != null && typeName != null) {
-                String translation = materialName + typeName;
-                translationBuilder.add("item." + Strangetools.MOD_ID + "." + toolId, translation);
+                translationBuilder.add("item." + Strangetools.MOD_ID + "." + itemId, materialName + typeName);
             }
         }
     }
 
-private void generateItemTranslations(TranslationBuilder translationBuilder, List<String> itemIds) {
-    for (String itemId : itemIds) {
-        String[] parts = itemId.split("_");
-        if (parts.length < 2) continue;
-
-        String material = parts[0];
-        String type = parts[1];
-
-        String materialName = getMaterialName(material);
-        String typeName = getTypeName(type);
-
-        if (materialName != null && typeName != null) {
-            translationBuilder.add("item." + Strangetools.MOD_ID + "." + itemId, materialName + typeName);
-        }
-    }
-}
-
-private String getMaterialName(String material) {
+    private String getMaterialName(String material) {
         return switch (material) {
             case "copper" -> "铜";
             case "emerald" -> "绿宝石";
@@ -73,6 +59,10 @@ private String getMaterialName(String material) {
             case "axe" -> "斧";
             case "shovel" -> "锹";
             case "hoe" -> "锄";
+            case "helmet" -> "头盔";
+            case "chestplate" -> "胸甲";
+            case "leggings" -> "护腿";
+            case "boots" -> "靴子";
             default -> null;
         };
     }
