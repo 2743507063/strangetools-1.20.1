@@ -7,7 +7,7 @@ import net.minecraft.recipe.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModToolMaterials implements ToolMaterial {
-    COPPER(2, 500, 5.0f, 2.0f, 15, () -> Ingredient.ofItems(Items.COPPER_INGOT)),
+    COPPER(2, 500, 5.0f, 1.5f, 15, () -> Ingredient.ofItems(Items.COPPER_INGOT)),
     EMERALD(3, 2000, 8.0f, 3.0f, 25, () -> Ingredient.ofItems(Items.EMERALD)),
     LAPIS(2, 600, 6.0f, 1.5f, 35, () -> Ingredient.ofItems(Items.LAPIS_LAZULI)),
     REDSTONE(2, 300, 12.0f, 1.0f, 10, () -> Ingredient.ofItems(Items.REDSTONE)),
@@ -15,7 +15,7 @@ public enum ModToolMaterials implements ToolMaterial {
     COAL(1, 250, 4.0f, 1.5f, 10, () -> Ingredient.ofItems(Items.COAL)),
     CAKE(1, 250, 3.0f, 1.0f, 10, () -> Ingredient.ofItems(Items.CAKE)),
     OBSIDIAN(3, 1800, 7.0f, 4.0f, 5, () -> Ingredient.ofItems(Items.OBSIDIAN)),
-    PRISMARINE(2, 600, 6.5f, 2.5f, 15, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD));
+    PRISMARINE(2, 340, 6.5f, 1.5f, 15, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD));
 
     private final int miningLevel;
     private final int itemDurability;
