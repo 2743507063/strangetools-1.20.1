@@ -20,7 +20,8 @@ public enum ModArmorMaterials implements StringIdentifiable, ArmorMaterial {
         map.put(ArmorItem.Type.CHESTPLATE, 9);
         map.put(ArmorItem.Type.HELMET, 4);
     }), 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            3.0F, 0.1F, () -> Ingredient.ofItems(Items.EMERALD));
+            1.0F, 0.0F, () -> Ingredient.ofItems(Items.EMERALD));
+
     private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY = Util.make(new EnumMap(ArmorItem.Type.class), map -> {
         map.put(ArmorItem.Type.BOOTS, 13);
         map.put(ArmorItem.Type.LEGGINGS, 15);
