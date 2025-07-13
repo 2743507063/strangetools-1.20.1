@@ -3,13 +3,13 @@
 	"id": "strangetools",
 	"version": "${version}",
 	"name": "strangetools",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "添加了奇奇怪怪的工具",
 	"authors": [
-		"Me!"
+		"MoQianOver"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/2743507063/StrangeToolsMod-1.20.1"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/strangetools/icon.png",
@@ -35,7 +35,7 @@
 	"depends": {
 		"fabricloader": ">=0.16.14",
 		"minecraft": "~1.20.1",
-		"java": ">=17",
+		"java": ">=21",
 		"fabric-api": "*"
 	},
 	"suggests": {

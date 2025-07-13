@@ -1,5 +1,9 @@
 package com.stools;
 
+import com.stools.event.CakeToolUseEvent;
+import com.stools.event.ModEvents;
+import com.stools.item.ModItemGroups;
+import com.stools.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -18,7 +22,9 @@ public class Strangetools implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-
+		ModItems.registerItems();
+		ModItemGroups.registerGroups();
+		ModEvents.register();
 		LOGGER.info("Hello Fabric world!");
 	}
 }
