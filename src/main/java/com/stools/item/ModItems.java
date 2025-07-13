@@ -58,6 +58,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.COAL, "coal");
         registerToolSet(ModToolMaterials.CAKE, "cake");
         registerToolSet(ModToolMaterials.OBSIDIAN, "obsidian");
+        registerToolSet(ModToolMaterials.PRISMARINE, "prismarine");
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");
     }

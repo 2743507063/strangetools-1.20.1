@@ -31,6 +31,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "coal", Items.COAL);
         generateToolRecipes(exporter, "cake", Items.CAKE);
         generateToolRecipes(exporter, "obsidian", Items.OBSIDIAN);
+        generateToolRecipes(exporter, "prismarine", Items.PRISMARINE_SHARD);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
     }

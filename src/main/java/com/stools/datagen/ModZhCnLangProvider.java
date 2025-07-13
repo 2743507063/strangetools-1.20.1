@@ -48,6 +48,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "coal" -> "煤炭";
             case "cake" -> "蛋糕";
             case "obsidian" -> "黑曜石";
+            case "prismarine" -> "海晶石";
             default -> null;
         };
     }
