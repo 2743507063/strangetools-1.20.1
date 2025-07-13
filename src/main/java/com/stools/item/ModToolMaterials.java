@@ -15,7 +15,8 @@ public enum ModToolMaterials implements ToolMaterial {
     COAL(1, 250, 4.0f, 1.5f, 10, () -> Ingredient.ofItems(Items.COAL)),
     CAKE(1, 250, 3.0f, 1.0f, 10, () -> Ingredient.ofItems(Items.CAKE)),
     OBSIDIAN(3, 1800, 7.0f, 4.0f, 5, () -> Ingredient.ofItems(Items.OBSIDIAN)),
-    PRISMARINE(2, 340, 6.5f, 1.5f, 15, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD));
+    PRISMARINE(2, 340, 6.5f, 1.5f, 15, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)),
+    ROTTEN_FLESH(1, 180, 3.5f, 1.8f, 8, () -> Ingredient.ofItems(Items.ROTTEN_FLESH));
 
     private final int miningLevel;
     private final int itemDurability;
