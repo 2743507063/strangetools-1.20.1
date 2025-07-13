@@ -1,6 +1,5 @@
 package com.stools;
 
-import com.stools.event.CakeToolUseEvent;
 import com.stools.event.ModEvents;
 import com.stools.item.ModItemGroups;
 import com.stools.item.ModItems;
