@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 
 public class ModModelsProvider extends FabricModelProvider {
@@ -24,6 +25,13 @@ public class ModModelsProvider extends FabricModelProvider {
             Item item = ModItems.TOOLS.get(toolId);
             if (item != null) {
                 itemModelGenerator.register(item, Models.HANDHELD);
+            }
+        }
+        // 盔甲模型
+        for (String armorId : ModItems.ARMOR_IDS) {
+            Item item = ModItems.ARMORS.get(armorId);
+            if (item instanceof ArmorItem armorItem) {
+                itemModelGenerator.registerArmor(armorItem);
             }
         }
     }

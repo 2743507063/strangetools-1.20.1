@@ -31,6 +31,51 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "coal", Items.COAL);
         generateToolRecipes(exporter, "cake", Items.CAKE);
         generateToolRecipes(exporter, "obsidian", Items.OBSIDIAN);
+
+        generateArmorRecipes(exporter, "emerald", Items.EMERALD);
+    }
+    private void generateArmorRecipes(Consumer<RecipeJsonProvider> exporter, String material, Item materialItem) {
+        generateArmorPieceRecipe(exporter, material, "helmet",
+                "EEE", "E E", materialItem);
+
+        generateArmorPieceRecipe(exporter, material, "chestplate",
+                "E E", "EEE", "EEE", materialItem);
+
+        generateArmorPieceRecipe(exporter, material, "leggings",
+                "EEE", "E E", "E E", materialItem);
+
+        generateArmorPieceRecipe(exporter, material, "boots",
+                "E E", "E E", materialItem);
+    }
+
+    private void generateArmorPieceRecipe(Consumer<RecipeJsonProvider> exporter,
+                                          String material,
+                                          String type,
+                                          String pattern1,
+                                          String pattern2,
+                                          Item materialItem) {
+        generateArmorPieceRecipe(exporter, material, type, pattern1, pattern2, "", materialItem);
+    }
+
+    private void generateArmorPieceRecipe(Consumer<RecipeJsonProvider> exporter,
+                                          String material,
+                                          String type,
+                                          String pattern1,
+                                          String pattern2,
+                                          String pattern3,
+                                          Item materialItem) {
+        ShapedRecipeJsonBuilder builder = ShapedRecipeJsonBuilder.create(
+                RecipeCategory.COMBAT,
+                ModItems.ARMORS.get(material + "_" + type)
+        );
+
+        if (!pattern1.isEmpty()) builder.pattern(pattern1);
+        if (!pattern2.isEmpty()) builder.pattern(pattern2);
+        if (!pattern3.isEmpty()) builder.pattern(pattern3);
+
+        builder.input('E', materialItem)
+                .criterion(hasItem(materialItem), conditionsFromItem(materialItem))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_" + type));
     }
 
     private void generateToolRecipes(Consumer<RecipeJsonProvider> exporter, String material, Item materialItem) {

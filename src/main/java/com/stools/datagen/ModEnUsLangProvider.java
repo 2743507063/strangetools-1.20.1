@@ -5,6 +5,8 @@ import com.stools.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 
+import java.util.List;
+
 public class ModEnUsLangProvider extends FabricLanguageProvider {
     public ModEnUsLangProvider(FabricDataOutput dataOutput) {
         super(dataOutput, "en_us");
@@ -12,23 +14,29 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
-        translationBuilder.add("itemGroup.strangetools.strangetools_group","Strange Tools");
-        for (String toolId : ModItems.TOOL_IDS) {
-            String[] parts = toolId.split("_");
-            if (parts.length < 2) continue;
+        translationBuilder.add("itemGroup.strangetools.tools_group", "Strange Tools-Tools");
+        translationBuilder.add("itemGroup.strangetools.armor_group", "Strange Tools-Armor");
+        generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);
+        generateItemTranslations(translationBuilder, ModItems.ARMOR_IDS);
+    }
 
-            String material = parts[0];
-            String type = parts[1];
+ private void generateItemTranslations(TranslationBuilder translationBuilder, List<String> itemIds) {
+            for (String itemId : itemIds) {
+                String[] parts = itemId.split("_");
+                if (parts.length < 2) continue;
 
-            String materialName = capitalize(material);
-            String typeName = capitalize(type);
+                StringBuilder translation = new StringBuilder();
+                for (int i = 0; i < parts.length; i++) {
+                    if (i > 0) translation.append(" ");
+                    translation.append(capitalize(parts[i]));
+                }
 
-            translationBuilder.add("item." + Strangetools.MOD_ID + "." + toolId, materialName + " " + typeName);
+                translationBuilder.add("item." + Strangetools.MOD_ID + "." + itemId, translation.toString());
+            }
+        }
+
+        private String capitalize(String str) {
+            if (str == null || str.isEmpty()) return str;
+            return str.substring(0, 1).toUpperCase() + str.substring(1);
         }
     }
-
-    private String capitalize(String str) {
-        if (str == null || str.isEmpty()) return str;
-        return str.substring(0, 1).toUpperCase() + str.substring(1);
-    }
-}

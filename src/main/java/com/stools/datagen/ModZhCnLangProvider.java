@@ -5,6 +5,8 @@ import com.stools.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 
+import java.util.List;
+
 public class ModZhCnLangProvider extends FabricLanguageProvider {
     public ModZhCnLangProvider(FabricDataOutput dataOutput) {
         super(dataOutput, "zh_cn");
@@ -12,7 +14,10 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
-        translationBuilder.add("itemGroup.strangetools.strangetools_group","奇奇怪怪的工具");
+        translationBuilder.add("itemGroup.strangetools.tools_group", "奇奇怪怪的工具-工具");
+        translationBuilder.add("itemGroup.strangetools.armor_group", "奇奇怪怪的工具-盔甲");
+        generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);
+        generateItemTranslations(translationBuilder, ModItems.ARMOR_IDS);
         for (String toolId : ModItems.TOOL_IDS) {
             String[] parts = toolId.split("_");
             if (parts.length < 2) continue;
@@ -30,7 +35,24 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         }
     }
 
-    private String getMaterialName(String material) {
+private void generateItemTranslations(TranslationBuilder translationBuilder, List<String> itemIds) {
+    for (String itemId : itemIds) {
+        String[] parts = itemId.split("_");
+        if (parts.length < 2) continue;
+
+        String material = parts[0];
+        String type = parts[1];
+
+        String materialName = getMaterialName(material);
+        String typeName = getTypeName(type);
+
+        if (materialName != null && typeName != null) {
+            translationBuilder.add("item." + Strangetools.MOD_ID + "." + itemId, materialName + typeName);
+        }
+    }
+}
+
+private String getMaterialName(String material) {
         return switch (material) {
             case "copper" -> "铜";
             case "emerald" -> "绿宝石";

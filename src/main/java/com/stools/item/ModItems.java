@@ -16,6 +16,8 @@ import java.util.Map;
 public class ModItems {
     public static final Map<String, Item> TOOLS = new HashMap<>();
     public static final List<String> TOOL_IDS = new ArrayList<>();
+    public static final Map<String, Item> ARMORS = new HashMap<>();
+    public static final List<String> ARMOR_IDS = new ArrayList<>();
 
     private static void registerToolSet(ModToolMaterials material, String materialName) {
         String prefix = materialName + "_";
@@ -26,12 +28,25 @@ public class ModItems {
         registerTool(prefix + "shovel", ToolFactory.createShovel(material, prefix + "shovel"));
         registerTool(prefix + "hoe", ToolFactory.createHoe(material, prefix + "hoe"));
     }
+    // 批量注册盔甲集
+    private static void registerArmorSet(ModArmorMaterials material, String materialName) {
+        String prefix = materialName + "_";
 
+        registerArmor(prefix + "helmet", ArmorFactory.createHelmet(material, prefix + "helmet"));
+        registerArmor(prefix + "chestplate", ArmorFactory.createChestplate(material, prefix + "chestplate"));
+        registerArmor(prefix + "leggings", ArmorFactory.createLeggings(material, prefix + "leggings"));
+        registerArmor(prefix + "boots", ArmorFactory.createBoots(material, prefix + "boots"));
+    }
     private static void registerTool(String id, Item item) {
         Item registeredItem = registerItem(id, item);
 
         TOOLS.put(id, registeredItem);
         TOOL_IDS.add(id);
+    }
+    private static void registerArmor(String id, Item item) {
+        Item registeredItem = registerItem(id, item);
+        ARMORS.put(id, registeredItem);
+        ARMOR_IDS.add(id);
     }
 
     public static void registerToolItems() {
@@ -43,6 +58,8 @@ public class ModItems {
         registerToolSet(ModToolMaterials.COAL, "coal");
         registerToolSet(ModToolMaterials.CAKE, "cake");
         registerToolSet(ModToolMaterials.OBSIDIAN, "obsidian");
+        //盔甲
+        registerArmorSet(ModArmorMaterials.EMERALD, "emerald");
     }
 
     public static Item registerItem(String id, Item item) {

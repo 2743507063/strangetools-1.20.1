@@ -2,10 +2,7 @@ package com.stools.item;
 
 import com.stools.Strangetools;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -20,27 +17,24 @@ import java.util.stream.Collectors;
 
 public class ModItemGroups {
 
-    public static final RegistryKey<ItemGroup> STRANGETOOLS_GROUP = register("strangetools_group");
+    public static final RegistryKey<ItemGroup> TOOLS_GROUP = register("tools_group");
+    public static final RegistryKey<ItemGroup> ARMOR_GROUP = register("armor_group");
 
     private static RegistryKey<ItemGroup> register(String id) {
         return RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(Strangetools.MOD_ID, id));
     }
 
     public static void registerGroups() {
-        Item iconItem = ModItems.TOOLS.get("copper_sword");
-        final Item finalIconItem;
-        if (iconItem == null) {
-            finalIconItem = Items.IRON_SWORD;
-        } else {
-            finalIconItem = iconItem;
-        }
+        final Item toolsIcon = ModItems.TOOLS.get("copper_sword") != null ?
+                ModItems.TOOLS.get("copper_sword") :
+                Items.IRON_SWORD;
 
         Registry.register(
                 Registries.ITEM_GROUP,
-                STRANGETOOLS_GROUP,
+                TOOLS_GROUP,
                 FabricItemGroup.builder()
-                        .displayName(Text.translatable("itemGroup.strangetools.strangetools_group"))
-                        .icon(() -> new ItemStack(finalIconItem))
+                        .displayName(Text.translatable("itemGroup.strangetools.tools_group"))
+                        .icon(() -> new ItemStack(toolsIcon))
                         .entries((displayContext, entries) -> {
                             List<String> materials = new ArrayList<>();
                             for (String toolId : ModItems.TOOL_IDS) {
@@ -56,6 +50,41 @@ public class ModItemGroups {
                                         Item tool = ModItems.TOOLS.get(toolId);
                                         if (tool != null) {
                                             entries.add(tool);
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                        .build()
+        );
+
+        final Item armorIcon = ModItems.ARMORS.get("emerald_chestplate") != null ?
+                ModItems.ARMORS.get("emerald_chestplate") :
+                Items.IRON_CHESTPLATE;
+
+        Registry.register(
+                Registries.ITEM_GROUP,
+                ARMOR_GROUP,
+                FabricItemGroup.builder()
+                        .displayName(Text.translatable("itemGroup.strangetools.armor_group"))
+                        .icon(() -> new ItemStack(armorIcon))
+                        .entries((displayContext, entries) -> {
+                            List<String> materials = new ArrayList<>();
+                            for (String armorId : ModItems.ARMOR_IDS) {
+                                String material = armorId.split("_")[0];
+                                if (!materials.contains(material)) {
+                                    materials.add(material);
+                                }
+                            }
+
+                            for (String material : materials) {
+                                String[] types = {"helmet", "chestplate", "leggings", "boots"};
+                                for (String type : types) {
+                                    String armorId = material + "_" + type;
+                                    if (ModItems.ARMOR_IDS.contains(armorId)) {
+                                        Item armor = ModItems.ARMORS.get(armorId);
+                                        if (armor != null) {
+                                            entries.add(armor);
                                         }
                                     }
                                 }
