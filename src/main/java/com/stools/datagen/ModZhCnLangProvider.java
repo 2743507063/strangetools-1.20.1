@@ -23,11 +23,11 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
 
     private void generateItemTranslations(TranslationBuilder translationBuilder, List<String> itemIds) {
         for (String itemId : itemIds) {
-            String[] parts = itemId.split("_");
-            if (parts.length < 2) continue;
+            int lastIndex = itemId.lastIndexOf('_');
+            if (lastIndex == -1) continue;
 
-            String material = parts[0];
-            String type = parts[1];
+            String material = itemId.substring(0, lastIndex);
+            String type = itemId.substring(lastIndex + 1);
 
             String materialName = getMaterialName(material);
             String typeName = getTypeName(type);
