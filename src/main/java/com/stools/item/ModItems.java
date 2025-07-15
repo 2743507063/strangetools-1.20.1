@@ -59,6 +59,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.OBSIDIAN, "obsidian");
         registerToolSet(ModToolMaterials.PRISMARINE, "prismarine");
         registerToolSet(ModToolMaterials.ROTTEN_FLESH, "rotten_flesh");
+        registerToolSet(ModToolMaterials.GLOWSTONE, "glowstone");
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");
     }

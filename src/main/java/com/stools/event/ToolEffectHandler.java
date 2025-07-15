@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolItem;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -91,6 +92,28 @@ public class ToolEffectHandler {
                 if (random.nextFloat() < 0.4) {
                     player.addStatusEffect(new StatusEffectInstance(
                             StatusEffects.HUNGER, 100, 0, true, false));
+                }
+                break;
+            case GLOWSTONE:
+                target.addStatusEffect(new StatusEffectInstance(
+                        StatusEffects.GLOWING,
+                        100,
+                        0,
+                        false,
+                        true
+                ));
+
+                if (!world.isClient()) {
+                    world.playSound(null, target.getBlockPos(),
+                            SoundEvents.BLOCK_GLASS_BREAK,
+                            SoundCategory.PLAYERS, 0.7f, 1.5f);
+                } else {
+                    for (int i = 0; i < 10; i++) {
+                        double x = target.getX() + (world.random.nextDouble() - 0.5);
+                        double y = target.getY() + world.random.nextDouble() * 2;
+                        double z = target.getZ() + (world.random.nextDouble() - 0.5);
+                        world.addParticle(ParticleTypes.GLOW, x, y, z, 0, 0.1, 0);
+                    }
                 }
                 break;
         }

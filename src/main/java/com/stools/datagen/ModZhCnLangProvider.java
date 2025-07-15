@@ -50,6 +50,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "obsidian" -> "黑曜石";
             case "prismarine" -> "海晶石";
             case "rotten_flesh" -> "腐肉";
+            case "glowstone" -> "萤石";
             default -> null;
         };
     }

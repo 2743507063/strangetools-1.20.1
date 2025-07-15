@@ -8,6 +8,7 @@ public class ModEvents {
         RottenFleshToolUseEvent.register();
         ToolEffectHandler.register();
         ArmorEffectHandler.register();
+        GlowstoneToolUseEvent.register();
         Strangetools.LOGGER.info("Registering Mod Events for " + Strangetools.MOD_ID);
     }
 }
