@@ -52,7 +52,7 @@ public enum ModArmorMaterials implements StringIdentifiable, ArmorMaterial {
         this.toughness = toughness;
         this.knockbackResistance = knockbackResistance;
         this.repairIngredientSupplier = repairIngredientSupplier;
-        this.effectPower = effectPower; // 初始化效果强度
+        this.effectPower = effectPower;
     }
 
     public float getEffectPower() {
