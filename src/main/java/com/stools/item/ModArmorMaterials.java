@@ -38,9 +38,8 @@ public enum ModArmorMaterials implements StringIdentifiable, ArmorMaterial {
     private final float toughness;
     private final float knockbackResistance;
     private final Supplier<Ingredient> repairIngredientSupplier;
-    private final float effectPower; // 添加效果强度字段
+    private final float effectPower;
 
-    // 更新构造器添加 effectPower 参数
     ModArmorMaterials(String name, int durabilityMultiplier, EnumMap<ArmorItem.Type, Integer> protectionAmounts,
                       int enchantability, SoundEvent equipSound, float toughness,
                       float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier,
