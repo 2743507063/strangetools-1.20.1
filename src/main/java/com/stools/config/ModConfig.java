@@ -60,4 +60,31 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public float armorReflectDamage = 2.0f;
     }
+    @ConfigEntry.Gui.CollapsibleObject
+    public GlowstoneEffects glowstoneEffects = new GlowstoneEffects();
+
+    public static class GlowstoneEffects {
+        @ConfigEntry.Gui.Tooltip
+        public boolean enableEffects = true;
+
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        @ConfigEntry.Gui.Tooltip
+        public float damageAmount = 2.0f;
+
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 30)
+        @ConfigEntry.Gui.Tooltip
+        public float range = 8.0f; // 驱散范围
+
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        @ConfigEntry.Gui.Tooltip
+        public int glowingDuration = 10; // 发光效果持续时间（秒）
+
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        @ConfigEntry.Gui.Tooltip
+        public int speedDuration = 5; // 玩家加速持续时间（秒）
+
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        @ConfigEntry.Gui.Tooltip
+        public int durabilityCost = 10; // 右键能力耐久消耗
+    }
 }
