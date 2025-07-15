@@ -1,5 +1,6 @@
 package com.stools;
 
+import com.stools.config.ModConfigManager;
 import com.stools.event.ModEvents;
 import com.stools.item.ModItemGroups;
 import com.stools.item.ModItems;
@@ -21,6 +22,8 @@ public class Strangetools implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+		ModConfigManager.register();
+
 		ModItems.registerItems();
 		ModItemGroups.registerGroups();
 		ModEvents.register();

@@ -1,3 +1,4 @@
+// ModArmorMaterials.java
 package com.stools.item;
 
 import com.stools.Strangetools;
@@ -20,7 +21,7 @@ public enum ModArmorMaterials implements StringIdentifiable, ArmorMaterial {
         map.put(ArmorItem.Type.CHESTPLATE, 9);
         map.put(ArmorItem.Type.HELMET, 4);
     }), 25, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,
-            1.0F, 0.0F, () -> Ingredient.ofItems(Items.EMERALD));
+            1.0F, 0.0F, () -> Ingredient.ofItems(Items.EMERALD), 0.3f);
 
     private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY = Util.make(new EnumMap(ArmorItem.Type.class), map -> {
         map.put(ArmorItem.Type.BOOTS, 13);
@@ -37,8 +38,13 @@ public enum ModArmorMaterials implements StringIdentifiable, ArmorMaterial {
     private final float toughness;
     private final float knockbackResistance;
     private final Supplier<Ingredient> repairIngredientSupplier;
+    private final float effectPower; // 添加效果强度字段
 
-    ModArmorMaterials(String name, int durabilityMultiplier, EnumMap<ArmorItem.Type, Integer> protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
+    // 更新构造器添加 effectPower 参数
+    ModArmorMaterials(String name, int durabilityMultiplier, EnumMap<ArmorItem.Type, Integer> protectionAmounts,
+                      int enchantability, SoundEvent equipSound, float toughness,
+                      float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier,
+                      float effectPower) {
         this.name = name;
         this.durabilityMultiplier = durabilityMultiplier;
         this.protectionAmounts = protectionAmounts;
@@ -47,7 +53,13 @@ public enum ModArmorMaterials implements StringIdentifiable, ArmorMaterial {
         this.toughness = toughness;
         this.knockbackResistance = knockbackResistance;
         this.repairIngredientSupplier = repairIngredientSupplier;
+        this.effectPower = effectPower; // 初始化效果强度
     }
+
+    public float getEffectPower() {
+        return effectPower;
+    }
+
     @Override
     public int getDurability(ArmorItem.Type type) {
         return (Integer)BASE_DURABILITY.get(type) * this.durabilityMultiplier;
