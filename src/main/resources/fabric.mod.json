@@ -5,11 +5,11 @@
 	"name": "strangetools",
 	"description": "添加了奇奇怪怪的工具",
 	"authors": [
-		"MoQianOver"
+		"GAO_HE_SUAN"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/2743507063/StrangeToolsMod-1.20.1"
+		"sources": "https://github.com/2743507063/strangetools-1.20.1"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/strangetools/icon.png",

@@ -28,7 +28,6 @@ public class ModItems {
         registerTool(prefix + "shovel", ToolFactory.createShovel(material, prefix + "shovel"));
         registerTool(prefix + "hoe", ToolFactory.createHoe(material, prefix + "hoe"));
     }
-    // 批量注册盔甲集
     private static void registerArmorSet(ModArmorMaterials material, String materialName) {
         String prefix = materialName + "_";
 

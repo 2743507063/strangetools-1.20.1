@@ -7,6 +7,7 @@ public class ModEvents {
         CakeToolUseEvent.register();
         RottenFleshToolUseEvent.register();
         ToolEffectHandler.register();
+        ArmorEffectHandler.register();
         Strangetools.LOGGER.info("Registering Mod Events for " + Strangetools.MOD_ID);
     }
 }
