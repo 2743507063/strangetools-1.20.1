@@ -39,7 +39,6 @@ public class ToolEffectHandler {
                                         World world) {
         switch (material) {
             case COPPER:
-                // 导电效果：小范围电击
                 if (random.nextFloat() < 0.3) {
                     target.setOnFireFor(2);
                     world.playSound(null, target.getBlockPos(),
@@ -49,55 +48,46 @@ public class ToolEffectHandler {
                 break;
 
             case EMERALD:
-                // 幸运效果：额外掉落物
                 if (random.nextFloat() < 0.25) {
                     target.dropStack(new ItemStack(Items.EMERALD, 1));
                 }
                 break;
 
             case LAPIS:
-                // 经验效果：增加经验
                 player.addExperience(1 + random.nextInt(3));
                 break;
 
             case REDSTONE:
-                // 红石能量：短暂提升挖掘速度
                 player.addStatusEffect(new StatusEffectInstance(
                         StatusEffects.HASTE, 100, 1, true, false));
                 break;
 
             case QUARTZ:
-                // 精准打击：额外伤害
                 target.damage(target.getDamageSources().magic(), 2.0f);
                 break;
 
             case COAL:
-                // 点燃效果
                 target.setOnFireFor(4);
                 break;
 
             case CAKE:
-                // 蛋糕恢复：攻击时恢复饥饿值
                 if (player.getHungerManager().getFoodLevel() < 20) {
                     player.getHungerManager().add(1, 0.1f);
                 }
                 break;
 
             case OBSIDIAN:
-                // 黑曜石震荡：击退效果
                 target.takeKnockback(0.5f,
                         player.getX() - target.getX(),
                         player.getZ() - target.getZ());
                 break;
 
             case PRISMARINE:
-                // 海洋祝福：水下呼吸
                 player.addStatusEffect(new StatusEffectInstance(
                         StatusEffects.WATER_BREATHING, 200, 0, true, false));
                 break;
 
             case ROTTEN_FLESH:
-                // 腐化效果：给予饥饿
                 if (random.nextFloat() < 0.4) {
                     player.addStatusEffect(new StatusEffectInstance(
                             StatusEffects.HUNGER, 100, 0, true, false));
