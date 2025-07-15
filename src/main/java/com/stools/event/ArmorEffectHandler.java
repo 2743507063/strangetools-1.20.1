@@ -29,7 +29,6 @@ public class ArmorEffectHandler {
         }
 
         if (totalEffectPower > 0) {
-            // 绿宝石盔甲效果：概率反弹伤害
             if (wearer.getRandom().nextFloat() < totalEffectPower) {
                 attacker.damage(wearer.getDamageSources().thorns(wearer), 2.0f);
                 wearer.addStatusEffect(new StatusEffectInstance(
