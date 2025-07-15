@@ -1,5 +1,6 @@
 package com.stools.event;
 
+import com.stools.config.ModConfigManager;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -11,6 +12,10 @@ import com.stools.item.ModArmorMaterials;
 public class ArmorEffectHandler {
     public static void register() {
         ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, amount) -> {
+            if (!ModConfigManager.CONFIG.armorEffects.enableArmorEffects) {
+                return true;
+            }
+
             if (source.getAttacker() instanceof LivingEntity attacker) {
                 applyArmorEffects(entity, attacker);
             }
@@ -29,8 +34,11 @@ public class ArmorEffectHandler {
         }
 
         if (totalEffectPower > 0) {
-            if (wearer.getRandom().nextFloat() < totalEffectPower) {
-                attacker.damage(wearer.getDamageSources().thorns(wearer), 2.0f);
+            float reflectChance = ModConfigManager.CONFIG.armorEffects.armorReflectChance / 100f;
+            if (wearer.getRandom().nextFloat() < reflectChance) {
+                float reflectDamage = ModConfigManager.CONFIG.armorEffects.armorReflectDamage;
+                attacker.damage(wearer.getDamageSources().thorns(wearer), reflectDamage);
+
                 wearer.addStatusEffect(new StatusEffectInstance(
                         StatusEffects.GLOWING, 40, 0, true, false));
             }

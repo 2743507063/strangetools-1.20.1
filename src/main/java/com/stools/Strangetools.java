@@ -1,6 +1,7 @@
 package com.stools;
 
 import com.stools.config.ModConfigManager;
+import com.stools.enchantment.ModEnchantments;
 import com.stools.event.ModEvents;
 import com.stools.item.ModItemGroups;
 import com.stools.item.ModItems;

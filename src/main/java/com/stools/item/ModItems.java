@@ -3,6 +3,8 @@ package com.stools.item;
 import com.stools.Strangetools;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.SwordItem;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ModItems {
+    public static final Item TEST_ITEM = registerItem("test_item",new SwordItem(ToolMaterials.WOOD,6,1,new Item.Settings().maxDamage(1)));
     public static final Map<String, Item> TOOLS = new HashMap<>();
     public static final List<String> TOOL_IDS = new ArrayList<>();
     public static final Map<String, Item> ARMORS = new HashMap<>();

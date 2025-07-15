@@ -20,6 +20,7 @@ public class ModModelsProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        itemModelGenerator.register(ModItems.TEST_ITEM,Models.HANDHELD);
         for (String toolId : ModItems.TOOL_IDS) {
             Item item = ModItems.TOOLS.get(toolId);
             if (item != null) {

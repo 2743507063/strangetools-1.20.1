@@ -1,5 +1,6 @@
 package com.stools.item;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
@@ -34,7 +35,9 @@ public enum ModToolMaterials implements ToolMaterial {
         this.enchantability = enchantability;
         this.repairIngredient = repairIngredient;
     }
-
+    public Item getRepairItem() {
+        return getRepairIngredient().getMatchingStacks()[0].getItem();
+    }
     @Override
     public int getDurability() {
         return this.itemDurability;

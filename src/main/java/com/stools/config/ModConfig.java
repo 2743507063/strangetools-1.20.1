@@ -6,6 +6,8 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @Config(name = "strangetools")
 public class ModConfig implements ConfigData {
+    @ConfigEntry.Gui.Excluded
+    public int configVersion = 1;
 
     @ConfigEntry.Category("general")
     @ConfigEntry.Gui.TransitiveObject
@@ -33,7 +35,7 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
         @ConfigEntry.Gui.Tooltip
-        public float emeraldDropChance = 25.0f; // 25%
+        public float emeraldDropChance = 1.0f; // 1%
 
         @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
         @ConfigEntry.Gui.Tooltip

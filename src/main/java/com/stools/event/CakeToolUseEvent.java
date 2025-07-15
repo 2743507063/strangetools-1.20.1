@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolItem;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.TypedActionResult;
@@ -31,7 +32,8 @@ public class CakeToolUseEvent {
                                 SoundCategory.PLAYERS, 1.0F, 1.0F);
 
                         if (stack.getDamage() >= stack.getMaxDamage()) {
-                            ItemStack stickStack = new ItemStack(Items.STICK);
+                            }
+                           ItemStack stickStack = new ItemStack(Items.STICK);
                             if (!player.getInventory().insertStack(stickStack)) {
                                 player.dropItem(stickStack, false);
                             }
@@ -40,7 +42,6 @@ public class CakeToolUseEvent {
 
                     return TypedActionResult.success(stack);
                 }
-            }
             return TypedActionResult.pass(stack);
         });
     }

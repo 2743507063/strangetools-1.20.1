@@ -1,5 +1,6 @@
 package com.stools.event;
 
+import com.stools.config.ModConfigManager;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -22,11 +23,17 @@ public class ToolEffectHandler {
 
     public static void register() {
         AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
+            // 检查工具效果总开关
+            if (!ModConfigManager.CONFIG.toolEffects.enableToolEffects) {
+                return ActionResult.PASS;
+            }
+
             if (!world.isClient() && entity instanceof LivingEntity) {
                 ItemStack stack = player.getStackInHand(hand);
 
-                if (stack.getItem() instanceof ToolItem toolItem) {
-                    ModToolMaterials material = (ModToolMaterials) toolItem.getMaterial();
+                if (stack.getItem() instanceof ToolItem toolItem &&
+                        toolItem.getMaterial() instanceof ModToolMaterials material) {
+
                     applyToolEffect(material, player, (LivingEntity) entity, world);
                 }
             }
@@ -40,7 +47,9 @@ public class ToolEffectHandler {
                                         World world) {
         switch (material) {
             case COPPER:
-                if (random.nextFloat() < 0.3) {
+                // 使用配置中的铜点燃概率
+                float copperChance = ModConfigManager.CONFIG.toolEffects.copperIgniteChance / 100f;
+                if (random.nextFloat() < copperChance) {
                     target.setOnFireFor(2);
                     world.playSound(null, target.getBlockPos(),
                             SoundEvents.ENTITY_LIGHTNING_BOLT_THUNDER,
@@ -49,7 +58,9 @@ public class ToolEffectHandler {
                 break;
 
             case EMERALD:
-                if (random.nextFloat() < 0.25) {
+                // 使用配置中的绿宝石掉落概率
+                float emeraldChance = ModConfigManager.CONFIG.toolEffects.emeraldDropChance / 100f;
+                if (random.nextFloat() < emeraldChance) {
                     target.dropStack(new ItemStack(Items.EMERALD, 1));
                 }
                 break;
@@ -64,7 +75,9 @@ public class ToolEffectHandler {
                 break;
 
             case QUARTZ:
-                target.damage(target.getDamageSources().magic(), 2.0f);
+                // 使用配置中的石英额外伤害
+                float quartzDamage = ModConfigManager.CONFIG.toolEffects.quartzExtraDamage;
+                target.damage(target.getDamageSources().magic(), quartzDamage);
                 break;
 
             case COAL:
@@ -89,7 +102,9 @@ public class ToolEffectHandler {
                 break;
 
             case ROTTEN_FLESH:
-                if (random.nextFloat() < 0.4) {
+                // 使用配置中的腐肉饥饿概率
+                float rottenChance = ModConfigManager.CONFIG.toolEffects.rottenFleshHungerChance / 100f;
+                if (random.nextFloat() < rottenChance) {
                     player.addStatusEffect(new StatusEffectInstance(
                             StatusEffects.HUNGER, 100, 0, true, false));
                 }
