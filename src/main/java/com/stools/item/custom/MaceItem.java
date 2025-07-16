@@ -14,6 +14,8 @@ import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket;
+import net.minecraft.particle.BlockStateParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -58,6 +60,22 @@ public class MaceItem extends Item {
                     if (target.isOnGround()) {
                         if (player.fallDistance > 5.0F) {
                             sound = ModSoundEvents.MACE_HEAVY_SMASH_GROUND;
+
+
+                            BlockPos groundPos = target.getBlockPos().down();
+                            BlockState groundState = serverWorld.getBlockState(groundPos);
+
+                            serverWorld.spawnParticles(
+                                    new BlockStateParticleEffect(ParticleTypes.BLOCK, groundState),
+                                    target.getX(),
+                                    target.getY(),
+                                    target.getZ(),
+                                    50,
+                                    0.5,
+                                    0.1,
+                                    0.5,
+                                    0.2
+                            );
                         } else {
                             sound = ModSoundEvents.MACE_SMASH_GROUND;
                         }
@@ -73,7 +91,7 @@ public class MaceItem extends Item {
                             sound,
                             SoundCategory.PLAYERS,
                             1.0F,
-                            RANDOM.nextFloat() * 0.2F + 0.9F // 轻微随机音高
+                            RANDOM.nextFloat() * 0.2F + 0.9F
                     );
 
                     // 击退效果
