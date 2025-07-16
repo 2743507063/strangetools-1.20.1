@@ -5,6 +5,7 @@ import com.stools.enchantment.ModEnchantments;
 import com.stools.event.ModEvents;
 import com.stools.item.ModItemGroups;
 import com.stools.item.ModItems;
+import com.stools.sound.ModSoundEvents;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -28,6 +29,7 @@ public class Strangetools implements ModInitializer {
 		ModItems.registerItems();
 		ModItemGroups.registerGroups();
 		ModEvents.register();
+		ModSoundEvents.registerSounds();
 		LOGGER.info("Hello Fabric world!");
 	}
 }

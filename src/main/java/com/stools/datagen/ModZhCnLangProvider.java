@@ -14,6 +14,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
+        translationBuilder.add(ModItems.MACE,"重锤");
         translationBuilder.add("itemGroup.strangetools.tools_group", "奇奇怪怪的工具");
         translationBuilder.add("itemGroup.strangetools.armor_group", "奇奇怪怪的盔甲");
         generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);

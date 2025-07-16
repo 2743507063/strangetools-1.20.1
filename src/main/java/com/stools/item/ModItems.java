@@ -1,6 +1,7 @@
 package com.stools.item;
 
 import com.stools.Strangetools;
+import com.stools.item.custom.MaceItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
@@ -17,6 +18,9 @@ import java.util.Map;
 
 public class ModItems {
     public static final Item TEST_ITEM = registerItem("test_item",new SwordItem(ToolMaterials.WOOD,6,1,new Item.Settings().maxDamage(1)));
+    public static final Item MACE = registerItem("mace",
+            new MaceItem(new Item.Settings().maxCount(1))
+    );
     public static final Map<String, Item> TOOLS = new HashMap<>();
     public static final List<String> TOOL_IDS = new ArrayList<>();
     public static final Map<String, Item> ARMORS = new HashMap<>();
