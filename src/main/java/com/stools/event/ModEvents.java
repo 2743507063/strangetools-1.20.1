@@ -9,6 +9,7 @@ public class ModEvents {
         ToolEffectHandler.register();
         ArmorEffectHandler.register();
         GlowstoneToolUseEvent.register();
+        FireChargeToolUseEvent.register();
         Strangetools.LOGGER.info("Registering Mod Events for " + Strangetools.MOD_ID);
     }
 }

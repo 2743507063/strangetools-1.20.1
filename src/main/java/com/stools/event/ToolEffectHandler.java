@@ -81,7 +81,7 @@ public class ToolEffectHandler {
                 break;
 
             case COAL:
-                target.setOnFireFor(4);
+                target.setOnFireFor(3);
                 break;
 
             case CAKE:
@@ -130,6 +130,9 @@ public class ToolEffectHandler {
                         world.addParticle(ParticleTypes.GLOW, x, y, z, 0, 0.1, 0);
                     }
                 }
+                break;
+            case FIRE_CHARGE:
+                target.setOnFireFor(3);
                 break;
         }
     }
