@@ -14,7 +14,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.world.World;
-import com.stools.item.ModToolMaterials;
+import com.stools.item.materials.ModToolMaterials;
 
 import java.util.Random;
 
@@ -131,7 +131,7 @@ public class ToolEffectHandler {
                     }
                 }
                 break;
-            case FIRE_CHARGE:
+            case BLAZE_POWDER:
                 target.setOnFireFor(3);
                 break;
         }

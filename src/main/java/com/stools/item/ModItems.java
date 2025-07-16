@@ -2,6 +2,9 @@ package com.stools.item;
 
 import com.stools.Strangetools;
 import com.stools.item.custom.MaceItem;
+import com.stools.item.materials.ModArmorMaterials;
+import com.stools.item.materials.ModMaceMaterials;
+import com.stools.item.materials.ModToolMaterials;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
@@ -19,7 +22,7 @@ import java.util.Map;
 public class ModItems {
     public static final Item TEST_ITEM = registerItem("test_item",new SwordItem(ToolMaterials.WOOD,6,1,new Item.Settings().maxDamage(1)));
     public static final Item MACE = registerItem("mace",
-            new MaceItem(new Item.Settings().maxCount(1))
+            new MaceItem(ModMaceMaterials.IRON,new Item.Settings().maxCount(1))
     );
     public static final Map<String, Item> TOOLS = new HashMap<>();
     public static final List<String> TOOL_IDS = new ArrayList<>();
@@ -54,7 +57,10 @@ public class ModItems {
         ARMORS.put(id, registeredItem);
         ARMOR_IDS.add(id);
     }
-
+    private static void registerMaceSet(ModMaceMaterials material, String materialName) {
+        String id = materialName + "_mace";
+        registerTool(id, MaceFactory.createMace(material, id));
+    }
     public static void registerToolItems() {
         registerToolSet(ModToolMaterials.COPPER, "copper");
         registerToolSet(ModToolMaterials.EMERALD, "emerald");
@@ -67,10 +73,12 @@ public class ModItems {
         registerToolSet(ModToolMaterials.PRISMARINE, "prismarine");
         registerToolSet(ModToolMaterials.ROTTEN_FLESH, "rotten_flesh");
         registerToolSet(ModToolMaterials.GLOWSTONE, "glowstone");
-        registerToolSet(ModToolMaterials.FIRE_CHARGE, "fire_charge");
+        registerToolSet(ModToolMaterials.BLAZE_POWDER, "blaze_powder");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");
+
+        //重锤
     }
 
     public static Item registerItem(String id, Item item) {

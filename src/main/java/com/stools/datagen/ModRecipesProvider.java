@@ -2,16 +2,13 @@ package com.stools.datagen;
 
 import com.stools.Strangetools;
 import com.stools.item.ModItems;
-import com.stools.item.ModToolMaterials;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Consumer;
@@ -34,7 +31,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "prismarine", Items.PRISMARINE_SHARD);
         generateToolRecipes(exporter, "rotten_flesh", Items.ROTTEN_FLESH);
         generateToolRecipes(exporter, "glowstone", Items.GLOWSTONE_DUST);
-        generateToolRecipes(exporter, "fire_charge", Items.FIRE_CHARGE);
+        generateToolRecipes(exporter, "blaze_powder", Items.FIRE_CHARGE);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
     }

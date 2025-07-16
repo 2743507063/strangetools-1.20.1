@@ -1,6 +1,6 @@
 package com.stools.event;
 
-import com.stools.item.ModToolMaterials;
+import com.stools.item.materials.ModToolMaterials;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;

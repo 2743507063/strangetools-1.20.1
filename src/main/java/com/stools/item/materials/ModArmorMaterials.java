@@ -1,5 +1,5 @@
 // ModArmorMaterials.java
-package com.stools.item;
+package com.stools.item.materials;
 
 import com.stools.Strangetools;
 import net.minecraft.item.ArmorItem;

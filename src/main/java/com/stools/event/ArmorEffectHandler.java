@@ -7,7 +7,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
-import com.stools.item.ModArmorMaterials;
+import com.stools.item.materials.ModArmorMaterials;
 
 public class ArmorEffectHandler {
     public static void register() {

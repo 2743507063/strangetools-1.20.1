@@ -2,6 +2,8 @@ package com.stools.item.custom;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.stools.enchantment.ModEnchantments;
+import com.stools.item.materials.ModMaceMaterials;
 import com.stools.sound.ModSoundEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -11,6 +13,7 @@ import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.decoration.ArmorStandEntity;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket;
@@ -34,13 +37,17 @@ public class MaceItem extends Item {
     private static final UUID ATTACK_SPEED_MODIFIER_ID = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
     private static final Random RANDOM = new Random();
 
-    private static final int BASE_DAMAGE = 6;
-    private static final float ATTACK_SPEED = -3.4F;
+    //属性
+    private static final int BASE_DAMAGE = 6; // 基础伤害
+    private static final float ATTACK_SPEED = -3.4F; // 攻击速度 = 4.0 - 3.4 = 0.6 (1.65秒冷却)
     private static final float KNOCKBACK_RANGE = 3.5F;
     private static final float KNOCKBACK_POWER = 0.7F;
 
-    public MaceItem(Settings settings) {
-        super(settings.maxDamage(250));
+    private final ModMaceMaterials material;
+
+    public MaceItem(ModMaceMaterials material, Settings settings) {
+        super(settings);
+        this.material = material;
     }
 
     @Override
@@ -55,12 +62,13 @@ public class MaceItem extends Item {
                 if (world instanceof ServerWorld) {
                     ServerWorld serverWorld = (ServerWorld) world;
 
-                    // 播放音效
                     SoundEvent sound;
+                    boolean isHeavySmash = false;
+
                     if (target.isOnGround()) {
                         if (player.fallDistance > 5.0F) {
                             sound = ModSoundEvents.MACE_HEAVY_SMASH_GROUND;
-
+                            isHeavySmash = true;
 
                             BlockPos groundPos = target.getBlockPos().down();
                             BlockState groundState = serverWorld.getBlockState(groundPos);
@@ -95,7 +103,14 @@ public class MaceItem extends Item {
                     );
 
                     // 击退效果
-                    knockbackNearbyEntities(serverWorld, player, target);
+                    knockbackNearbyEntities(serverWorld, player, target, isHeavySmash);
+
+                    player.addVelocity(0, 0.15, 0);
+                    if (player instanceof ServerPlayerEntity) {
+                        ((ServerPlayerEntity) player).networkHandler.sendPacket(
+                                new EntityVelocityUpdateS2CPacket(player)
+                        );
+                    }
 
                     // 防止玩家受到摔落伤害
                     player.fallDistance = 0;
@@ -105,7 +120,7 @@ public class MaceItem extends Item {
         return true;
     }
 
-    private static void knockbackNearbyEntities(World world, PlayerEntity player, Entity attacked) {
+    private static void knockbackNearbyEntities(World world, PlayerEntity player, Entity attacked, boolean isHeavySmash) {
         Box box = attacked.getBoundingBox().expand(KNOCKBACK_RANGE);
         List<LivingEntity> entities = world.getEntitiesByClass(LivingEntity.class, box, e ->
                 e != player && e != attacked &&
@@ -116,12 +131,18 @@ public class MaceItem extends Item {
         for (LivingEntity entity : entities) {
             Vec3d direction = entity.getPos().subtract(attacked.getPos());
             double distance = direction.length();
-            double strength = (KNOCKBACK_RANGE - distance) * KNOCKBACK_POWER *
-                    (player.fallDistance > 5.0F ? 1.5 : 1.0) *
-                    (1.0 - entity.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE));
+            double strength = (KNOCKBACK_RANGE - distance) * KNOCKBACK_POWER;
+
+            // 重击时击退翻倍
+            if (isHeavySmash) {
+                strength *= 2.0;
+            }
+
+            // 考虑击退抗性
+            strength *= (1.0 - entity.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE));
 
             if (strength > 0) {
-                entity.addVelocity(direction.normalize().x * strength, 0.7, direction.normalize().z * strength);
+                entity.addVelocity(direction.normalize().x * strength, 0.2, direction.normalize().z * strength);
                 if (entity instanceof ServerPlayerEntity) {
                     ((ServerPlayerEntity) entity).networkHandler.sendPacket(new EntityVelocityUpdateS2CPacket(entity));
                 }
@@ -130,7 +151,10 @@ public class MaceItem extends Item {
     }
 
     public static boolean shouldDealAdditionalDamage(LivingEntity attacker) {
-        return attacker.fallDistance > 1.5F && !attacker.isFallFlying();
+        boolean hasSlowFalling = attacker.hasStatusEffect(StatusEffects.SLOW_FALLING);
+        boolean isGliding = attacker.isFallFlying();
+
+        return attacker.fallDistance > 1.5F && !hasSlowFalling && !isGliding;
     }
 
     public float getBonusAttackDamage(LivingEntity attacker) {
@@ -139,16 +163,22 @@ public class MaceItem extends Item {
         }
 
         float fallDistance = attacker.fallDistance;
-        //额外伤害 = 下落高度 × 2.5
-        float bonusDamage = fallDistance * 2.5f;
+        float bonusDamage = 0.0F;
 
-        // 附魔效果
-        if (attacker instanceof PlayerEntity) {
-            PlayerEntity player = (PlayerEntity) attacker;
-            int smashLevel = EnchantmentHelper.getLevel(Enchantments.SHARPNESS, player.getMainHandStack());
-            bonusDamage += smashLevel * 1.0f; // 每级附魔增加1点伤害
+        // 分段计算伤害
+        if (fallDistance <= 3.0F) {
+            bonusDamage = fallDistance * 4.0F;
+        } else if (fallDistance <= 8.0F) {
+            bonusDamage = 12.0F + (fallDistance - 3.0F) * 2.0F;
+        } else {
+            bonusDamage = 22.0F + (fallDistance - 8.0F) * 1.0F;
         }
 
+        if (attacker instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity) attacker;
+            int densityLevel = EnchantmentHelper.getLevel(ModEnchantments.DENSITY, player.getMainHandStack());
+            bonusDamage += densityLevel * 2.0f; // 每级附魔增加2点伤害
+        }
         return bonusDamage;
     }
 
@@ -161,13 +191,13 @@ public class MaceItem extends Item {
     }
 
     @Override
-    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-        return ingredient.isOf(Items.BLAZE_ROD);
+    public int getEnchantability() {
+        return material.getEnchantability();
     }
 
     @Override
-    public int getEnchantability() {
-        return 15;
+    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
+        return material.getRepairIngredient().test(ingredient);
     }
 
     @Override
@@ -176,9 +206,11 @@ public class MaceItem extends Item {
 
         if (slot == EquipmentSlot.MAINHAND) {
             modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                    new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier", BASE_DAMAGE, EntityAttributeModifier.Operation.ADDITION));
+                    new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier",
+                            material.getBaseDamage(), EntityAttributeModifier.Operation.ADDITION));
             modifiers.put(EntityAttributes.GENERIC_ATTACK_SPEED,
-                    new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", ATTACK_SPEED, EntityAttributeModifier.Operation.ADDITION));
+                    new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier",
+                            ATTACK_SPEED, EntityAttributeModifier.Operation.ADDITION));
         }
         return modifiers;
     }
