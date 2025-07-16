@@ -1,0 +1,87 @@
+{
+  "test": {
+    "subtitle": "sounds.strangetools.test",
+    "sounds": [
+      "strangetools:test"
+    ]
+  },
+  "mace.smash_ground": {
+    "subtitle": "subtitles.strangetools.mace.smash_ground",
+    "sounds": [
+      {
+        "name": "strangetools:mace/smash_ground1",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "attenuation_distance": 6,
+        "stream": false,
+        "preload": false
+      },
+      {
+        "name": "strangetools:mace/smash_ground2",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "attenuation_distance": 6,
+        "stream": false,
+        "preload": false
+      },
+      {
+        "name": "strangetools:mace/smash_ground3",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "attenuation_distance": 6,
+        "stream": false,
+        "preload": false
+      },
+      {
+        "name": "strangetools:mace/smash_ground4",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "attenuation_distance": 6,
+        "stream": false,
+        "preload": false
+      }
+    ]
+  },
+  "mace.heavy_smash_ground": {
+    "subtitle": "subtitles.strangetools.mace.heavy_smash_ground",
+    "sounds": [
+      {
+        "name": "strangetools:mace/heavy_smash",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "attenuation_distance": 16,
+        "stream": false,
+        "preload": false
+      }
+    ]
+  },
+  "mace.smash_air": {
+    "subtitle": "subtitles.strangetools.mace.smash_air",
+    "sounds": [
+      {
+        "name": "strangetools:mace/smash_air1",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "attenuation_distance": 16,
+        "stream": false,
+        "preload": false
+      },
+      {
+        "name": "strangetools:mace/smash_air2",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "attenuation_distance": 16,
+        "stream": false,
+        "preload": false
+      },
+      {
+        "name": "strangetools:mace/smash_air3",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "attenuation_distance": 16,
+        "stream": false,
+        "preload": false
+      }
+    ]
+  }
+}
