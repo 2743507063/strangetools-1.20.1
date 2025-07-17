@@ -51,7 +51,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "prismarine" -> "海晶石";
             case "rotten_flesh" -> "腐肉";
             case "glowstone" -> "萤石";
-            case "blaze_powder" -> "烈焰弹";
+            case "blaze_powder" -> "烈焰粉";
             default -> null;
         };
     }
