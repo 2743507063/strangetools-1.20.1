@@ -31,6 +31,7 @@ public class Strangetools implements ModInitializer {
 		ModEvents.register();
 		ModSoundEvents.registerSounds();
 		ModEnchantments.registerEnchantments();
+
 		LOGGER.info("Hello Fabric world!");
 	}
 }

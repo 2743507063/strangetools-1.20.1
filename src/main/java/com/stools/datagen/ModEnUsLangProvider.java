@@ -14,6 +14,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
+        translationBuilder.add(ModItems.MACE,"Mace");
         translationBuilder.add("itemGroup.strangetools.tools_group", "Strange Tools");
         translationBuilder.add("itemGroup.strangetools.armor_group", "Strange Armor");
         generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);

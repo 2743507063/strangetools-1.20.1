@@ -3,9 +3,9 @@
 	"id": "strangetools",
 	"version": "${version}",
 	"name": "strangetools",
-	"description": "添加了奇奇怪怪的工具",
+	"description": "Added those strange tools.",
 	"authors": [
-		"GAO_HE_SUAN"
+		"MoQianOver"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
