@@ -20,7 +20,7 @@ repositories {
 	maven { url "https://maven.shedaniel.me/" }
 	// 添加 Mod Menu 仓库
 	maven { url "https://maven.terraformersmc.com/releases/" }
-	// 添加 Fabric 仓库（确保已包含）
+	// 添加 Fabric 仓库
 	maven { url "https://maven.fabricmc.net/" }
 }
 
