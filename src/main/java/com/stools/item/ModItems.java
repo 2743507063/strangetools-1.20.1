@@ -75,6 +75,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.BLAZE_POWDER, "blaze_powder");
         registerToolSet(ModToolMaterials.GOLDEN_APPLE, "golden_apple");
         registerToolSet(ModToolMaterials.ENCHANTED_GOLDEN_APPLE, "enchanted_golden_apple");
+        registerToolSet(ModToolMaterials.BEDROCK, "bedrock");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");
