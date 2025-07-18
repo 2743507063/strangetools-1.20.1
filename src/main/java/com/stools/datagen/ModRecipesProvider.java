@@ -1,7 +1,6 @@
 package com.stools.datagen;
 
 import com.stools.Strangetools;
-import com.stools.block.ModBlocks;
 import com.stools.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -41,8 +40,8 @@ public class ModRecipesProvider extends FabricRecipeProvider {
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
 
-        generateSmeltingAndBlastingRecipes(exporter);
     }
+
     private void generateArmorRecipes(Consumer<RecipeJsonProvider> exporter, String material, Item materialItem) {
         generateArmorPieceRecipe(exporter, material, "helmet",
                 "EEE", "E E", materialItem);
@@ -132,9 +131,5 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input('S', Items.STICK)
                 .criterion(hasItem(materialItem), conditionsFromItem(materialItem))
                 .offerTo(exporter);
-    }
-    private void generateSmeltingAndBlastingRecipes(Consumer<RecipeJsonProvider> exporter) {
-        offerSmelting(exporter, List.of(ModBlocks.BEDROCK_ORE), RecipeCategory.MISC, ModItems.BEDROCK_SCRAP, 2.0f, 200, "bedrock_scrap_from_bedrock_ore");
-        offerBlasting(exporter, List.of(ModBlocks.BEDROCK_ORE), RecipeCategory.MISC, ModItems.BEDROCK_SCRAP, 2.0f, 100, "bedrock_scrap_from_bedrock_ore_blasting");
     }
 }
