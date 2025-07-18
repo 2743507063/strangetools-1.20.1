@@ -41,19 +41,6 @@ public class Strangetools implements ModInitializer {
 		ModEvents.register();
 		ModSoundEvents.registerSounds();
 		ModEnchantments.registerEnchantments();
-		addOreGeneration();
 		LOGGER.info("Hello Fabric world!");
-	}
-	private void addOreGeneration() {
-		RegistryKey<PlacedFeature> bedrockOrePlacedKey = RegistryKey.of(
-				RegistryKeys.PLACED_FEATURE,
-				new Identifier(MOD_ID, "bedrock_ore_placed")
-		);
-
-		BiomeModifications.addFeature(
-				BiomeSelectors.foundInOverworld(),
-				GenerationStep.Feature.UNDERGROUND_ORES,
-				bedrockOrePlacedKey
-		);
 	}
 }
