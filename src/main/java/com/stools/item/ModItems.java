@@ -13,7 +13,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,6 +74,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.GLOWSTONE, "glowstone");
         registerToolSet(ModToolMaterials.BLAZE_POWDER, "blaze_powder");
         registerToolSet(ModToolMaterials.GOLDEN_APPLE, "golden_apple");
+        registerToolSet(ModToolMaterials.ENCHANTED_GOLDEN_APPLE, "enchanted_golden_apple");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");

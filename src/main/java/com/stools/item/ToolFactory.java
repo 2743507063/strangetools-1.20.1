@@ -1,5 +1,6 @@
 package com.stools.item;
 
+import com.stools.item.materials.ModToolMaterials;
 import net.minecraft.item.*;
 import net.minecraft.text.Text;
 
@@ -10,6 +11,13 @@ public class ToolFactory {
             public String getTranslationKey() {
                 return "item.strangetools." + id;
             }
+            @Override
+            public boolean hasGlint(ItemStack stack) {
+                if (material instanceof ModToolMaterials modMaterial) {
+                    return modMaterial.hasGlint();
+                }
+                return super.hasGlint(stack);
+            }
         };
     }
 
@@ -18,6 +26,13 @@ public class ToolFactory {
             @Override
             public String getTranslationKey() {
                 return "item.strangetools." + id;
+            }
+            @Override
+            public boolean hasGlint(ItemStack stack) {
+                if (material instanceof ModToolMaterials modMaterial) {
+                    return modMaterial.hasGlint();
+                }
+                return super.hasGlint(stack);
             }
         };
     }
@@ -28,6 +43,13 @@ public class ToolFactory {
             public String getTranslationKey() {
                 return "item.strangetools." + id;
             }
+            @Override
+            public boolean hasGlint(ItemStack stack) {
+                if (material instanceof ModToolMaterials modMaterial) {
+                    return modMaterial.hasGlint();
+                }
+                return super.hasGlint(stack);
+            }
         };
     }
 
@@ -37,6 +59,13 @@ public class ToolFactory {
             public String getTranslationKey() {
                 return "item.strangetools." + id;
             }
+            @Override
+            public boolean hasGlint(ItemStack stack) {
+                if (material instanceof ModToolMaterials modMaterial) {
+                    return modMaterial.hasGlint();
+                }
+                return super.hasGlint(stack);
+            }
         };
     }
     public static Item createHoe(ToolMaterial material, String id) {
@@ -44,6 +73,13 @@ public class ToolFactory {
             @Override
             public String getTranslationKey() {
                 return "item.strangetools." + id;
+            }
+            @Override
+            public boolean hasGlint(ItemStack stack) {
+                if (material instanceof ModToolMaterials modMaterial) {
+                    return modMaterial.hasGlint();
+                }
+                return super.hasGlint(stack);
             }
         };
     }
