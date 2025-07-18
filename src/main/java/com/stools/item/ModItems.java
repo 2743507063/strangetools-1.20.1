@@ -74,6 +74,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.ROTTEN_FLESH, "rotten_flesh");
         registerToolSet(ModToolMaterials.GLOWSTONE, "glowstone");
         registerToolSet(ModToolMaterials.BLAZE_POWDER, "blaze_powder");
+        registerToolSet(ModToolMaterials.GOLDEN_APPLE, "golden_apple");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");
