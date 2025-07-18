@@ -24,7 +24,7 @@ public class GoldenAppleToolUseEvent {
                     int currentDamage = stack.getDamage();
                     int maxDamage = stack.getMaxDamage();
                     int remainingDurability = maxDamage - currentDamage;
-                    int consumeAmount = Math.min(remainingDurability, 50);
+                    int consumeAmount = Math.min(remainingDurability, 250);
 
                     if (!world.isClient()) {
                         stack.damage(consumeAmount, player, e -> e.sendToolBreakStatus(hand));

@@ -20,7 +20,7 @@ public enum ModToolMaterials implements ToolMaterial {
     ROTTEN_FLESH(1, 180, 3.5f, 0.8f, 8, () -> Ingredient.ofItems(Items.ROTTEN_FLESH)),
     GLOWSTONE(2, 600, 7.0f, 2.0f, 30, () -> Ingredient.ofItems(Items.GLOWSTONE_DUST)),
     BLAZE_POWDER(3, 600, 7.5f, 1.5f, 15, () -> Ingredient.ofItems(Items.BLAZE_POWDER)),
-    GOLDEN_APPLE(2, 1000, 7.0F, 5.0F, 25, () -> Ingredient.ofItems(Items.GOLDEN_APPLE));
+    GOLDEN_APPLE(2, 1000, 7.0F, 3.0F, 25, () -> Ingredient.ofItems(Items.GOLDEN_APPLE));
 
     private final int miningLevel;
     private final int itemDurability;
