@@ -11,6 +11,7 @@ public class ModEvents {
         GlowstoneToolUseEvent.register();
         BlazePowderToolUseEvent.register();
         GoldenAppleToolUseEvent.register();
+        EnchantedGoldenAppleToolUseEvent.register();
         Strangetools.LOGGER.info("Registering Mod Events for " + Strangetools.MOD_ID);
     }
 }
