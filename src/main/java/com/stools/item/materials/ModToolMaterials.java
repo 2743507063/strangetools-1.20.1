@@ -22,7 +22,7 @@ public enum ModToolMaterials implements ToolMaterial {
     BLAZE_POWDER(3, 600, 7.5f, 1.5f, 15, () -> Ingredient.ofItems(Items.BLAZE_POWDER),false),
     GOLDEN_APPLE(2, 1000, 7.0F, 2.0F, 25, () -> Ingredient.ofItems(Items.GOLDEN_APPLE),false),
     ENCHANTED_GOLDEN_APPLE(3, 2000, 9.0F, 4.0F, 35, () -> Ingredient.ofItems(Items.ENCHANTED_GOLDEN_APPLE), true),
-    BEDROCK(5, 3000, 12.0f, 10.0f, 5, () -> Ingredient.ofItems(Items.BEDROCK), false);
+    BEDROCK(7, 5000, 12.0f, 12.0f, 50, () -> Ingredient.ofItems(Items.BEDROCK), false);
 
     private final int miningLevel;
     private final int itemDurability;
