@@ -1,5 +1,6 @@
 package com.stools;
 
+import com.stools.block.ModBlocks;
 import com.stools.config.ModConfigManager;
 import com.stools.enchantment.ModEnchantments;
 import com.stools.event.ModEvents;
@@ -8,6 +9,14 @@ import com.stools.item.ModItems;
 import com.stools.sound.ModSoundEvents;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.biome.v1.BiomeModification;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.feature.PlacedFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,11 +36,24 @@ public class Strangetools implements ModInitializer {
 		ModConfigManager.register();
 
 		ModItems.registerItems();
+		ModBlocks.registerModBlocks();
 		ModItemGroups.registerGroups();
 		ModEvents.register();
 		ModSoundEvents.registerSounds();
 		ModEnchantments.registerEnchantments();
-
+		addOreGeneration();
 		LOGGER.info("Hello Fabric world!");
+	}
+	private void addOreGeneration() {
+		RegistryKey<PlacedFeature> bedrockOrePlacedKey = RegistryKey.of(
+				RegistryKeys.PLACED_FEATURE,
+				new Identifier(MOD_ID, "bedrock_ore_placed")
+		);
+
+		BiomeModifications.addFeature(
+				BiomeSelectors.foundInOverworld(),
+				GenerationStep.Feature.UNDERGROUND_ORES,
+				bedrockOrePlacedKey
+		);
 	}
 }

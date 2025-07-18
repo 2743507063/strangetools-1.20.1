@@ -23,6 +23,8 @@ public class ModItems {
     public static final Item MACE = registerItem("mace",
             new MaceItem(ModMaceMaterials.IRON,new Item.Settings().maxCount(1))
     );
+    public static final Item BEDROCK_SCRAP = registerItem("bedrock_scrap", new Item(new Item.Settings()));
+
     public static final Map<String, Item> TOOLS = new HashMap<>();
     public static final List<String> TOOL_IDS = new ArrayList<>();
     public static final Map<String, Item> ARMORS = new HashMap<>();

@@ -4,6 +4,7 @@ import com.stools.Strangetools;
 import com.stools.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.item.ItemConvertible;
 
 import java.util.List;
 
@@ -20,7 +21,6 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);
         generateItemTranslations(translationBuilder, ModItems.ARMOR_IDS);
     }
-
     private void generateItemTranslations(TranslationBuilder translationBuilder, List<String> itemIds) {
         for (String itemId : itemIds) {
             int lastIndex = itemId.lastIndexOf('_');
