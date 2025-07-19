@@ -55,6 +55,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "golden_apple" -> "金苹果";
             case "enchanted_golden_apple" -> "附魔金苹果";
             case "bedrock" -> "基岩";
+            case "bone" -> "骨头";
             default -> null;
         };
     }

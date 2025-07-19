@@ -133,6 +133,26 @@ public class ToolEffectHandler {
                 break;
             case BLAZE_POWDER:
                 target.setOnFireFor(3);
+            case BONE:
+                // 30%几率施加缓慢效果
+                if (random.nextFloat() < 0.3f) {
+                    target.addStatusEffect(new StatusEffectInstance(
+                            StatusEffects.SLOWNESS,
+                            100,
+                            1
+                    ));
+
+                    // 骨头特效
+                    if (world.isClient()) {
+                        for (int i = 0; i < 5; i++) {
+                            world.addParticle(ParticleTypes.ASH,
+                                    target.getX(),
+                                    target.getY() + 1,
+                                    target.getZ(),
+                                    0, 0.1, 0);
+                        }
+                    }
+                }
                 break;
         }
     }
