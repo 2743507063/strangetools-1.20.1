@@ -78,6 +78,8 @@ public class ModItems {
         registerToolSet(ModToolMaterials.ENCHANTED_GOLDEN_APPLE, "enchanted_golden_apple");
         registerToolSet(ModToolMaterials.BEDROCK, "bedrock");
         registerToolSet(ModToolMaterials.BONE, "bone");
+        registerToolSet(ModToolMaterials.NETHERRACK, "netherrack");
+        registerToolSet(ModToolMaterials.NETHER_STAR, "nether_star");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");

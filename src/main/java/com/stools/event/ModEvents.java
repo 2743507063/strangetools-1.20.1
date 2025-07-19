@@ -15,10 +15,11 @@ public class ModEvents {
         EnchantedGoldenAppleToolUseEvent.register();
         BedrockToolUseEvent.register();
         BoneToolUseEvent.register();
-
+        NetherStarToolUseEvent.register();
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             if (server.getWorlds().iterator().hasNext()) {
                 BoneToolUseEvent.updateBoneShields(server.getOverworld());
+                NetherStarToolUseEvent.updateRifts(server.getOverworld());
             }
         });
         Strangetools.LOGGER.info("Registering Mod Events for " + Strangetools.MOD_ID);

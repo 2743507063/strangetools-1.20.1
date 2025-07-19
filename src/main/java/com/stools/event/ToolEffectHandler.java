@@ -153,6 +153,38 @@ public class ToolEffectHandler {
                         }
                     }
                 }
+            case NETHERRACK:
+                // 点燃目标
+                target.setOnFireFor(3);
+
+                // 20%几率造成小爆炸
+                if (random.nextFloat() < 0.2f) {
+                    if (!world.isClient()) {
+                        world.createExplosion(
+                                null,
+                                target.getX(),
+                                target.getY(),
+                                target.getZ(),
+                                1.5f, // 威力
+                                World.ExplosionSourceType.NONE
+                        );
+                    }
+
+                    // 爆炸粒子效果
+                    if (world.isClient()) {
+                        for (int i = 0; i < 15; i++) {
+                            double offsetX = (random.nextDouble() - 0.5) * 2;
+                            double offsetY = random.nextDouble() * 1.5;
+                            double offsetZ = (random.nextDouble() - 0.5) * 2;
+
+                            world.addParticle(ParticleTypes.FLAME,
+                                    target.getX(),
+                                    target.getY() + 1,
+                                    target.getZ(),
+                                    offsetX, offsetY, offsetZ);
+                        }
+                    }
+                }
                 break;
         }
     }

@@ -38,6 +38,8 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "enchanted_golden_apple", Items.ENCHANTED_GOLDEN_APPLE);
         generateToolRecipes(exporter, "bedrock", Items.BEDROCK);
         generateToolRecipes(exporter, "bone", Items.BONE);
+        generateToolRecipes(exporter, "nether_star", Items.NETHER_STAR);
+        generateToolRecipes(exporter, "netherrack", Items.NETHERRACK);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
 
