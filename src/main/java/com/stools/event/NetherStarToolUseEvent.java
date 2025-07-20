@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.TntEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
@@ -52,7 +54,7 @@ public class NetherStarToolUseEvent {
 
                     if (!world.isClient()) {
                         stack.damage(DURABILITY_COST, player, e -> e.sendToolBreakStatus(hand));
-                        createAstralRift(player, (ServerWorld) world);
+                        createWitherNova(player, (ServerWorld) world);
                     }
 
                     return TypedActionResult.success(stack);
@@ -62,12 +64,12 @@ public class NetherStarToolUseEvent {
         });
     }
 
-    private static void createAstralRift(PlayerEntity player, ServerWorld world) {
+    private static void createWitherNova(PlayerEntity player, ServerWorld world) {
         // 获取目标位置
         Vec3d lookVec = player.getRotationVec(1.0F);
         Vec3d targetPos = player.getPos().add(lookVec.multiply(12));
 
-        BlockPos riftPos = world.raycast(new RaycastContext(
+        BlockPos novaPos = world.raycast(new RaycastContext(
                 player.getCameraPosVec(1.0F),
                 targetPos,
                 RaycastContext.ShapeType.COLLIDER,
@@ -75,23 +77,23 @@ public class NetherStarToolUseEvent {
                 player
         )).getBlockPos().up();
 
-        // 创建裂隙数据
-        activeRifts.put(UUID.randomUUID(), new RiftData(riftPos, RIFT_DURATION, player));
+        // 创建新星数据
+        activeRifts.put(UUID.randomUUID(), new RiftData(novaPos, RIFT_DURATION, player));
 
         // 初始效果
-        world.playSound(null, riftPos,
-                SoundEvents.ENTITY_ENDER_DRAGON_GROWL,
-                SoundCategory.PLAYERS, 1.5f, 0.7f);
+        world.playSound(null, novaPos,
+                SoundEvents.ENTITY_WITHER_SHOOT,
+                SoundCategory.PLAYERS, 1.5f, 0.8f);
 
         // 生成初始粒子
         for (int i = 0; i < 50; i++) {
             double offsetX = (world.random.nextDouble() - 0.5) * 3;
             double offsetY = world.random.nextDouble() * 2;
             double offsetZ = (world.random.nextDouble() - 0.5) * 3;
-            world.spawnParticles(ParticleTypes.PORTAL,
-                    riftPos.getX() + 0.5 + offsetX,
-                    riftPos.getY() + 0.5 + offsetY,
-                    riftPos.getZ() + 0.5 + offsetZ,
+            world.spawnParticles(ParticleTypes.SOUL_FIRE_FLAME,
+                    novaPos.getX() + 0.5 + offsetX,
+                    novaPos.getY() + 0.5 + offsetY,
+                    novaPos.getZ() + 0.5 + offsetZ,
                     5, 0, 0, 0, 0.1);
         }
     }
@@ -143,10 +145,19 @@ public class NetherStarToolUseEvent {
                 // 拉向中心
                 entity.addVelocity(toCenter.x * strength, toCenter.y * strength * 0.7, toCenter.z * strength);
 
-                // 每秒伤害
-                if (rift.remainingTicks % 20 == 0 && entity instanceof LivingEntity) {
+                // 每秒伤害并附加凋灵效果
+                if (rift.remainingTicks % 20 == 0 && entity instanceof LivingEntity livingEntity) {
                     float damage = 3.0f + (rift.creator.getAttackCooldownProgress(0) * 4);
-                    ((LivingEntity) entity).damage(world.getDamageSources().magic(), damage);
+                    livingEntity.damage(world.getDamageSources().wither(), damage);
+
+                    //凋灵效果
+                    livingEntity.addStatusEffect(new StatusEffectInstance(
+                            StatusEffects.WITHER,
+                            100, // 5秒
+                            1,   // 等级2
+                            false,
+                            true
+                    ));
                 }
             }
         }
@@ -154,7 +165,7 @@ public class NetherStarToolUseEvent {
 
     private static void spawnRiftParticles(ServerWorld world, RiftData rift) {
         // 核心粒子
-        world.spawnParticles(ParticleTypes.REVERSE_PORTAL,
+        world.spawnParticles(ParticleTypes.SOUL,
                 rift.position.getX() + 0.5,
                 rift.position.getY() + 0.5,
                 rift.position.getZ() + 0.5,
@@ -167,7 +178,7 @@ public class NetherStarToolUseEvent {
             double x = rift.position.getX() + 0.5 + Math.cos(angle) * distance;
             double z = rift.position.getZ() + 0.5 + Math.sin(angle) * distance;
 
-            world.spawnParticles(ParticleTypes.ELECTRIC_SPARK,
+            world.spawnParticles(ParticleTypes.SMOKE,
                     x, rift.position.getY() + 0.8, z,
                     3, 0, 0.1, 0, 0.05);
         }
@@ -179,12 +190,12 @@ public class NetherStarToolUseEvent {
                 rift.position.getX() + 0.5,
                 rift.position.getY() + 0.5,
                 rift.position.getZ() + 0.5,
-                5.0f, World.ExplosionSourceType.NONE);
+                5.0f, World.ExplosionSourceType.MOB);
 
-        // 音效
+        // 爆炸
         world.playSound(null, rift.position,
-                SoundEvents.ENTITY_ENDER_DRAGON_SHOOT,
-                SoundCategory.PLAYERS, 2.0f, 0.5f);
+                SoundEvents.ENTITY_WITHER_BREAK_BLOCK,
+                SoundCategory.PLAYERS, 2.0f, 0.7f);
 
         // 爆炸粒子
         for (int i = 0; i < 30; i++) {
@@ -193,7 +204,7 @@ public class NetherStarToolUseEvent {
             double x = Math.cos(angle) * distance;
             double z = Math.sin(angle) * distance;
 
-            world.spawnParticles(ParticleTypes.FIREWORK,
+            world.spawnParticles(ParticleTypes.SOUL_FIRE_FLAME,
                     rift.position.getX() + 0.5 + x,
                     rift.position.getY() + 0.5,
                     rift.position.getZ() + 0.5 + z,
