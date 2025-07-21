@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "bone", Items.BONE);
         generateToolRecipes(exporter, "nether_star", Items.NETHER_STAR);
         generateToolRecipes(exporter, "netherrack", Items.NETHERRACK);
+        generateToolRecipes(exporter, "glass", Items.GLASS);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
 

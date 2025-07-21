@@ -14,5 +14,6 @@ public class StrangetoolsDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelsProvider::new);
 		pack.addProvider(ModRecipesProvider::new);
 		pack.addProvider(ModZhCnLangProvider::new);
+		pack.addProvider(ModJaJpLangProvider::new);
 		}
 	}

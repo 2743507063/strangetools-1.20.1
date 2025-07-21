@@ -1,6 +1,7 @@
 package com.stools.event;
 
 import com.stools.Strangetools;
+import com.stools.event.glass.*;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 
 public class ModEvents {
@@ -16,6 +17,9 @@ public class ModEvents {
         BedrockToolUseEvent.register();
         BoneToolUseEvent.register();
         NetherStarToolUseEvent.register();
+        GlassToolPassiveEvent.register();
+        GlassToolUseEvent.register();
+        GlassToolBreakEvent.register();
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             if (server.getWorlds().iterator().hasNext()) {
                 BoneToolUseEvent.updateBoneShields(server.getOverworld());

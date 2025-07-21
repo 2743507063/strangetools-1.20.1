@@ -58,6 +58,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "bone" -> "骨头";
             case "nether_star" -> "下界之星";
             case "netherrack" -> "下界岩";
+            case "glass" -> "玻璃";
             default -> null;
         };
     }

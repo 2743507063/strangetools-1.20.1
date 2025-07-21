@@ -185,6 +185,11 @@ public class ToolEffectHandler {
                         }
                     }
                 }
+            case GLASS:
+                // 播放玻璃破碎音效
+                world.playSound(null, target.getBlockPos(),
+                        SoundEvents.BLOCK_GLASS_BREAK,
+                        SoundCategory.PLAYERS, 1.0f, 1.0f);
                 break;
         }
     }
