@@ -26,7 +26,8 @@ public enum ModToolMaterials implements ToolMaterial {
     BONE(2, 250, 5.5f, 2.5f, 15, () -> Ingredient.ofItems(Items.BONE), false),
     NETHERRACK(2, 350, 5.5f, 2.0f, 10, () -> Ingredient.ofItems(Items.NETHERRACK), false),
     NETHER_STAR(5, 2200, 10.0f, 6.0f, 30, () -> Ingredient.ofItems(Items.NETHER_STAR), true),
-    GLASS(2, 100, 7.0f, 1.0f, 25, () -> Ingredient.ofItems(Items.GLASS), false);
+    GLASS(2, 100, 7.0f, 1.0f, 25, () -> Ingredient.ofItems(Items.GLASS), false),
+    SLIME(1, 120, 7.0f, 1.0f, 25, () -> Ingredient.ofItems(Items.SLIME_BALL), false);
 
     private final int miningLevel;
     private final int itemDurability;

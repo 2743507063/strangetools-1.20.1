@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "strangetools:item/glass_pickaxe"
+  },
+  "overrides": [
+    {"predicate": {"strangetools:bottle_content": 0}, "model": "strangetools:item/glass_axe_empty"},
+    {"predicate": {"strangetools:bottle_content": 1}, "model": "strangetools:item/glass_axe_water"},
+    {"predicate": {"strangetools:bottle_content": 2}, "model": "strangetools:item/glass_axe_lava"},
+    {"predicate": {"test_model": 1}, "model": "strangetools:item/test_lava"}
+  ]
+  }

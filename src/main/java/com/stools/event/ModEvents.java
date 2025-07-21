@@ -20,6 +20,10 @@ public class ModEvents {
         GlassToolPassiveEvent.register();
         GlassToolUseEvent.register();
         GlassToolBreakEvent.register();
+        GlassToolBottleEvent.register();
+        GlassToolPassiveEvent.register();
+        GlassToolSpecialSkillEvent.register();
+        SlimeToolUseEvent.register();
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             if (server.getWorlds().iterator().hasNext()) {
                 BoneToolUseEvent.updateBoneShields(server.getOverworld());

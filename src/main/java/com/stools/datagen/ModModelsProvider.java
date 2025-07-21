@@ -23,6 +23,7 @@ public class ModModelsProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.TEST_ITEM,Models.HANDHELD);
         itemModelGenerator.register(ModItems.MACE,Models.HANDHELD);
         for (String toolId : ModItems.TOOL_IDS) {
+            if (toolId.startsWith("glass_")) continue; // 跳过玻璃工具
             Item item = ModItems.TOOLS.get(toolId);
             if (item != null) {
                 itemModelGenerator.register(item, Models.HANDHELD);

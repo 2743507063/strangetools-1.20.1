@@ -42,6 +42,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "nether_star", Items.NETHER_STAR);
         generateToolRecipes(exporter, "netherrack", Items.NETHERRACK);
         generateToolRecipes(exporter, "glass", Items.GLASS);
+        generateToolRecipes(exporter, "slime", Items.SLIME_BALL);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
 

@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "strangetools:item/glass_shovel"
+  },
+  "overrides": [
+    {"predicate": {"strangetools:bottle_content": 0}, "model": "strangetools:item/glass_shovel_empty"},
+    {"predicate": {"strangetools:bottle_content": 1}, "model": "strangetools:item/glass_shovel_water"},
+    {"predicate": {"strangetools:bottle_content": 2}, "model": "strangetools:item/glass_shovel_lava"}
+  ]
+  }

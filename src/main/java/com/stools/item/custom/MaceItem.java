@@ -7,7 +7,6 @@ import com.stools.item.materials.ModMaceMaterials;
 import com.stools.sound.ModSoundEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;

@@ -81,6 +81,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.NETHERRACK, "netherrack");
         registerToolSet(ModToolMaterials.NETHER_STAR, "nether_star");
         registerToolSet(ModToolMaterials.GLASS, "glass");
+        registerToolSet(ModToolMaterials.SLIME, "slime");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");

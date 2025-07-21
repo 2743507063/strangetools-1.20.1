@@ -23,7 +23,6 @@ public class ToolEffectHandler {
 
     public static void register() {
         AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
-            // 检查工具效果总开关
             if (!ModConfigManager.CONFIG.toolEffects.enableToolEffects) {
                 return ActionResult.PASS;
             }
@@ -47,7 +46,6 @@ public class ToolEffectHandler {
                                         World world) {
         switch (material) {
             case COPPER:
-                // 使用配置中的铜点燃概率
                 float copperChance = ModConfigManager.CONFIG.toolEffects.copperIgniteChance / 100f;
                 if (random.nextFloat() < copperChance) {
                     target.setOnFireFor(2);
@@ -58,7 +56,6 @@ public class ToolEffectHandler {
                 break;
 
             case EMERALD:
-                // 使用配置中的绿宝石掉落概率
                 float emeraldChance = ModConfigManager.CONFIG.toolEffects.emeraldDropChance / 100f;
                 if (random.nextFloat() < emeraldChance) {
                     target.dropStack(new ItemStack(Items.EMERALD, 1));
@@ -75,7 +72,6 @@ public class ToolEffectHandler {
                 break;
 
             case QUARTZ:
-                // 使用配置中的石英额外伤害
                 float quartzDamage = ModConfigManager.CONFIG.toolEffects.quartzExtraDamage;
                 target.damage(target.getDamageSources().magic(), quartzDamage);
                 break;
@@ -102,7 +98,6 @@ public class ToolEffectHandler {
                 break;
 
             case ROTTEN_FLESH:
-                // 使用配置中的腐肉饥饿概率
                 float rottenChance = ModConfigManager.CONFIG.toolEffects.rottenFleshHungerChance / 100f;
                 if (random.nextFloat() < rottenChance) {
                     player.addStatusEffect(new StatusEffectInstance(
@@ -111,11 +106,7 @@ public class ToolEffectHandler {
                 break;
             case GLOWSTONE:
                 target.addStatusEffect(new StatusEffectInstance(
-                        StatusEffects.GLOWING,
-                        100,
-                        0,
-                        false,
-                        true
+                        StatusEffects.GLOWING, 100, 0, false, true
                 ));
 
                 if (!world.isClient()) {
@@ -133,16 +124,13 @@ public class ToolEffectHandler {
                 break;
             case BLAZE_POWDER:
                 target.setOnFireFor(3);
+                break;
             case BONE:
-                // 30%几率施加缓慢效果
                 if (random.nextFloat() < 0.3f) {
                     target.addStatusEffect(new StatusEffectInstance(
-                            StatusEffects.SLOWNESS,
-                            100,
-                            1
+                            StatusEffects.SLOWNESS, 100, 1
                     ));
 
-                    // 骨头特效
                     if (world.isClient()) {
                         for (int i = 0; i < 5; i++) {
                             world.addParticle(ParticleTypes.ASH,
@@ -153,11 +141,9 @@ public class ToolEffectHandler {
                         }
                     }
                 }
+                break;
             case NETHERRACK:
-                // 点燃目标
                 target.setOnFireFor(3);
-
-                // 20%几率造成小爆炸
                 if (random.nextFloat() < 0.2f) {
                     if (!world.isClient()) {
                         world.createExplosion(
@@ -165,12 +151,11 @@ public class ToolEffectHandler {
                                 target.getX(),
                                 target.getY(),
                                 target.getZ(),
-                                1.5f, // 威力
+                                1.5f,
                                 World.ExplosionSourceType.NONE
                         );
                     }
 
-                    // 爆炸粒子效果
                     if (world.isClient()) {
                         for (int i = 0; i < 15; i++) {
                             double offsetX = (random.nextDouble() - 0.5) * 2;
@@ -185,8 +170,8 @@ public class ToolEffectHandler {
                         }
                     }
                 }
+                break;
             case GLASS:
-                // 播放玻璃破碎音效
                 world.playSound(null, target.getBlockPos(),
                         SoundEvents.BLOCK_GLASS_BREAK,
                         SoundCategory.PLAYERS, 1.0f, 1.0f);

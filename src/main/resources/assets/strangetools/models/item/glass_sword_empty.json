@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "strangetools:item/glass_sword_empty"
+  }
+}
