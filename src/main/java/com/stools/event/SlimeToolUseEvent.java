@@ -12,7 +12,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
 
 public class SlimeToolUseEvent {
-    private static final int DURABILITY_COST = 20;
+    private static final int DURABILITY_COST = 40;
     private static final int EFFECT_DURATION = 8 * 20; // 8秒（tick为单位）
     private static final double FORWARD_DISTANCE = 4.0; // 弹射距离
 

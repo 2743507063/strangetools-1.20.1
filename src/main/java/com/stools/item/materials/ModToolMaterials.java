@@ -5,6 +5,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
+import java.util.Random;
 import java.util.function.Supplier;
 
 public enum ModToolMaterials implements ToolMaterial {
