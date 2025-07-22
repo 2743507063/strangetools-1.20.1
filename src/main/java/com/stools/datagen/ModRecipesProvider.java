@@ -10,19 +10,23 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipesProvider extends FabricRecipeProvider {
+    public static final TagKey<Item> POTIONS_TAG = TagKey.of(RegistryKeys.ITEM, new Identifier(Strangetools.MOD_ID, "potions"));
     public ModRecipesProvider(FabricDataOutput output) {
         super(output);
     }
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
+        generateToolRecipes(exporter, "potion", POTIONS_TAG);
         generateToolRecipes(exporter, "copper", Items.COPPER_INGOT);
         generateToolRecipes(exporter, "emerald", Items.EMERALD);
         generateToolRecipes(exporter, "lapis", Items.LAPIS_LAZULI);
@@ -92,7 +96,65 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_" + type));
     }
 
-    private void generateToolRecipes(Consumer<RecipeJsonProvider> exporter, String material, Item materialItem) {
+    private void generateToolRecipes(Consumer<RecipeJsonProvider> exporter,
+                                     String material,
+                                     TagKey<Item> materialTag) {
+        // 剑
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.TOOLS.get(material + "_sword"))
+                .pattern(" M ")
+                .pattern(" M ")
+                .pattern(" S ")
+                .input('M', materialTag)
+                .input('S', Items.STICK)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_sword"));
+
+        // 镐
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.TOOLS.get(material + "_pickaxe"))
+                .pattern("MMM")
+                .pattern(" S ")
+                .pattern(" S ")
+                .input('M', materialTag)
+                .input('S', Items.STICK)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_pickaxe"));
+
+        // 斧
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.TOOLS.get(material + "_axe"))
+                .pattern("MM ")
+                .pattern("MS ")
+                .pattern(" S ")
+                .input('M', materialTag)
+                .input('S', Items.STICK)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_axe"));
+
+        // 锹
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.TOOLS.get(material + "_shovel"))
+                .pattern(" M ")
+                .pattern(" S ")
+                .pattern(" S ")
+                .input('M', materialTag)
+                .input('S', Items.STICK)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_shovel"));
+
+        // 锄
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.TOOLS.get(material + "_hoe"))
+                .pattern("MM ")
+                .pattern(" S ")
+                .pattern(" S ")
+                .input('M', materialTag)
+                .input('S', Items.STICK)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_hoe"));
+    }
+
+    // 重载方法 - 支持物品
+    private void generateToolRecipes(Consumer<RecipeJsonProvider> exporter,
+                                     String material,
+                                     ItemConvertible materialItem) {
+        // 剑
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.TOOLS.get(material + "_sword"))
                 .pattern(" M ")
                 .pattern(" M ")
@@ -100,8 +162,9 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input('M', materialItem)
                 .input('S', Items.STICK)
                 .criterion(hasItem(materialItem), conditionsFromItem(materialItem))
-                .offerTo(exporter);
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_sword"));
 
+        // 镐
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.TOOLS.get(material + "_pickaxe"))
                 .pattern("MMM")
                 .pattern(" S ")
@@ -109,8 +172,9 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input('M', materialItem)
                 .input('S', Items.STICK)
                 .criterion(hasItem(materialItem), conditionsFromItem(materialItem))
-                .offerTo(exporter);
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_pickaxe"));
 
+        // 斧
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.TOOLS.get(material + "_axe"))
                 .pattern("MM ")
                 .pattern("MS ")
@@ -118,8 +182,9 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input('M', materialItem)
                 .input('S', Items.STICK)
                 .criterion(hasItem(materialItem), conditionsFromItem(materialItem))
-                .offerTo(exporter);
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_axe"));
 
+        // 锹
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.TOOLS.get(material + "_shovel"))
                 .pattern(" M ")
                 .pattern(" S ")
@@ -127,8 +192,9 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input('M', materialItem)
                 .input('S', Items.STICK)
                 .criterion(hasItem(materialItem), conditionsFromItem(materialItem))
-                .offerTo(exporter);
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_shovel"));
 
+        // 锄
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.TOOLS.get(material + "_hoe"))
                 .pattern("MM ")
                 .pattern(" S ")
@@ -136,6 +202,6 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input('M', materialItem)
                 .input('S', Items.STICK)
                 .criterion(hasItem(materialItem), conditionsFromItem(materialItem))
-                .offerTo(exporter);
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_hoe"));
     }
 }

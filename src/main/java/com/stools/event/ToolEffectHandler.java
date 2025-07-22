@@ -16,6 +16,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.world.World;
 import com.stools.item.materials.ModToolMaterials;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class ToolEffectHandler {
@@ -175,6 +177,21 @@ public class ToolEffectHandler {
                 world.playSound(null, target.getBlockPos(),
                         SoundEvents.BLOCK_GLASS_BREAK,
                         SoundCategory.PLAYERS, 1.0f, 1.0f);
+                break;
+            case POTION:
+                // 攻击时有20%概率传递药水效果
+                if (random.nextFloat() < 0.2f) {
+                    List<StatusEffectInstance> activeEffects = new ArrayList<>(player.getActiveStatusEffects().values());
+                    if (!activeEffects.isEmpty()) {
+                        StatusEffectInstance instance = activeEffects.get(random.nextInt(activeEffects.size()));
+
+                        target.addStatusEffect(new StatusEffectInstance(
+                                instance.getEffectType(),
+                                instance.getDuration() / 2,
+                                instance.getAmplifier()
+                        ));
+                    }
+                }
                 break;
         }
     }

@@ -60,6 +60,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "netherrack" -> "下界岩";
             case "glass" -> "玻璃";
             case "slime" -> "史莱姆";
+            case "potion" -> "药水";
             default -> null;
         };
     }
