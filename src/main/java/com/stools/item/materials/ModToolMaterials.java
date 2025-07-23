@@ -35,7 +35,8 @@ public enum ModToolMaterials implements ToolMaterial {
         public float getAttackDamage() {
             return 3.0f + (new Random().nextFloat() * 2.0f);
         }
-    };
+    },
+    STRING(1, 250, 6.0f, 1.0f, 30, () -> Ingredient.ofItems(Items.STRING), false);
 
     private final int miningLevel;
     private final int itemDurability;

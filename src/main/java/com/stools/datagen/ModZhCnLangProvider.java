@@ -61,6 +61,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "glass" -> "玻璃";
             case "slime" -> "史莱姆";
             case "potion" -> "药水";
+            case "string" -> "线";
             default -> null;
         };
     }

@@ -25,6 +25,7 @@ public class ModEvents {
         GlassToolSpecialSkillEvent.register();
         SlimeToolUseEvent.register();
         PotionToolUseEvent.register();
+        StringToolUseEvent.register();
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             if (server.getWorlds().iterator().hasNext()) {
                 BoneToolUseEvent.updateBoneShields(server.getOverworld());

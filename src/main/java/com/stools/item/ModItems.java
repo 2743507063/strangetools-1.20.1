@@ -83,6 +83,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.GLASS, "glass");
         registerToolSet(ModToolMaterials.SLIME, "slime");
         registerToolSet(ModToolMaterials.POTION, "potion");
+        registerToolSet(ModToolMaterials.STRING, "string");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");
