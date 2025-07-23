@@ -38,7 +38,7 @@ public enum ModToolMaterials implements ToolMaterial {
         }
     },
     STRING(1, 250, 6.0f, 1.0f, 30, () -> Ingredient.ofItems(Items.STRING), false),
-    ENDER_ALLOY(4, 2000, 9.0f, 4.5f, 35, () -> Ingredient.ofItems(ModItems.ENDER_ALLOY_INGOT), true);
+    ENDER_ALLOY(4, 2000, 9.0f, 4.5f, 35, () -> Ingredient.ofItems(ModItems.ENDER_ALLOY_INGOT), false);
 
     private final int miningLevel;
     private final int itemDurability;

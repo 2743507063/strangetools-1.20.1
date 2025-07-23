@@ -1,6 +1,7 @@
 package com.stools.datagen;
 
 import com.stools.Strangetools;
+import com.stools.block.ModBlocks;
 import com.stools.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -16,6 +17,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
     public void generateTranslations(TranslationBuilder translationBuilder) {
         translationBuilder.add(ModItems.MACE,"Mace");
         translationBuilder.add(ModItems.ENDER_ALLOY_INGOT,"Ender Alloy Ingot");
+        translationBuilder.add(ModBlocks.ENDER_ORE,"Ender Ore");
         translationBuilder.add("itemGroup.strangetools.tools_group", "Strange Tools");
         translationBuilder.add("itemGroup.strangetools.armor_group", "Strange Armor");
         generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);

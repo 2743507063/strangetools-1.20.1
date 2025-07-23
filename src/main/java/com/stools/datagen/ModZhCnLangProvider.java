@@ -1,6 +1,7 @@
 package com.stools.datagen;
 
 import com.stools.Strangetools;
+import com.stools.block.ModBlocks;
 import com.stools.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -18,6 +19,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.MACE,"重锤");
         translationBuilder.add(ModItems.TEST_ITEM,"神秘东西");
         translationBuilder.add(ModItems.ENDER_ALLOY_INGOT,"末影合金锭");
+        translationBuilder.add(ModBlocks.ENDER_ORE,"末影矿石");
         translationBuilder.add("itemGroup.strangetools.tools_group", "奇奇怪怪的工具");
         translationBuilder.add("itemGroup.strangetools.armor_group", "奇奇怪怪的盔甲");
         generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);

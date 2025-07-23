@@ -5,15 +5,16 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import com.stools.datagen.*;
 
 public class StrangetoolsDataGenerator implements DataGeneratorEntrypoint {
-	@Override
-	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
-		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-		pack.addProvider(ModBlockTagsProvider::new);
-		pack.addProvider(ModItemTagsProvider::new);
-		pack.addProvider(ModEnUsLangProvider::new);
-		pack.addProvider(ModModelsProvider::new);
-		pack.addProvider(ModRecipesProvider::new);
-		pack.addProvider(ModZhCnLangProvider::new);
-		pack.addProvider(ModJaJpLangProvider::new);
-		}
-	}
+    @Override
+    public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
+        FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
+        pack.addProvider(ModBlockTagsProvider::new);
+        pack.addProvider(ModItemTagsProvider::new);
+        pack.addProvider(ModEnUsLangProvider::new);
+        pack.addProvider(ModModelsProvider::new);
+        pack.addProvider(ModRecipesProvider::new);
+        pack.addProvider(ModZhCnLangProvider::new);
+        pack.addProvider(ModJaJpLangProvider::new);
+        pack.addProvider(ModBlockLootTableProvider::new);
+    }
+}

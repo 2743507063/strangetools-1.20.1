@@ -24,6 +24,7 @@ public class ModItems {
             new MaceItem(ModMaceMaterials.IRON,new Item.Settings().maxCount(1))
     );
     public static final Item ENDER_ALLOY_INGOT = registerItem("ender_alloy_ingot", new Item(new Item.Settings()));
+    public static final Item ENDER_ALLOY_SCRAP = registerItem("ender_alloy_scrap", new Item(new Item.Settings()));
 
     public static final Map<String, Item> TOOLS = new HashMap<>();
     public static final List<String> TOOL_IDS = new ArrayList<>();

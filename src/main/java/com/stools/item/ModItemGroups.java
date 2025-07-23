@@ -2,6 +2,7 @@ package com.stools.item;
 
 import com.stools.Strangetools;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -92,5 +93,11 @@ public class ModItemGroups {
                         })
                         .build()
         );
+    }
+    public static void modifyVanillaGroups() {
+        // 获取原版原材料组（INGREDIENTS）
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+            entries.addAfter(Items.NETHERITE_INGOT, ModItems.ENDER_ALLOY_INGOT);
+        });
     }
 }
