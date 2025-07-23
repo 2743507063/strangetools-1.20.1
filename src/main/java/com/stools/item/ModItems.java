@@ -23,6 +23,7 @@ public class ModItems {
     public static final Item MACE = registerItem("mace",
             new MaceItem(ModMaceMaterials.IRON,new Item.Settings().maxCount(1))
     );
+    public static final Item ENDER_ALLOY_INGOT = registerItem("ender_alloy_ingot", new Item(new Item.Settings()));
 
     public static final Map<String, Item> TOOLS = new HashMap<>();
     public static final List<String> TOOL_IDS = new ArrayList<>();
@@ -84,6 +85,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.SLIME, "slime");
         registerToolSet(ModToolMaterials.POTION, "potion");
         registerToolSet(ModToolMaterials.STRING, "string");
+        registerToolSet(ModToolMaterials.ENDER_ALLOY, "ender_alloy");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");

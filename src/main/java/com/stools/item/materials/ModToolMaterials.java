@@ -1,5 +1,6 @@
 package com.stools.item.materials;
 
+import com.stools.item.ModItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
@@ -36,7 +37,8 @@ public enum ModToolMaterials implements ToolMaterial {
             return 3.0f + (new Random().nextFloat() * 2.0f);
         }
     },
-    STRING(1, 250, 6.0f, 1.0f, 30, () -> Ingredient.ofItems(Items.STRING), false);
+    STRING(1, 250, 6.0f, 1.0f, 30, () -> Ingredient.ofItems(Items.STRING), false),
+    ENDER_ALLOY(4, 2000, 9.0f, 4.5f, 35, () -> Ingredient.ofItems(ModItems.ENDER_ALLOY_INGOT), true);
 
     private final int miningLevel;
     private final int itemDurability;

@@ -2,6 +2,7 @@ package com.stools;
 
 import com.stools.config.ModConfigManager;
 import com.stools.enchantment.ModEnchantments;
+import com.stools.entity.ModEntities;
 import com.stools.event.ModEvents;
 import com.stools.item.ModItemGroups;
 import com.stools.item.ModItems;
@@ -27,6 +28,7 @@ public class Strangetools implements ModInitializer {
 
 		ModItems.registerItems();
 		ModItemGroups.registerGroups();
+		ModEntities.registerEntities();
 		ModEvents.register();
 		ModSoundEvents.registerSounds();
 		ModEnchantments.registerEnchantments();

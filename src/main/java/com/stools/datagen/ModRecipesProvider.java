@@ -11,7 +11,6 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
@@ -48,9 +47,21 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "glass", Items.GLASS);
         generateToolRecipes(exporter, "slime", Items.SLIME_BALL);
         generateToolRecipes(exporter, "string", Items.STRING);
+        generateToolRecipes(exporter, "ender_alloy", ModItems.ENDER_ALLOY_INGOT);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ENDER_ALLOY_INGOT,1)
+                .pattern("OEO")
+                .pattern("ONO")
+                .pattern("OEO")
+                .input('O', Items.OBSIDIAN)
+                .input('E', Items.ENDER_PEARL)
+                .input('N', Items.NETHERITE_INGOT)
+                .criterion(hasItem(Items.OBSIDIAN), conditionsFromItem(Items.OBSIDIAN))
+                .criterion(hasItem(Items.ENDER_PEARL), conditionsFromItem(Items.ENDER_PEARL))
+                .criterion(hasItem(Items.NETHERITE_INGOT), conditionsFromItem(Items.NETHERITE_INGOT))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "ender_alloy_ingot_recipe"));
     }
 
     private void generateArmorRecipes(Consumer<RecipeJsonProvider> exporter, String material, Item materialItem) {

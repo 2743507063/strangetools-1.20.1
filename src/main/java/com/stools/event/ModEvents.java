@@ -3,6 +3,7 @@ package com.stools.event;
 import com.stools.Strangetools;
 import com.stools.event.glass.*;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.server.world.ServerWorld;
 
 public class ModEvents {
     public static void register() {
@@ -26,6 +27,10 @@ public class ModEvents {
         SlimeToolUseEvent.register();
         PotionToolUseEvent.register();
         StringToolUseEvent.register();
+        EnderToolUseEvent.register();
+        ServerTickEvents.START_WORLD_TICK.register(world -> {
+            EnderToolUseEvent.tick((ServerWorld) world);
+        });
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             if (server.getWorlds().iterator().hasNext()) {
                 BoneToolUseEvent.updateBoneShields(server.getOverworld());

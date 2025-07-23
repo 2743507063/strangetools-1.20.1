@@ -1,17 +1,13 @@
 package com.stools;
 
-import com.stools.render.GlassToolRenderer;
+import com.stools.entity.ModEntities;
 import com.stools.item.ModItems;
+import com.stools.render.entity.EnderPhantomRenderer;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
-import net.minecraft.client.item.ClampedModelPredicateProvider;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.Nullable;
 
 public class StrangetoolsClient implements ClientModInitializer {
 	private static final String GLASS = "FUCK GLASS TOOLS";
@@ -35,5 +31,6 @@ public class StrangetoolsClient implements ClientModInitializer {
 				);
 			}
 		});
+		EntityRendererRegistry.register(ModEntities.ENDER_PHANTOM, EnderPhantomRenderer::new);
 	}
 }
