@@ -72,14 +72,14 @@ public class ModRecipesProvider extends FabricRecipeProvider {
 
         for (String toolType : toolTypes) {
             // 获取对应的原版下界合金工具
-            Item netheriteTool = getNetheriteTool(toolType);
+            Item netheriteTool = getDiamondTool(toolType);
             // 获取对应的末影合金工具
             Item enderAlloyTool = ModItems.TOOLS.get("ender_alloy_" + toolType);
 
             // 创建锻造台配方
             SmithingTransformRecipeJsonBuilder.create(
                             Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // 使用原版下界合金升级模板
-                            Ingredient.ofItems(netheriteTool), // 基础工具：下界合金工具
+                            Ingredient.ofItems(netheriteTool), // 基础工具
                             Ingredient.ofItems(ModItems.ENDER_ALLOY_INGOT, Items.ENDER_EYE), // 升级材料：末影合金锭 + 末影之眼
                             RecipeCategory.TOOLS, // 配方类别
                             enderAlloyTool // 升级后的工具
@@ -244,19 +244,19 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(Strangetools.MOD_ID, material + "_hoe"));
     }
 
-    // 辅助方法：获取对应的下界合金工具
-    private Item getNetheriteTool(String toolType) {
+    // 辅助方法：获取对应的工具
+    private Item getDiamondTool(String toolType) {
         switch (toolType) {
             case "sword":
-                return Items.NETHERITE_SWORD;
+                return Items.DIAMOND_SWORD;
             case "pickaxe":
-                return Items.NETHERITE_PICKAXE;
+                return Items.DIAMOND_PICKAXE;
             case "axe":
-                return Items.NETHERITE_AXE;
+                return Items.DIAMOND_AXE;
             case "shovel":
-                return Items.NETHERITE_SHOVEL;
+                return Items.DIAMOND_SHOVEL;
             case "hoe":
-                return Items.NETHERITE_HOE;
+                return Items.DIAMOND_HOE;
             default:
                 throw new IllegalArgumentException("未知工具类型: " + toolType);
         }

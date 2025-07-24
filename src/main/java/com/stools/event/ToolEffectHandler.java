@@ -25,6 +25,11 @@ public class ToolEffectHandler {
 
     public static void register() {
         AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
+            // 先检查总开关是否开启
+            if (!ModConfigManager.CONFIG.toolEffects.enableToolSkills) {
+                return ActionResult.PASS;
+            }
+            // 再检查原有效果开关
             if (!ModConfigManager.CONFIG.toolEffects.enableToolEffects) {
                 return ActionResult.PASS;
             }

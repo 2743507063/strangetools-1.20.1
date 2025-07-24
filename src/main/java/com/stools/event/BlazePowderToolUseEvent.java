@@ -1,5 +1,6 @@
 package com.stools.event;
 
+import com.stools.config.ModConfigManager;
 import com.stools.item.materials.ModToolMaterials;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.entity.LivingEntity;
@@ -17,6 +18,9 @@ public class BlazePowderToolUseEvent {
     public static void register() {
         UseItemCallback.EVENT.register((player, world, hand) -> {
             ItemStack stack = player.getStackInHand(hand);
+            if (!ModConfigManager.CONFIG.toolEffects.enableToolSkills) {
+                return TypedActionResult.pass(stack);
+            }
             if (player.isSneaking() && stack.getItem() instanceof ToolItem toolItem) {
                 if (toolItem.getMaterial() == ModToolMaterials.BLAZE_POWDER) {
                     if (!world.isClient()) {

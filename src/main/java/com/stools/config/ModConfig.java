@@ -41,6 +41,9 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.Gui.Tooltip(count = 2)
         public boolean enableToolEffects = true;
 
+        @ConfigEntry.Gui.Tooltip(count = 2)
+        public boolean enableToolSkills = true;
+
         @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
         @ConfigEntry.Gui.Tooltip
         public float emeraldDropChance = 1.0f; // 1%
@@ -123,5 +126,13 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
         @ConfigEntry.Gui.Tooltip
         public float cutDoubleDropChance = 10.0f; // 玻璃切割双倍掉落概率(%)
+    }
+    public static class GlassTool {
+        // 启用双倍掉落功能
+        public boolean enableDoubleDrop = true;
+        // 触发概率（百分比）
+        public float doubleDropChance = 10.0f;
+        // 每次触发消耗的耐久
+        public int doubleDropDurabilityCost = 2;
     }
 }

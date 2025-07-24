@@ -1,5 +1,6 @@
 package com.stools.event.glass;
 
+import com.stools.config.ModConfigManager;
 import com.stools.item.materials.ModToolMaterials;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.block.Blocks;
@@ -12,6 +13,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;

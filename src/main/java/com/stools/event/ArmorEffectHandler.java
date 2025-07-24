@@ -12,6 +12,11 @@ import com.stools.item.materials.ModArmorMaterials;
 public class ArmorEffectHandler {
     public static void register() {
         ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, amount) -> {
+            if (!ModConfigManager.CONFIG.toolEffects.enableToolSkills) {
+                return true;
+            }
+
+            // 检查盔甲效果自身开关
             if (!ModConfigManager.CONFIG.armorEffects.enableArmorEffects) {
                 return true;
             }

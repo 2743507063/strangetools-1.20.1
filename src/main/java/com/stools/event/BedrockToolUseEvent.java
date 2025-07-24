@@ -1,5 +1,6 @@
 package com.stools.event;
 
+import com.stools.config.ModConfigManager;
 import com.stools.item.materials.ModToolMaterials;
 import com.stools.sound.ModSoundEvents;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
@@ -29,7 +30,12 @@ public class BedrockToolUseEvent {
 
     public static void register() {
         UseItemCallback.EVENT.register((player, world, hand) -> {
+            // 先获取物品栈，再进行开关判断
             ItemStack stack = player.getStackInHand(hand);
+            if (!ModConfigManager.CONFIG.toolEffects.enableToolSkills) {
+                return TypedActionResult.pass(stack);
+            }
+
             if (player.isSneaking() && stack.getItem() instanceof ToolItem toolItem) {
                 if (toolItem.getMaterial() == ModToolMaterials.BEDROCK) {
                     if (stack.getDamage() + DURABILITY_COST >= stack.getMaxDamage()) {

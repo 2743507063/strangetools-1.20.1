@@ -31,6 +31,7 @@ public class Strangetools implements ModInitializer {
 		ModItems.registerItems();
 		ModBlocks.registerModBlocks();
 		ModItemGroups.registerGroups();
+		ModItemGroups.modifyVanillaGroups();
 		ModEntities.registerEntities();
 		ModEvents.register();
 		ModSoundEvents.registerSounds();
