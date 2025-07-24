@@ -19,10 +19,12 @@ import net.minecraft.util.Identifier;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class ModRecipesProvider extends FabricRecipeProvider {
     public static final TagKey<Item> POTIONS_TAG = TagKey.of(RegistryKeys.ITEM, new Identifier(Strangetools.MOD_ID, "potions"));
     public static final List<ItemConvertible> ENDER_ORE = List.of(ModBlocks.ENDER_ORE);
+
     public ModRecipesProvider(FabricDataOutput output) {
         super(output);
     }
@@ -30,6 +32,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         offerSmelting(exporter, ENDER_ORE, RecipeCategory.MISC, ModItems.ENDER_ALLOY_SCRAP, 0.7f, 200, "ender_scrap");
+        offerBlasting(exporter, ENDER_ORE, RecipeCategory.MISC, ModItems.ENDER_ALLOY_SCRAP, 0.7f, 200, "ender_scrap");
         generateToolRecipes(exporter, "potion", POTIONS_TAG);
         generateToolRecipes(exporter, "copper", Items.COPPER_INGOT);
         generateToolRecipes(exporter, "emerald", Items.EMERALD);
@@ -67,28 +70,19 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.ENDER_PEARL), conditionsFromItem(Items.ENDER_PEARL))
                 .criterion(hasItem(ModItems.ENDER_ALLOY_SCRAP), conditionsFromItem(ModItems.ENDER_ALLOY_SCRAP))
                 .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "ender_alloy_ingot_recipe"));
-        // 为每种工具类型生成锻造台升级配方
-        String[] toolTypes = {"sword", "pickaxe", "axe", "shovel", "hoe"};
 
-        for (String toolType : toolTypes) {
-            // 获取对应的原版下界合金工具
-            Item netheriteTool = getDiamondTool(toolType);
-            // 获取对应的末影合金工具
-            Item enderAlloyTool = ModItems.TOOLS.get("ender_alloy_" + toolType);
-
-            // 创建锻造台配方
-            SmithingTransformRecipeJsonBuilder.create(
-                            Ingredient.ofItems(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), // 使用原版下界合金升级模板
-                            Ingredient.ofItems(netheriteTool), // 基础工具
-                            Ingredient.ofItems(ModItems.ENDER_ALLOY_INGOT, Items.ENDER_EYE), // 升级材料：末影合金锭 + 末影之眼
-                            RecipeCategory.TOOLS, // 配方类别
-                            enderAlloyTool // 升级后的工具
-                    )
-                    .criterion(hasItem(netheriteTool), conditionsFromItem(netheriteTool))
-                    .criterion(hasItem(ModItems.ENDER_ALLOY_INGOT), conditionsFromItem(ModItems.ENDER_ALLOY_INGOT))
-                    .offerTo(exporter, new Identifier(Strangetools.MOD_ID,
-                            "ender_alloy_" + toolType + "_upgrade"));
-        }
+        generateToolUpgradeRecipes(exporter,
+                "ender_alloy",
+                this::getDiamondTool,
+                toolType -> ModItems.TOOLS.get("ender_alloy_" + toolType),
+                ModItems.ENDER_ALLOY_INGOT,
+                Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
+        generateToolUpgradeRecipes(exporter,
+                "nether_star",
+                this::getDiamondTool,
+                toolType -> ModItems.TOOLS.get("nether_star_" + toolType),
+                Items.NETHER_STAR,
+                Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
     }
 
     private void generateArmorRecipes(Consumer<RecipeJsonProvider> exporter, String material, Item materialItem) {
@@ -246,19 +240,61 @@ public class ModRecipesProvider extends FabricRecipeProvider {
 
     // 辅助方法：获取对应的工具
     private Item getDiamondTool(String toolType) {
-        switch (toolType) {
-            case "sword":
-                return Items.DIAMOND_SWORD;
-            case "pickaxe":
-                return Items.DIAMOND_PICKAXE;
-            case "axe":
-                return Items.DIAMOND_AXE;
-            case "shovel":
-                return Items.DIAMOND_SHOVEL;
-            case "hoe":
-                return Items.DIAMOND_HOE;
-            default:
-                throw new IllegalArgumentException("未知工具类型: " + toolType);
+        return switch (toolType) {
+            case "sword" -> Items.DIAMOND_SWORD;
+            case "pickaxe" -> Items.DIAMOND_PICKAXE;
+            case "axe" -> Items.DIAMOND_AXE;
+            case "shovel" -> Items.DIAMOND_SHOVEL;
+            case "hoe" -> Items.DIAMOND_HOE;
+            default -> throw new IllegalArgumentException("未知工具类型: " + toolType);
+        };
+    }
+    private Item getNetheriteTool(String toolType) {
+        return switch (toolType) {
+            case "sword" -> Items.NETHERITE_SWORD;
+            case "pickaxe" -> Items.NETHERITE_PICKAXE;
+            case "axe" -> Items.NETHERITE_AXE;
+            case "shovel" -> Items.NETHERITE_SHOVEL;
+            case "hoe" -> Items.NETHERITE_HOE;
+            default -> throw new IllegalArgumentException("未知工具类型: " + toolType);
+        };
+    }
+    /**
+     * 生成工具升级配方
+     *
+     * @param materialName 材料名称（用于配方ID）
+     * @param baseToolGetter 基础工具获取函数
+     * @param resultToolGetter 结果工具获取函数
+     * @param upgradeMaterial 升级材料
+     * @param template 升级模板
+     */
+    private void generateToolUpgradeRecipes(Consumer<RecipeJsonProvider> exporter,
+                                            String materialName,
+                                            Function<String, Item> baseToolGetter,
+                                            Function<String, Item> resultToolGetter,
+                                            Item upgradeMaterial,
+                                            Item template) {
+        String[] toolTypes = {"sword", "pickaxe", "axe", "shovel", "hoe"};
+
+        for (String toolType : toolTypes) {
+            Item baseTool = baseToolGetter.apply(toolType);
+            Item resultTool = resultToolGetter.apply(toolType);
+
+            if (baseTool == null || resultTool == null) {
+                continue; // 跳过无效的工具类型
+            }
+
+            SmithingTransformRecipeJsonBuilder.create(
+                            Ingredient.ofItems(template),
+                            Ingredient.ofItems(baseTool),
+                            Ingredient.ofItems(upgradeMaterial),
+                            RecipeCategory.TOOLS,
+                            resultTool
+                    )
+                    .criterion(hasItem(baseTool), conditionsFromItem(baseTool))
+                    .criterion(hasItem(upgradeMaterial), conditionsFromItem(upgradeMaterial))
+                    .offerTo(exporter, new Identifier(Strangetools.MOD_ID,
+                            materialName + "_" + toolType + "_upgrade"));
         }
     }
 }

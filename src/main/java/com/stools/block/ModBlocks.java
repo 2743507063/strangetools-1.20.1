@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 public class ModBlocks {
         public static final Block ENDER_ORE = register("ender_ore", new Block(
                 AbstractBlock.Settings.create()
-                        .strength(25.0F, 1000.0F)
+                        .strength(25.0F, 500.0F)
                         .sounds(BlockSoundGroup.STONE)
                         .requiresTool()
         ));

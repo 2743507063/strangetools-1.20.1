@@ -10,15 +10,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolItem;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import com.stools.item.materials.ModToolMaterials;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class ToolEffectHandler {
     private static final Random random = new Random();
@@ -195,6 +195,41 @@ public class ToolEffectHandler {
                                 instance.getDuration() / 2,
                                 instance.getAmplifier()
                         ));
+                    }
+                }
+                break;
+            case ENDER_ALLOY:
+                if (random.nextFloat() < 0.25f) { // 25%触发概率
+                    // 计算目标身后的位置
+                    Vec3d lookVec = target.getRotationVec(0.0F).normalize();
+                    Vec3d behindPos = target.getPos().add(lookVec.multiply(-1.5));
+
+                    // 保存玩家当前位置（用于粒子效果）
+                    Vec3d originalPos = player.getPos();
+
+                    // 传送玩家到目标身后
+                    player.teleport(behindPos.x, behindPos.y, behindPos.z);
+
+                    // 造成额外伤害
+                    float extraDamage = 4.0f;
+                    target.damage(target.getDamageSources().playerAttack(player), extraDamage);
+
+                    // 粒子效果和音效
+                    if (world instanceof ServerWorld serverWorld) {
+                        // 原位置粒子
+                        serverWorld.spawnParticles(ParticleTypes.PORTAL,
+                                originalPos.x, originalPos.y + 1, originalPos.z,
+                                20, 0.5, 0.5, 0.5, 0.1);
+
+                        // 新位置粒子
+                        serverWorld.spawnParticles(ParticleTypes.REVERSE_PORTAL,
+                                behindPos.x, behindPos.y + 1, behindPos.z,
+                                20, 0.5, 0.5, 0.5, 0.1);
+
+                        // 音效
+                        serverWorld.playSound(null, player.getBlockPos(),
+                                SoundEvents.ENTITY_ENDERMAN_TELEPORT,
+                                SoundCategory.PLAYERS, 1.0f, 1.0f);
                     }
                 }
                 break;
