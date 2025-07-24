@@ -6,6 +6,10 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.mob.EndermanEntity;
+import net.minecraft.entity.mob.EndermiteEntity;
+import net.minecraft.entity.mob.ShulkerEntity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolItem;
@@ -233,6 +237,34 @@ public class ToolEffectHandler {
                     }
                 }
                 break;
+            case END_STONE:
+                // 检查是否为末地生物
+                if (isEndMob(target)) {
+                    float endStoneDamageBonus = ModConfigManager.CONFIG.toolEffects.endStoneDamageBonus / 100f;
+                    float baseDamage = material.getAttackDamage();
+                    float bonusDamage = baseDamage * endStoneDamageBonus;
+
+                    // 造成额外伤害
+                    target.damage(target.getDamageSources().magic(), bonusDamage);
+
+                    // 粒子效果和音效
+                    if (world instanceof ServerWorld serverWorld) {
+                        serverWorld.spawnParticles(ParticleTypes.REVERSE_PORTAL,
+                                target.getX(), target.getY() + target.getHeight() / 2, target.getZ(),
+                                10, 0.3, 0.3, 0.3, 0.05);
+                    }
+
+                    world.playSound(null, target.getBlockPos(),
+                            SoundEvents.BLOCK_END_PORTAL_FRAME_FILL,
+                            SoundCategory.PLAYERS, 0.7f, 1.2f);
+                }
+                break;
         }
+    }
+    private static boolean isEndMob(LivingEntity entity) {
+        return entity instanceof EndermanEntity ||
+                entity instanceof EndermiteEntity ||
+                entity instanceof ShulkerEntity ||
+                entity instanceof EnderDragonEntity;
     }
 }

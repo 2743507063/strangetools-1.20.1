@@ -18,6 +18,8 @@ public class ClothModConfig implements ConfigData {
     @ConfigEntry.Category("tool_effects")
     @ConfigEntry.Gui.TransitiveObject
     public BaseModConfig.ToolEffects toolEffects = new BaseModConfig.ToolEffects();
+    @ConfigEntry.Gui.Tooltip(count = 2)
+    public float endStoneDamageBonus = 25f; // 对末地生物的额外伤害百分比
 
     @ConfigEntry.Category("armor_effects")
     @ConfigEntry.Gui.TransitiveObject

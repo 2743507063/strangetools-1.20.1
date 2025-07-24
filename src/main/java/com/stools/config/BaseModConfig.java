@@ -22,6 +22,7 @@ public class BaseModConfig {
         public float copperIgniteChance = 30.0f;
         public float quartzExtraDamage = 2.0f;
         public float rottenFleshHungerChance = 40.0f;
+        public float endStoneDamageBonus = 25f; // 对末地生物的额外伤害百分比
     }
 
     public static class ArmorEffects {

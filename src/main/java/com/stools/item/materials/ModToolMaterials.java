@@ -27,7 +27,7 @@ public enum ModToolMaterials implements ToolMaterial {
     BEDROCK(7, 5000, 12.0f, 12.0f, 50, () -> Ingredient.ofItems(Items.BEDROCK), false),
     BONE(2, 250, 5.5f, 2.5f, 15, () -> Ingredient.ofItems(Items.BONE), false),
     NETHERRACK(2, 350, 5.5f, 2.0f, 10, () -> Ingredient.ofItems(Items.NETHERRACK), false),
-    NETHER_STAR(5, 2200, 10.0f, 6.0f, 30, () -> Ingredient.ofItems(Items.NETHER_STAR), true),
+    NETHER_STAR(5, 2200, 10.0f, 5.0f, 30, () -> Ingredient.ofItems(Items.NETHER_STAR), true),
     GLASS(2, 100, 7.0f, 1.0f, 25, () -> Ingredient.ofItems(Items.GLASS), false),
     SLIME(1, 120, 7.0f, 1.0f, 25, () -> Ingredient.ofItems(Items.SLIME_BALL), false),
     POTION(2, 650, 6.0f, 3.0f, 30, () -> Ingredient.ofItems(Items.GLASS_BOTTLE), true) {
@@ -38,7 +38,15 @@ public enum ModToolMaterials implements ToolMaterial {
         }
     },
     STRING(1, 250, 6.0f, 1.0f, 30, () -> Ingredient.ofItems(Items.STRING), false),
-    ENDER_ALLOY(4, 2000, 9.0f, 4.5f, 35, () -> Ingredient.ofItems(ModItems.ENDER_ALLOY_INGOT), false);
+    ENDER_ALLOY(4, 2000, 9.0f, 4.5f, 35, () -> Ingredient.ofItems(ModItems.ENDER_ALLOY_INGOT), false),
+    END_STONE(2, 400, 6.0f, 2.0f, 15, () -> Ingredient.ofItems(Items.END_STONE), false) {
+        // 特殊属性：在末地维度有额外效果
+        @Override
+        public float getMiningSpeedMultiplier() {
+            // 在末地挖掘速度增加
+            return super.getMiningSpeedMultiplier();
+        }
+    };
 
     private final int miningLevel;
     private final int itemDurability;

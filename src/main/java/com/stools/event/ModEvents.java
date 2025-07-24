@@ -27,9 +27,9 @@ public class ModEvents {
         SlimeToolUseEvent.register();
         PotionToolUseEvent.register();
         StringToolUseEvent.register();
-        EnderToolUseEvent.register();
+        EnderAlloyToolUseEvent.register();
         ServerTickEvents.START_WORLD_TICK.register(world -> {
-            EnderToolUseEvent.tick((ServerWorld) world);
+            EnderAlloyToolUseEvent.tick((ServerWorld) world);
         });
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             if (server.getWorlds().iterator().hasNext()) {

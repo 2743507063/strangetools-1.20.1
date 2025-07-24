@@ -87,6 +87,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.POTION, "potion");
         registerToolSet(ModToolMaterials.STRING, "string");
         registerToolSet(ModToolMaterials.ENDER_ALLOY, "ender_alloy");
+        registerToolSet(ModToolMaterials.END_STONE, "end_stone");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");

@@ -68,6 +68,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "potion" -> "药水";
             case "string" -> "线";
             case "ender_alloy" -> "末影合金";
+            case "end_stone" -> "末地石";
             default -> null;
         };
     }

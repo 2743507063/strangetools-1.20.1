@@ -56,6 +56,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "slime", Items.SLIME_BALL);
         generateToolRecipes(exporter, "string", Items.STRING);
         generateToolRecipes(exporter, "ender_alloy", ModItems.ENDER_ALLOY_INGOT);
+        generateToolRecipes(exporter, "end_stone", Items.END_STONE);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
 
@@ -79,7 +80,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
         generateToolUpgradeRecipes(exporter,
                 "nether_star",
-                this::getDiamondTool,
+                this::getNetheriteTool,
                 toolType -> ModItems.TOOLS.get("nether_star_" + toolType),
                 Items.NETHER_STAR,
                 Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
