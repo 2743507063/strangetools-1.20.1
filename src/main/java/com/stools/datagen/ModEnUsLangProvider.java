@@ -18,6 +18,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.MACE,"Mace");
         translationBuilder.add(ModItems.ENDER_ALLOY_INGOT,"Ender Alloy Ingot");
         translationBuilder.add(ModBlocks.ENDER_ORE,"Ender Ore");
+        translationBuilder.add(ModItems.ENDER_ALLOY_SCRAP,"Ender Alloy Scrap");
         translationBuilder.add("itemGroup.strangetools.tools_group", "Strange Tools");
         translationBuilder.add("itemGroup.strangetools.armor_group", "Strange Armor");
         generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);

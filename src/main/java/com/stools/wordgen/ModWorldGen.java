@@ -60,7 +60,7 @@ public class ModWorldGen {
         PlacedFeature placedFeature = new PlacedFeature(
                 RegistryEntry.of(configuredFeature),
                 List.of(
-                        CountPlacementModifier.of(15),
+                        CountPlacementModifier.of(5),
                         SquarePlacementModifier.of(),
                         HeightRangePlacementModifier.uniform(
                                 YOffset.fixed(5),

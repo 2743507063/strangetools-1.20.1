@@ -19,6 +19,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.MACE,"重锤");
         translationBuilder.add(ModItems.TEST_ITEM,"神秘东西");
         translationBuilder.add(ModItems.ENDER_ALLOY_INGOT,"末影合金锭");
+        translationBuilder.add(ModItems.ENDER_ALLOY_SCRAP,"末影合金碎片");
         translationBuilder.add(ModBlocks.ENDER_ORE,"末影矿石");
         translationBuilder.add("itemGroup.strangetools.tools_group", "奇奇怪怪的工具");
         translationBuilder.add("itemGroup.strangetools.armor_group", "奇奇怪怪的盔甲");

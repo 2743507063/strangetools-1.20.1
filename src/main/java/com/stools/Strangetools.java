@@ -1,6 +1,7 @@
 package com.stools;
 
 import com.stools.block.ModBlocks;
+import com.stools.config.BaseModConfig;
 import com.stools.config.ModConfigManager;
 import com.stools.enchantment.ModEnchantments;
 import com.stools.entity.ModEntities;

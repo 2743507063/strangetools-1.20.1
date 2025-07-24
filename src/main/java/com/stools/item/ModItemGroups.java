@@ -97,7 +97,8 @@ public class ModItemGroups {
     public static void modifyVanillaGroups() {
         // 获取原版原材料组（INGREDIENTS）
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
-            entries.addAfter(Items.NETHERITE_INGOT, ModItems.ENDER_ALLOY_INGOT);
+            entries.addAfter(Items.NETHERITE_INGOT, ModItems.ENDER_ALLOY_SCRAP);
+            entries.addAfter(ModItems.ENDER_ALLOY_SCRAP, ModItems.ENDER_ALLOY_INGOT);
         });
     }
 }
