@@ -5,13 +5,12 @@ import com.stools.item.custom.MaceItem;
 import com.stools.item.materials.ModArmorMaterials;
 import com.stools.item.materials.ModMaceMaterials;
 import com.stools.item.materials.ModToolMaterials;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolMaterials;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +24,10 @@ public class ModItems {
     );
     public static final Item ENDER_ALLOY_INGOT = registerItem("ender_alloy_ingot", new Item(new Item.Settings()));
     public static final Item ENDER_ALLOY_SCRAP = registerItem("ender_alloy_scrap", new Item(new Item.Settings()));
+    public static final Item ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE = registerItem(
+            "ender_alloy_upgrade_smithing_template",
+            createEnderAlloyUpgradeTemplate()
+    );
 
     public static final Map<String, Item> TOOLS = new HashMap<>();
     public static final List<String> TOOL_IDS = new ArrayList<>();
@@ -88,6 +91,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.STRING, "string");
         registerToolSet(ModToolMaterials.ENDER_ALLOY, "ender_alloy");
         registerToolSet(ModToolMaterials.END_STONE, "end_stone");
+        registerToolSet(ModToolMaterials.CHORUS_FRUIT, "chorus_fruit");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");
@@ -115,5 +119,45 @@ public class ModItems {
     }
     public static void registerItems() {
         registerToolItems();
+    }
+
+    private static SmithingTemplateItem createEnderAlloyUpgradeTemplate() {
+        // 自定义文本（这些需要添加到语言文件中）
+        Text appliesTo = Text.translatable("item.strangetools.smithing_template.ender_alloy_upgrade.applies_to")
+                .formatted(Formatting.BLUE);
+        Text ingredients = Text.translatable("item.strangetools.smithing_template.ender_alloy_upgrade.ingredients")
+                .formatted(Formatting.BLUE);
+        Text title = Text.translatable("upgrade.strangetools.ender_alloy_upgrade")
+                .formatted(Formatting.GRAY);
+        Text baseSlotDesc = Text.translatable("item.strangetools.smithing_template.ender_alloy_upgrade.base_slot_description");
+        Text additionsSlotDesc = Text.translatable("item.strangetools.smithing_template.ender_alloy_upgrade.additions_slot_description");
+
+        // 基础槽位的空图标（显示在锻造界面）
+        List<Identifier> emptyBaseSlots = List.of(
+                new Identifier("item/empty_armor_slot_helmet"),
+                new Identifier("item/empty_slot_sword"),
+                new Identifier("item/empty_armor_slot_chestplate"),
+                new Identifier("item/empty_slot_pickaxe"),
+                new Identifier("item/empty_armor_slot_leggings"),
+                new Identifier("item/empty_slot_axe"),
+                new Identifier("item/empty_armor_slot_boots"),
+                new Identifier("item/empty_slot_hoe"),
+                new Identifier("item/empty_slot_shovel")
+        );
+
+        // 附加槽位的空图标
+        List<Identifier> emptyAdditionsSlots = List.of(
+                new Identifier("item/empty_slot_ingot")
+        );
+
+        return new SmithingTemplateItem(
+                appliesTo,
+                ingredients,
+                title,
+                baseSlotDesc,
+                additionsSlotDesc,
+                emptyBaseSlots,
+                emptyAdditionsSlots
+        );
     }
 }

@@ -19,8 +19,15 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.ENDER_ALLOY_INGOT,"Ender Alloy Ingot");
         translationBuilder.add(ModBlocks.ENDER_ORE,"Ender Ore");
         translationBuilder.add(ModItems.ENDER_ALLOY_SCRAP,"Ender Alloy Scrap");
+        translationBuilder.add(ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE,"Ender Alloy Update Smithing Template");
         translationBuilder.add("itemGroup.strangetools.tools_group", "Strange Tools");
         translationBuilder.add("itemGroup.strangetools.armor_group", "Strange Armor");
+        translationBuilder.add("upgrade.strangetools.ender_alloy_upgrade", "Ender Alloy Upgrade");
+        translationBuilder.add("item.strangetools.smithing_template.ender_alloy_upgrade.applies_to", "Diamond Equipment");
+        translationBuilder.add("item.strangetools.smithing_template.ender_alloy_upgrade.ingredients", "Ender Alloy Ingot");
+        translationBuilder.add("item.strangetools.smithing_template.ender_alloy_upgrade.base_slot_description", "Add diamond armor/weapon to be upgraded");
+        translationBuilder.add("item.strangetools.smithing_template.ender_alloy_upgrade.additions_slot_description", "Add ender alloy ingot");
+
         generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);
         generateItemTranslations(translationBuilder, ModItems.ARMOR_IDS);
     }

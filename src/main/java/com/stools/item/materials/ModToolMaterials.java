@@ -46,6 +46,12 @@ public enum ModToolMaterials implements ToolMaterial {
             // 在末地挖掘速度增加
             return super.getMiningSpeedMultiplier();
         }
+    },
+    CHORUS_FRUIT(2, 500, 6.0f, 2.5f, 20, () -> Ingredient.ofItems(Items.CHORUS_FRUIT), false) {
+        @Override
+        public float getAttackDamage() {
+            return 2.5f; // 基础攻击伤害
+        }
     };
 
     private final int miningLevel;

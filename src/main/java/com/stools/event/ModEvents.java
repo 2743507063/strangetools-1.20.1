@@ -28,6 +28,7 @@ public class ModEvents {
         PotionToolUseEvent.register();
         StringToolUseEvent.register();
         EnderAlloyToolUseEvent.register();
+        ChorusFruitToolUseEvent.register();
         ServerTickEvents.START_WORLD_TICK.register(world -> {
             EnderAlloyToolUseEvent.tick((ServerWorld) world);
         });

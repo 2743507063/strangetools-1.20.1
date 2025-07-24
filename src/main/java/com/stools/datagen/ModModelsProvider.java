@@ -25,6 +25,7 @@ public class ModModelsProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.TEST_ITEM,Models.HANDHELD);
         itemModelGenerator.register(ModItems.ENDER_ALLOY_INGOT,Models.GENERATED);
         itemModelGenerator.register(ModItems.ENDER_ALLOY_SCRAP,Models.GENERATED);
+        itemModelGenerator.register(ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE,Models.GENERATED);
         itemModelGenerator.register(ModItems.MACE,Models.HANDHELD);
         for (String toolId : ModItems.TOOL_IDS) {
             if (toolId.startsWith("glass_")) continue; // 跳过玻璃工具

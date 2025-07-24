@@ -1,5 +1,6 @@
 {
   "block.strangetools.ender_ore": "末影矿石",
+  "item.minecraft.smithing_template": "末影合金升级锻造模板",
   "item.strangetools.bedrock_axe": "基岩斧",
   "item.strangetools.bedrock_hoe": "基岩锄",
   "item.strangetools.bedrock_pickaxe": "基岩镐",
@@ -20,6 +21,11 @@
   "item.strangetools.cake_pickaxe": "蛋糕镐",
   "item.strangetools.cake_shovel": "蛋糕锹",
   "item.strangetools.cake_sword": "蛋糕剑",
+  "item.strangetools.chorus_fruit_axe": "紫颂果斧",
+  "item.strangetools.chorus_fruit_hoe": "紫颂果锄",
+  "item.strangetools.chorus_fruit_pickaxe": "紫颂果镐",
+  "item.strangetools.chorus_fruit_shovel": "紫颂果锹",
+  "item.strangetools.chorus_fruit_sword": "紫颂果剑",
   "item.strangetools.coal_axe": "煤炭斧",
   "item.strangetools.coal_hoe": "煤炭锄",
   "item.strangetools.coal_pickaxe": "煤炭镐",
@@ -122,6 +128,10 @@
   "item.strangetools.slime_pickaxe": "史莱姆镐",
   "item.strangetools.slime_shovel": "史莱姆锹",
   "item.strangetools.slime_sword": "史莱姆剑",
+  "item.strangetools.smithing_template.ender_alloy_upgrade.additions_slot_description": "放入末影合金锭",
+  "item.strangetools.smithing_template.ender_alloy_upgrade.applies_to": "钻石装备",
+  "item.strangetools.smithing_template.ender_alloy_upgrade.base_slot_description": "放入待升级的钻石盔甲/武器",
+  "item.strangetools.smithing_template.ender_alloy_upgrade.ingredients": "末影合金锭",
   "item.strangetools.string_axe": "线斧",
   "item.strangetools.string_hoe": "线锄",
   "item.strangetools.string_pickaxe": "线镐",
@@ -129,5 +139,6 @@
   "item.strangetools.string_sword": "线剑",
   "item.strangetools.test_item": "神秘东西",
   "itemGroup.strangetools.armor_group": "奇奇怪怪的盔甲",
-  "itemGroup.strangetools.tools_group": "奇奇怪怪的工具"
+  "itemGroup.strangetools.tools_group": "奇奇怪怪的工具",
+  "upgrade.strangetools.ender_alloy_upgrade": "末影合金升级"
 }

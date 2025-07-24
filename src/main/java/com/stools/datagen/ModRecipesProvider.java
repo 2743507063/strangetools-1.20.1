@@ -57,6 +57,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "string", Items.STRING);
         generateToolRecipes(exporter, "ender_alloy", ModItems.ENDER_ALLOY_INGOT);
         generateToolRecipes(exporter, "end_stone", Items.END_STONE);
+        generateToolRecipes(exporter, "chorus_fruit", Items.CHORUS_FRUIT);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
 
@@ -72,12 +73,24 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.ENDER_ALLOY_SCRAP), conditionsFromItem(ModItems.ENDER_ALLOY_SCRAP))
                 .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "ender_alloy_ingot_recipe"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE, 2)
+                .pattern("DED")
+                .pattern("DSD")
+                .pattern("DDD")
+                .input('E', ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE)
+                .input('D', Items.DIAMOND)
+                .input('S', Items.END_STONE)
+                .criterion(hasItem(ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE), conditionsFromItem(ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE))
+                .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
+                .criterion(hasItem(Items.END_STONE), conditionsFromItem(Items.END_STONE))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "ender_alloy_upgrade_recipe"));
+
         generateToolUpgradeRecipes(exporter,
                 "ender_alloy",
                 this::getDiamondTool,
                 toolType -> ModItems.TOOLS.get("ender_alloy_" + toolType),
                 ModItems.ENDER_ALLOY_INGOT,
-                Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
+                ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE);
         generateToolUpgradeRecipes(exporter,
                 "nether_star",
                 this::getNetheriteTool,

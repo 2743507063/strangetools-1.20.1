@@ -2,6 +2,7 @@ package com.stools.event;
 
 import com.stools.config.ModConfigManager;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -18,6 +19,8 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import com.stools.item.materials.ModToolMaterials;
@@ -211,8 +214,32 @@ public class ToolEffectHandler {
                     // 保存玩家当前位置（用于粒子效果）
                     Vec3d originalPos = player.getPos();
 
+                    // 确保传送位置安全（有支撑方块）
+                    BlockPos targetPos = BlockPos.ofFloored(behindPos);
+                    boolean foundSolidGround = false;
+
+                    // 向下搜索5格寻找支撑面
+                    for (int i = 0; i < 5; i++) {
+                        if (world.getBlockState(targetPos.down()).isSolidBlock(world, targetPos.down())) {
+                            behindPos = new Vec3d(behindPos.x, targetPos.getY(), behindPos.z);
+                            foundSolidGround = true;
+                            break;
+                        }
+                        targetPos = targetPos.down();
+                    }
+
+                    // 如果没有找到安全位置，则传送到目标位置上方1格
+                    if (!foundSolidGround) {
+                        behindPos = new Vec3d(behindPos.x, target.getY() + 1, behindPos.z);
+                    }
+
                     // 传送玩家到目标身后
                     player.teleport(behindPos.x, behindPos.y, behindPos.z);
+
+                    // 给予缓降效果防止摔落伤害
+                    player.addStatusEffect(new StatusEffectInstance(
+                            StatusEffects.SLOW_FALLING, 100, 0, false, true
+                    ));
 
                     // 造成额外伤害
                     float extraDamage = 4.0f;
@@ -259,12 +286,26 @@ public class ToolEffectHandler {
                             SoundCategory.PLAYERS, 0.7f, 1.2f);
                 }
                 break;
+            case CHORUS_FRUIT:
+                if (player.getHungerManager().getFoodLevel() < 20) {
+                    player.getHungerManager().add(2, 0.1f);
+                }
+                break;
         }
     }
     private static boolean isEndMob(LivingEntity entity) {
-        return entity instanceof EndermanEntity ||
+        // 原生末地生物检测
+        if (entity instanceof EndermanEntity ||
                 entity instanceof EndermiteEntity ||
                 entity instanceof ShulkerEntity ||
-                entity instanceof EnderDragonEntity;
+                entity instanceof EnderDragonEntity) {
+            return true;
+        }
+
+        // 检测模组实体
+        Identifier entityId = EntityType.getId(entity.getType());
+        return entityId != null &&
+                entityId.getNamespace().equals("dummmmmmy") &&
+                entityId.getPath().equals("target_dummy");
     }
 }
