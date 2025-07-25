@@ -19,6 +19,11 @@ public class ModBlocks {
                         .sounds(BlockSoundGroup.STONE)
                         .requiresTool()
         ));
+    public static final Block VOID_ORE = register("void_ore", new Block(
+            AbstractBlock.Settings.copy(Blocks.DIAMOND_ORE)
+                    .luminance(state -> 5) // 微弱发光
+                    .emissiveLighting((state, world, pos) -> true)
+    ));
     public static Block register(String id, Block block) {
         registerBlockItems(id, block);
         return Registry.register(Registries.BLOCK, new Identifier(Strangetools.MOD_ID, id), block);

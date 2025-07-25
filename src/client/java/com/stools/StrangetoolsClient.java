@@ -10,7 +10,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 
 public class StrangetoolsClient implements ClientModInitializer {
-	private static final String GLASS = "FUCK GLASS TOOLS";
 	@Override
 	public void onInitializeClient() {
 		ModItems.TOOLS.forEach((id, item) -> {

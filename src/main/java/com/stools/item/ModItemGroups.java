@@ -99,6 +99,7 @@ public class ModItemGroups {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.addAfter(Items.NETHERITE_INGOT, ModItems.ENDER_ALLOY_SCRAP);
             entries.addAfter(ModItems.ENDER_ALLOY_SCRAP, ModItems.ENDER_ALLOY_INGOT);
+            entries.addAfter(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE);
         });
     }
 }

@@ -28,6 +28,8 @@ public class ModItems {
             "ender_alloy_upgrade_smithing_template",
             createEnderAlloyUpgradeTemplate()
     );
+    public static final Item VOID_INGOT = registerItem("void_ingot", new Item(new Item.Settings()));
+    public static final Item RAW_VOID = registerItem("raw_void", new Item(new Item.Settings()));
 
     public static final Map<String, Item> TOOLS = new HashMap<>();
     public static final List<String> TOOL_IDS = new ArrayList<>();

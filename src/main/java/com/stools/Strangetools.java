@@ -8,6 +8,7 @@ import com.stools.entity.ModEntities;
 import com.stools.event.ModEvents;
 import com.stools.item.ModItemGroups;
 import com.stools.item.ModItems;
+import com.stools.loot.ModLootTableModifier;
 import com.stools.sound.ModSoundEvents;
 import com.stools.wordgen.ModWorldGen;
 import net.fabricmc.api.ModInitializer;
@@ -33,6 +34,7 @@ public class Strangetools implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModItemGroups.registerGroups();
 		ModItemGroups.modifyVanillaGroups();
+		ModLootTableModifier.registerModifications();
 		ModEntities.registerEntities();
 		ModEvents.register();
 		ModSoundEvents.registerSounds();
