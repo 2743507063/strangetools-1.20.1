@@ -1,6 +1,7 @@
 package com.stools.item;
 
 import com.stools.Strangetools;
+import com.stools.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
@@ -99,7 +100,13 @@ public class ModItemGroups {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.addAfter(Items.NETHERITE_INGOT, ModItems.ENDER_ALLOY_SCRAP);
             entries.addAfter(ModItems.ENDER_ALLOY_SCRAP, ModItems.ENDER_ALLOY_INGOT);
+            entries.addAfter(Items.RAW_GOLD, ModItems.RAW_VOID);
+            entries.addAfter(ModItems.ENDER_ALLOY_INGOT, ModItems.VOID_INGOT);
             entries.addAfter(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
+            entries.addAfter(Items.ANCIENT_DEBRIS, ModBlocks.VOID_ORE);
+            entries.addAfter(ModBlocks.VOID_ORE, ModBlocks.ENDER_ORE);
         });
     }
 }

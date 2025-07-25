@@ -24,6 +24,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.VOID_INGOT,"虚空锭");
         translationBuilder.add(ModBlocks.ENDER_ORE,"末影矿石");
         translationBuilder.add(ModBlocks.VOID_ORE,"虚空矿石");
+        translationBuilder.add(ModItems.VOID_PEARL,"虚空珍珠");
         translationBuilder.add("itemGroup.strangetools.tools_group", "奇奇怪怪的工具");
         translationBuilder.add("itemGroup.strangetools.armor_group", "奇奇怪怪的盔甲");
         translationBuilder.add(ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE, "末影合金升级锻造模板");

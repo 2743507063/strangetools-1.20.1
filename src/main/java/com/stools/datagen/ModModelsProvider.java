@@ -18,6 +18,7 @@ public class ModModelsProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ENDER_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VOID_ORE);
     }
 
     @Override
@@ -25,6 +26,9 @@ public class ModModelsProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.TEST_ITEM,Models.HANDHELD);
         itemModelGenerator.register(ModItems.ENDER_ALLOY_INGOT,Models.GENERATED);
         itemModelGenerator.register(ModItems.ENDER_ALLOY_SCRAP,Models.GENERATED);
+        itemModelGenerator.register(ModItems.VOID_INGOT,Models.GENERATED);
+        itemModelGenerator.register(ModItems.RAW_VOID,Models.GENERATED);
+        itemModelGenerator.register(ModItems.VOID_PEARL,Models.GENERATED);
         itemModelGenerator.register(ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE,Models.GENERATED);
         itemModelGenerator.register(ModItems.MACE,Models.HANDHELD);
         for (String toolId : ModItems.TOOL_IDS) {

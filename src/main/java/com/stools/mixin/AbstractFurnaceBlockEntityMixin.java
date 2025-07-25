@@ -15,6 +15,8 @@ import java.util.Map;
 public class AbstractFurnaceBlockEntityMixin {
     @Inject(method = "createFuelTimeMap", at = @At("TAIL"))
     private static void addFuelItems(CallbackInfoReturnable<Map<Item, Integer>> cir) {
+        cir.getReturnValue().put(ModItems.RAW_VOID, 3200);
+        cir.getReturnValue().put(ModItems.VOID_INGOT, 4200);
         Map<Item, Integer> fuelMap = cir.getReturnValue();
 
         addCoalToolsAsFuel(fuelMap);

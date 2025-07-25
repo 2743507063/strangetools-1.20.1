@@ -1,5 +1,6 @@
 {
   "block.strangetools.ender_ore": "末影矿石",
+  "block.strangetools.void_ore": "虚空矿石",
   "item.minecraft.smithing_template": "末影合金升级锻造模板",
   "item.strangetools.bedrock_axe": "基岩斧",
   "item.strangetools.bedrock_hoe": "基岩锄",
@@ -113,6 +114,7 @@
   "item.strangetools.quartz_pickaxe": "石英镐",
   "item.strangetools.quartz_shovel": "石英锹",
   "item.strangetools.quartz_sword": "石英剑",
+  "item.strangetools.raw_void": "虚空矿坯",
   "item.strangetools.redstone_axe": "红石斧",
   "item.strangetools.redstone_hoe": "红石锄",
   "item.strangetools.redstone_pickaxe": "红石镐",
@@ -138,6 +140,8 @@
   "item.strangetools.string_shovel": "线锹",
   "item.strangetools.string_sword": "线剑",
   "item.strangetools.test_item": "神秘东西",
+  "item.strangetools.void_ingot": "虚空锭",
+  "item.strangetools.void_pearl": "虚空珍珠",
   "itemGroup.strangetools.armor_group": "奇奇怪怪的盔甲",
   "itemGroup.strangetools.tools_group": "奇奇怪怪的工具",
   "upgrade.strangetools.ender_alloy_upgrade": "末影合金升级"

@@ -5,7 +5,9 @@ import com.stools.item.ModItems;
 import com.stools.render.entity.EnderPhantomRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
+import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 
@@ -31,5 +33,8 @@ public class StrangetoolsClient implements ClientModInitializer {
 			}
 		});
 		EntityRendererRegistry.register(ModEntities.ENDER_PHANTOM, EnderPhantomRenderer::new);
+		// 注册虚影珍珠渲染器（使用原版投掷物品渲染器）
+		EntityRendererRegistry.register(ModEntities.VOID_PEARL, context ->
+				new FlyingItemEntityRenderer<>(context, 1.0f, true));
 	}
 }

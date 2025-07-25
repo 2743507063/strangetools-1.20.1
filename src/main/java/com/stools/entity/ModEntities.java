@@ -17,7 +17,14 @@ public class ModEntities {
                 .dimensions(EntityDimensions.fixed(0.6f, 1.8f)) // 玩家尺寸
                 .build()
     );
-
+    public static final EntityType<VoidPearlEntity> VOID_PEARL = Registry.register(
+            Registries.ENTITY_TYPE,
+            new Identifier(Strangetools.MOD_ID, "void_pearl"),
+            FabricEntityTypeBuilder.<VoidPearlEntity>create(SpawnGroup.MISC, VoidPearlEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.25F, 0.25F)) // 小尺寸
+                    .trackRangeBlocks(4).trackedUpdateRate(10) // 跟踪范围
+                    .build()
+    );
     public static void registerEntities() {
         // 注册代码已经在上面的静态初始化中完成
     }

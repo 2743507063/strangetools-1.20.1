@@ -2,6 +2,7 @@ package com.stools.item;
 
 import com.stools.Strangetools;
 import com.stools.item.custom.MaceItem;
+import com.stools.item.custom.VoidPearlItem;
 import com.stools.item.materials.ModArmorMaterials;
 import com.stools.item.materials.ModMaceMaterials;
 import com.stools.item.materials.ModToolMaterials;
@@ -29,6 +30,9 @@ public class ModItems {
             createEnderAlloyUpgradeTemplate()
     );
     public static final Item VOID_INGOT = registerItem("void_ingot", new Item(new Item.Settings()));
+    public static final Item VOID_PEARL = registerItem("void_pearl",
+            new VoidPearlItem(new Item.Settings())
+    );
     public static final Item RAW_VOID = registerItem("raw_void", new Item(new Item.Settings()));
 
     public static final Map<String, Item> TOOLS = new HashMap<>();
