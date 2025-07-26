@@ -52,6 +52,12 @@ public enum ModToolMaterials implements ToolMaterial {
         public float getAttackDamage() {
             return 2.5f; // 基础攻击伤害
         }
+    },
+    VOID(4, 1800, 8.0f, 3.5f, 18, () -> Ingredient.ofItems(ModItems.VOID_INGOT), true) {
+        @Override
+        public float getAttackDamage() {
+            return 3.5f + (new Random().nextFloat() * 0.5f); // 小幅度随机伤害
+        }
     };
 
     private final int miningLevel;

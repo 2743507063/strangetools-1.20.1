@@ -34,7 +34,7 @@ public class StrangetoolsClient implements ClientModInitializer {
 		});
 		EntityRendererRegistry.register(ModEntities.ENDER_PHANTOM, EnderPhantomRenderer::new);
 		// 注册虚影珍珠渲染器（使用原版投掷物品渲染器）
-		EntityRendererRegistry.register(ModEntities.VOID_PEARL, context ->
-				new FlyingItemEntityRenderer<>(context, 1.0f, true));
+		EntityRendererRegistry.register(ModEntities.VOID_PEARL,
+				context -> new FlyingItemEntityRenderer<>(context, 1.0f, true));
 	}
 }

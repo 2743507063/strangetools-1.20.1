@@ -291,6 +291,17 @@ public class ToolEffectHandler {
                     player.getHungerManager().add(2, 0.1f);
                 }
                 break;
+            case VOID:
+                // 检查目标是否为末地生物
+                if (target instanceof EndermanEntity || target instanceof ShulkerEntity
+                        || target instanceof EndermiteEntity || target instanceof EnderDragonEntity) {
+                    // 读取配置中的额外伤害百分比（参考endStoneDamageBonus）
+                    float extraDamagePercent = ModConfigManager.CONFIG.toolEffects.endStoneDamageBonus / 100f;
+                    float baseDamage = 2.0f; // 基础伤害可调整，或从攻击事件中获取
+                    float extraDamage = baseDamage * extraDamagePercent;
+                    target.damage(target.getDamageSources().magic(), extraDamage);
+                }
+                break;
         }
     }
     private static boolean isEndMob(LivingEntity entity) {

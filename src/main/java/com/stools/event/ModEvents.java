@@ -3,7 +3,6 @@ package com.stools.event;
 import com.stools.Strangetools;
 import com.stools.event.glass.*;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.server.world.ServerWorld;
 
 public class ModEvents {
     public static void register() {
@@ -29,8 +28,11 @@ public class ModEvents {
         StringToolUseEvent.register();
         EnderAlloyToolUseEvent.register();
         ChorusFruitToolUseEvent.register();
+        VoidToolMiningEvent.register();
+        VoidToolUseEvent.register();
         ServerTickEvents.START_WORLD_TICK.register(world -> {
-            EnderAlloyToolUseEvent.tick((ServerWorld) world);
+            EnderAlloyToolUseEvent.tick(world);
+            VoidToolUseEvent.updateRifts(world);
         });
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             if (server.getWorlds().iterator().hasNext()) {

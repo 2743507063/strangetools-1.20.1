@@ -140,8 +140,13 @@
   "item.strangetools.string_shovel": "线锹",
   "item.strangetools.string_sword": "线剑",
   "item.strangetools.test_item": "神秘东西",
+  "item.strangetools.void_axe": "虚空斧",
+  "item.strangetools.void_hoe": "虚空锄",
   "item.strangetools.void_ingot": "虚空锭",
   "item.strangetools.void_pearl": "虚空珍珠",
+  "item.strangetools.void_pickaxe": "虚空镐",
+  "item.strangetools.void_shovel": "虚空锹",
+  "item.strangetools.void_sword": "虚空剑",
   "itemGroup.strangetools.armor_group": "奇奇怪怪的盔甲",
   "itemGroup.strangetools.tools_group": "奇奇怪怪的工具",
   "upgrade.strangetools.ender_alloy_upgrade": "末影合金升级"

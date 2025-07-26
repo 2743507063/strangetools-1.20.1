@@ -64,6 +64,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "ender_alloy", ModItems.ENDER_ALLOY_INGOT);
         generateToolRecipes(exporter, "end_stone", Items.END_STONE);
         generateToolRecipes(exporter, "chorus_fruit", Items.CHORUS_FRUIT);
+        generateToolRecipes(exporter, "void", ModItems.VOID_INGOT);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
 
@@ -78,6 +79,15 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.ENDER_PEARL), conditionsFromItem(Items.ENDER_PEARL))
                 .criterion(hasItem(ModItems.ENDER_ALLOY_SCRAP), conditionsFromItem(ModItems.ENDER_ALLOY_SCRAP))
                 .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "ender_alloy_ingot_recipe"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ENDER_ALLOY_INGOT, 1)
+                .pattern("EEE")
+                .pattern("EVE")
+                .pattern("EEE")
+                .input('E', Items.ENDER_PEARL)
+                .input('V', ModItems.VOID_INGOT)
+                .criterion(hasItem(Items.ENDER_PEARL), conditionsFromItem(Items.ENDER_PEARL))
+                .criterion(hasItem(ModItems.VOID_INGOT), conditionsFromItem(ModItems.VOID_INGOT))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "void_pearl_recipe"));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE, 2)
                 .pattern("DED")

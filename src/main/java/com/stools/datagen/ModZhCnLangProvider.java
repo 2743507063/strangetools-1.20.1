@@ -80,6 +80,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "ender_alloy" -> "末影合金";
             case "end_stone" -> "末地石";
             case "chorus_fruit" -> "紫颂果";
+            case "void" -> "虚空";
             default -> null;
         };
     }
