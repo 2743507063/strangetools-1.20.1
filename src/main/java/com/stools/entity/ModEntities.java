@@ -21,8 +21,10 @@ public class ModEntities {
             Registries.ENTITY_TYPE,
             new Identifier(Strangetools.MOD_ID, "void_pearl"),
             FabricEntityTypeBuilder.<VoidPearlEntity>create(SpawnGroup.MISC, VoidPearlEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.25F, 0.25F)) // 小尺寸
-                    .trackRangeBlocks(4).trackedUpdateRate(10) // 跟踪范围
+                    .dimensions(EntityDimensions.fixed(0.25F, 0.25F))
+                    .trackRangeBlocks(64) // 增加跟踪范围
+                    .trackedUpdateRate(5)  // 增加更新频率
+                    .forceTrackedVelocityUpdates(true) // 强制速度更新
                     .build()
     );
     public static void registerEntities() {
