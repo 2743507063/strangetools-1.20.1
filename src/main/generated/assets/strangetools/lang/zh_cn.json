@@ -1,7 +1,13 @@
 {
   "block.strangetools.ender_ore": "末影矿石",
   "block.strangetools.void_ore": "虚空矿石",
+  "enchantment.strangetools.density": "致密",
   "item.minecraft.smithing_template": "末影合金升级锻造模板",
+  "item.strangetools.apple_axe": "苹果斧",
+  "item.strangetools.apple_hoe": "苹果锄",
+  "item.strangetools.apple_pickaxe": "苹果镐",
+  "item.strangetools.apple_shovel": "苹果锹",
+  "item.strangetools.apple_sword": "苹果剑",
   "item.strangetools.bedrock_axe": "基岩斧",
   "item.strangetools.bedrock_hoe": "基岩锄",
   "item.strangetools.bedrock_pickaxe": "基岩镐",

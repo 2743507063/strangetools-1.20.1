@@ -85,6 +85,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.ROTTEN_FLESH, "rotten_flesh");
         registerToolSet(ModToolMaterials.GLOWSTONE, "glowstone");
         registerToolSet(ModToolMaterials.BLAZE_POWDER, "blaze_powder");
+        registerToolSet(ModToolMaterials.APPLE, "apple");
         registerToolSet(ModToolMaterials.GOLDEN_APPLE, "golden_apple");
         registerToolSet(ModToolMaterials.ENCHANTED_GOLDEN_APPLE, "enchanted_golden_apple");
         registerToolSet(ModToolMaterials.BEDROCK, "bedrock");

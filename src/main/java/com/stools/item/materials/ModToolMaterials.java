@@ -23,6 +23,7 @@ public enum ModToolMaterials implements ToolMaterial {
     GLOWSTONE(2, 600, 7.0f, 2.0f, 30, () -> Ingredient.ofItems(Items.GLOWSTONE_DUST),false),
     BLAZE_POWDER(3, 600, 7.5f, 1.5f, 15, () -> Ingredient.ofItems(Items.BLAZE_POWDER),false),
     GOLDEN_APPLE(2, 1000, 7.0F, 2.0F, 25, () -> Ingredient.ofItems(Items.GOLDEN_APPLE),false),
+    APPLE(1, 420, 5.0F, 1.0F, 10, () -> Ingredient.ofItems(Items.APPLE),false),
     ENCHANTED_GOLDEN_APPLE(3, 2000, 9.0F, 4.0F, 35, () -> Ingredient.ofItems(Items.ENCHANTED_GOLDEN_APPLE), true),
     BEDROCK(7, 5000, 12.0f, 12.0f, 50, () -> Ingredient.ofItems(Items.BEDROCK), false),
     BONE(2, 250, 5.5f, 2.5f, 15, () -> Ingredient.ofItems(Items.BONE), false),

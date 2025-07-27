@@ -52,6 +52,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "rotten_flesh", Items.ROTTEN_FLESH);
         generateToolRecipes(exporter, "glowstone", Items.GLOWSTONE_DUST);
         generateToolRecipes(exporter, "blaze_powder", Items.FIRE_CHARGE);
+        generateToolRecipes(exporter, "apple", Items.APPLE);
         generateToolRecipes(exporter, "golden_apple", Items.GOLDEN_APPLE);
         generateToolRecipes(exporter, "enchanted_golden_apple", Items.ENCHANTED_GOLDEN_APPLE);
         generateToolRecipes(exporter, "bedrock", Items.BEDROCK);

@@ -2,6 +2,7 @@ package com.stools.datagen;
 
 import com.stools.Strangetools;
 import com.stools.block.ModBlocks;
+import com.stools.enchantment.ModEnchantments;
 import com.stools.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -17,6 +18,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
         translationBuilder.add(ModItems.MACE,"重锤");
+        translationBuilder.add(ModEnchantments.DENSITY,"致密");
         translationBuilder.add(ModItems.TEST_ITEM,"神秘东西");
         translationBuilder.add(ModItems.ENDER_ALLOY_INGOT,"末影合金锭");
         translationBuilder.add(ModItems.ENDER_ALLOY_SCRAP,"末影合金碎片");
@@ -67,6 +69,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "rotten_flesh" -> "腐肉";
             case "glowstone" -> "萤石";
             case "blaze_powder" -> "烈焰粉";
+            case "apple" -> "苹果";
             case "golden_apple" -> "金苹果";
             case "enchanted_golden_apple" -> "附魔金苹果";
             case "bedrock" -> "基岩";

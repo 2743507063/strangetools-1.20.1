@@ -2,6 +2,7 @@ package com.stools.datagen;
 
 import com.stools.Strangetools;
 import com.stools.block.ModBlocks;
+import com.stools.enchantment.ModEnchantments;
 import com.stools.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -16,6 +17,8 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
         translationBuilder.add(ModItems.MACE,"Mace");
+        translationBuilder.add(ModItems.TEST_ITEM,"TestItem:)");
+        translationBuilder.add(ModEnchantments.DENSITY,"Density");
         translationBuilder.add(ModItems.ENDER_ALLOY_INGOT,"Ender Alloy Ingot");
         translationBuilder.add(ModItems.RAW_VOID, "Void Ore Crude");
         translationBuilder.add(ModItems.VOID_INGOT, "Void Ingot");
