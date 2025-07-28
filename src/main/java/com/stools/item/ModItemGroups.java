@@ -96,17 +96,21 @@ public class ModItemGroups {
         );
     }
     public static void modifyVanillaGroups() {
-        // 获取原版原材料组（INGREDIENTS）
+        // 获取原版原材料组
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.addAfter(Items.NETHERITE_INGOT, ModItems.ENDER_ALLOY_SCRAP);
             entries.addAfter(ModItems.ENDER_ALLOY_SCRAP, ModItems.ENDER_ALLOY_INGOT);
             entries.addAfter(Items.RAW_GOLD, ModItems.RAW_VOID);
             entries.addAfter(ModItems.ENDER_ALLOY_INGOT, ModItems.VOID_INGOT);
             entries.addAfter(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE);
+            entries.addAfter(Items.ENDER_EYE,ModItems.VOID_PEARL);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Items.ANCIENT_DEBRIS, ModBlocks.VOID_ORE);
             entries.addAfter(ModBlocks.VOID_ORE, ModBlocks.ENDER_ORE);
         });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
+            entries.addAfter(Items.ENDER_EYE,ModItems.VOID_PEARL);
+        });
+        }
     }
-}

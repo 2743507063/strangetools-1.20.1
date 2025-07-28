@@ -19,15 +19,18 @@ import java.util.List;
 import java.util.Map;
 
 public class ModItems {
-    public static final Item TEST_ITEM = registerItem("test_item",new SwordItem(ToolMaterials.WOOD,6,1,new Item.Settings().maxDamage(1)));
+    public static final Item TEST_ITEM = registerItem("test_item", new SwordItem(ToolMaterials.WOOD, 6, 1, new Item.Settings().maxDamage(1)));
     public static final Item MACE = registerItem("mace",
-            new MaceItem(ModMaceMaterials.IRON,new Item.Settings().maxCount(1))
+            new MaceItem(ModMaceMaterials.IRON, new Item.Settings().maxCount(1))
     );
     public static final Item ENDER_ALLOY_INGOT = registerItem("ender_alloy_ingot", new Item(new Item.Settings()));
     public static final Item ENDER_ALLOY_SCRAP = registerItem("ender_alloy_scrap", new Item(new Item.Settings()));
     public static final Item ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE = registerItem(
             "ender_alloy_upgrade_smithing_template",
             createEnderAlloyUpgradeTemplate()
+    );
+    public static final Item APPLE_UPGRADE_SMITHING_TEMPLATE = registerItem("apple_upgrade_smithing_template",
+            createAppleUpgradeTemplate()
     );
     public static final Item VOID_INGOT = registerItem("void_ingot", new Item(new Item.Settings()));
     public static final Item VOID_PEARL = registerItem("void_pearl",
@@ -49,6 +52,7 @@ public class ModItems {
         registerTool(prefix + "shovel", ToolFactory.createShovel(material, prefix + "shovel"));
         registerTool(prefix + "hoe", ToolFactory.createHoe(material, prefix + "hoe"));
     }
+
     private static void registerArmorSet(ModArmorMaterials material, String materialName) {
         String prefix = materialName + "_";
 
@@ -57,21 +61,25 @@ public class ModItems {
         registerArmor(prefix + "leggings", ArmorFactory.createLeggings(material, prefix + "leggings"));
         registerArmor(prefix + "boots", ArmorFactory.createBoots(material, prefix + "boots"));
     }
+
     private static void registerTool(String id, Item item) {
         Item registeredItem = registerItem(id, item);
 
         TOOLS.put(id, registeredItem);
         TOOL_IDS.add(id);
     }
+
     private static void registerArmor(String id, Item item) {
         Item registeredItem = registerItem(id, item);
         ARMORS.put(id, registeredItem);
         ARMOR_IDS.add(id);
     }
+
     private static void registerMaceSet(ModMaceMaterials material, String materialName) {
         String id = materialName + "_mace";
         registerTool(id, MaceFactory.createMace(material, id));
     }
+
     public static void registerToolItems() {
         registerToolSet(ModToolMaterials.COPPER, "copper");
         registerToolSet(ModToolMaterials.EMERALD, "emerald");
@@ -110,6 +118,7 @@ public class ModItems {
     public static Item registerItem(String id, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Strangetools.MOD_ID, id), item);
     }
+
     public static Item register(String id, Item item) {
         return register(new Identifier(Strangetools.MOD_ID, id), item);
     }
@@ -120,11 +129,12 @@ public class ModItems {
 
     public static Item register(RegistryKey<Item> key, Item item) {
         if (item instanceof BlockItem) {
-            ((BlockItem)item).appendBlocks(Item.BLOCK_ITEMS, item);
+            ((BlockItem) item).appendBlocks(Item.BLOCK_ITEMS, item);
         }
 
         return Registry.register(Registries.ITEM, key, item);
     }
+
     public static void registerItems() {
         registerToolItems();
     }
@@ -166,6 +176,56 @@ public class ModItems {
                 additionsSlotDesc,
                 emptyBaseSlots,
                 emptyAdditionsSlots
+        ) {
+            @Override
+            public String getTranslationKey() {
+                return "item.strangetools.ender_alloy_upgrade_smithing_template";
+            }
+        };
+    }
+
+    private static SmithingTemplateItem createAppleUpgradeTemplate() {
+        // 自定义文本
+        Text appliesTo = Text.translatable("item.strangetools.smithing_template.apple_upgrade.applies_to")
+                .formatted(Formatting.BLUE);
+        Text ingredients = Text.translatable("item.strangetools.smithing_template.apple_upgrade.ingredients")
+                .formatted(Formatting.BLUE);
+        Text title = Text.translatable("upgrade.strangetools.apple_upgrade")
+                .formatted(Formatting.GRAY);
+        Text baseSlotDesc = Text.translatable("item.strangetools.smithing_template.apple_upgrade.base_slot_description");
+        Text additionsSlotDesc = Text.translatable("item.strangetools.smithing_template.apple_upgrade.additions_slot_description");
+
+        // 基础槽位的空图标
+        List<Identifier> emptyBaseSlots = List.of(
+                new Identifier("item/empty_armor_slot_helmet"),
+                new Identifier("item/empty_slot_sword"),
+                new Identifier("item/empty_armor_slot_chestplate"),
+                new Identifier("item/empty_slot_pickaxe"),
+                new Identifier("item/empty_armor_slot_leggings"),
+                new Identifier("item/empty_slot_axe"),
+                new Identifier("item/empty_armor_slot_boots"),
+                new Identifier("item/empty_slot_hoe"),
+                new Identifier("item/empty_slot_shovel")
         );
+
+        // 附加槽位的空图标
+        List<Identifier> emptyAdditionsSlots = List.of(
+                new Identifier("item/empty_slot_ingot")
+        );
+
+        return new SmithingTemplateItem(
+                appliesTo,
+                ingredients,
+                title,
+                baseSlotDesc,
+                additionsSlotDesc,
+                emptyBaseSlots,
+                emptyAdditionsSlots
+        ) {
+            @Override
+            public String getTranslationKey() {
+                return "item.strangetools.apple_upgrade_smithing_template";
+            }
+        };
     }
 }

@@ -29,14 +29,22 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.VOID_PEARL,"虚空珍珠");
         translationBuilder.add("itemGroup.strangetools.tools_group", "奇奇怪怪的工具");
         translationBuilder.add("itemGroup.strangetools.armor_group", "奇奇怪怪的盔甲");
-        translationBuilder.add(ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE, "末影合金升级锻造模板");
+        translationBuilder.add("item.strangetools.ender_alloy_upgrade_smithing_template", "末影合金升级锻造模板");
         translationBuilder.add("upgrade.strangetools.ender_alloy_upgrade", "末影合金升级");
         translationBuilder.add("item.strangetools.smithing_template.ender_alloy_upgrade.applies_to", "钻石装备");
         translationBuilder.add("item.strangetools.smithing_template.ender_alloy_upgrade.ingredients", "末影合金锭");
         translationBuilder.add("item.strangetools.smithing_template.ender_alloy_upgrade.base_slot_description", "放入待升级的钻石盔甲/武器");
         translationBuilder.add("item.strangetools.smithing_template.ender_alloy_upgrade.additions_slot_description", "放入末影合金锭");
+        //金苹果
+        translationBuilder.add("item.strangetools.apple_upgrade_smithing_template", "附魔金苹果升级锻造模板");
+        translationBuilder.add("upgrade.strangetools.apple_upgrade", "附魔金苹果升级");
+        translationBuilder.add("item.strangetools.smithing_template.apple_upgrade.applies_to", "金苹果装备");
+        translationBuilder.add("item.strangetools.smithing_template.apple_upgrade.ingredients", "附魔金苹果");
+        translationBuilder.add("item.strangetools.smithing_template.apple_upgrade.base_slot_description", "放入待升级的金苹果盔甲/武器");
+        translationBuilder.add("item.strangetools.smithing_template.apple_upgrade.additions_slot_description", "放入附魔金苹果");
         generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);
         generateItemTranslations(translationBuilder, ModItems.ARMOR_IDS);
+
     }
     private void generateItemTranslations(TranslationBuilder translationBuilder, List<String> itemIds) {
         for (String itemId : itemIds) {

@@ -26,7 +26,7 @@ public class AppleToolUseEvent {
                     int currentDamage = stack.getDamage();
                     int maxDamage = stack.getMaxDamage();
                     int remainingDurability = maxDamage - currentDamage;
-                    int consumeAmount = Math.min(remainingDurability, 250);
+                    int consumeAmount = Math.min(remainingDurability, 100);
 
                     if (!world.isClient()) {
                         stack.damage(consumeAmount, player, e -> e.sendToolBreakStatus(hand));

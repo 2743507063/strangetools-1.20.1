@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 public class VoidToolUseEvent {
-    private static final int DURABILITY_COST = 80;
+    private static final int DURABILITY_COST = 120;
     private static final Map<BlockPos, Long> activeRifts = new HashMap<>();
     // 添加音效常量
     private static final float ACTIVATE_PITCH = 0.5f;

@@ -54,7 +54,6 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "blaze_powder", Items.FIRE_CHARGE);
         generateToolRecipes(exporter, "apple", Items.APPLE);
         generateToolRecipes(exporter, "golden_apple", Items.GOLDEN_APPLE);
-        generateToolRecipes(exporter, "enchanted_golden_apple", Items.ENCHANTED_GOLDEN_APPLE);
         generateToolRecipes(exporter, "bedrock", Items.BEDROCK);
         generateToolRecipes(exporter, "bone", Items.BONE);
         generateToolRecipes(exporter, "nether_star", Items.NETHER_STAR);
@@ -113,6 +112,12 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 this::getNetheriteTool,
                 toolType -> ModItems.TOOLS.get("nether_star_" + toolType),
                 Items.NETHER_STAR,
+                Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
+        generateToolUpgradeRecipes(exporter,
+                "enchanted_golden_apple",
+                toolType -> ModItems.TOOLS.get("golden_apple_" + toolType),
+                toolType -> ModItems.TOOLS.get("enchanted_golden_apple_" + toolType),
+                Items.ENCHANTED_GOLDEN_APPLE,
                 Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
     }
 
