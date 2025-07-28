@@ -23,6 +23,7 @@ import java.util.function.Function;
 
 public class ModRecipesProvider extends FabricRecipeProvider {
     public static final TagKey<Item> POTIONS_TAG = TagKey.of(RegistryKeys.ITEM, new Identifier(Strangetools.MOD_ID, "potions"));
+    public static final TagKey<Item> DIRT_TAG = TagKey.of(RegistryKeys.ITEM, new Identifier(Strangetools.MOD_ID, "dirt"));
     public static final List<ItemConvertible> ENDER_ORE = List.of(ModBlocks.ENDER_ORE);
     public static final List<ItemConvertible> VOID_ORE = List.of(ModBlocks.VOID_ORE);
     public static final List<ItemConvertible> VOID_INGOT = List.of(ModItems.RAW_VOID);
@@ -40,6 +41,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         offerSmelting(exporter, VOID_INGOT, RecipeCategory.MISC, ModItems.VOID_INGOT, 0.7f, 200, "VOID_INGOT_ingot");
         offerBlasting(exporter, VOID_INGOT, RecipeCategory.MISC, ModItems.VOID_INGOT, 0.7f, 200, "VOID_INGOT_ingot");
         generateToolRecipes(exporter, "potion", POTIONS_TAG);
+        generateToolRecipes(exporter, "dirt", DIRT_TAG);
         generateToolRecipes(exporter, "copper", Items.COPPER_INGOT);
         generateToolRecipes(exporter, "emerald", Items.EMERALD);
         generateToolRecipes(exporter, "lapis", Items.LAPIS_LAZULI);

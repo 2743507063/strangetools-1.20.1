@@ -14,6 +14,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagsProvider extends FabricTagProvider.ItemTagProvider {
     public static final TagKey<Item> POTIONS_TAG = TagKey.of(RegistryKeys.ITEM, new Identifier(Strangetools.MOD_ID, "potions"));
+    public static final TagKey<Item> DIRT_TAG = TagKey.of(RegistryKeys.ITEM, new Identifier(Strangetools.MOD_ID, "dirt"));
 
     public ModItemTagsProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
         super(output, completableFuture);
@@ -30,5 +31,11 @@ public class ModItemTagsProvider extends FabricTagProvider.ItemTagProvider {
                 .addOptional(new Identifier("croptopia:grape_juice"))
                 .addOptional(new Identifier("bewitchment:brew"))
                 .addOptional(new Identifier("bwplus:brew"));
+        getOrCreateTagBuilder(DIRT_TAG)
+                .add(Items.DIRT)
+                .add(Items.DIRT_PATH)
+                .add(Items.COARSE_DIRT)
+                .add(Items.ROOTED_DIRT)
+                .add(Items.GRASS_BLOCK);
     }
 }

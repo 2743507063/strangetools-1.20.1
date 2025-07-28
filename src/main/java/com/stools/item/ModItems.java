@@ -81,6 +81,7 @@ public class ModItems {
     }
 
     public static void registerToolItems() {
+        registerToolSet(ModToolMaterials.DIRT, "dirt");
         registerToolSet(ModToolMaterials.COPPER, "copper");
         registerToolSet(ModToolMaterials.EMERALD, "emerald");
         registerToolSet(ModToolMaterials.LAPIS, "lapis");
