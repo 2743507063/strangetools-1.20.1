@@ -26,7 +26,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.VOID_ORE, "Void Ore");
         translationBuilder.add(ModItems.ENDER_ALLOY_SCRAP,"Ender Alloy Scrap");
         translationBuilder.add(ModItems.VOID_PEARL, "Void Pearl");
-        translationBuilder.add("item.strangetools.ender_alloy_upgrade_smithing_template", "Ender Alloy Upgrade Smithing Template");
+        translationBuilder.add("item.strangetools.ender_alloy_upgrade_smithing_template", "Smithing Template");
         translationBuilder.add("itemGroup.strangetools.tools_group", "Strange Tools");
         translationBuilder.add("itemGroup.strangetools.armor_group", "Strange Armor");
         translationBuilder.add("upgrade.strangetools.ender_alloy_upgrade", "Ender Alloy Upgrade");
@@ -37,7 +37,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
 
         generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);
         generateItemTranslations(translationBuilder, ModItems.ARMOR_IDS);
-        translationBuilder.add("item.strangetools.apple_upgrade_smithing_template", "Enchanted Golden Apple Upgrade Smithing Template");
+        translationBuilder.add("item.strangetools.apple_upgrade_smithing_template", "Upgrade Smithing Template");
         translationBuilder.add("upgrade.strangetools.apple_upgrade", "Enchanted Golden Apple Upgrade");
         translationBuilder.add("item.strangetools.smithing_template.apple_upgrade.applies_to", "Golden Apple Equipment");
         translationBuilder.add("item.strangetools.smithing_template.apple_upgrade.ingredients", "Enchanted Golden Apple");

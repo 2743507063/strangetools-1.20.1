@@ -17,7 +17,7 @@ public enum ModToolMaterials implements ToolMaterial {
     QUARTZ(2, 550, 6.5f, 1.5f, 20, () -> Ingredient.ofItems(Items.QUARTZ),false),
     COAL(1, 250, 4.0f, 1.5f, 10, () -> Ingredient.ofItems(Items.COAL),false),
     CAKE(1, 250, 3.0f, 1.0f, 10, () -> Ingredient.ofItems(Items.CAKE),false),
-    OBSIDIAN(3, 1800, 7.0f, 4.0f, 5, () -> Ingredient.ofItems(Items.OBSIDIAN),false),
+    OBSIDIAN(3, 2000, 7.0f, 3.25f, 5, () -> Ingredient.ofItems(Items.OBSIDIAN),false),
     PRISMARINE(2, 340, 6.5f, 1.5f, 15, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD),false),
     ROTTEN_FLESH(1, 180, 3.5f, 0.8f, 8, () -> Ingredient.ofItems(Items.ROTTEN_FLESH),false),
     GLOWSTONE(2, 600, 7.0f, 2.0f, 30, () -> Ingredient.ofItems(Items.GLOWSTONE_DUST),false),

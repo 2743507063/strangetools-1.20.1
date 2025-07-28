@@ -100,6 +100,17 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
                 .criterion(hasItem(Items.END_STONE), conditionsFromItem(Items.END_STONE))
                 .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "ender_alloy_upgrade_recipe"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.APPLE_UPGRADE_SMITHING_TEMPLATE, 2)
+                .pattern("DED")
+                .pattern("DSD")
+                .pattern("DDD")
+                .input('E', ModItems.APPLE_UPGRADE_SMITHING_TEMPLATE)
+                .input('D', Items.APPLE)
+                .input('S', Items.GOLDEN_APPLE)
+                .criterion(hasItem(ModItems.APPLE_UPGRADE_SMITHING_TEMPLATE), conditionsFromItem(ModItems.APPLE_UPGRADE_SMITHING_TEMPLATE))
+                .criterion(hasItem(Items.APPLE), conditionsFromItem(Items.APPLE))
+                .criterion(hasItem(Items.GOLDEN_APPLE), conditionsFromItem(Items.GOLDEN_APPLE))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "golden_apple_upgrade_recipe"));
 
         generateToolUpgradeRecipes(exporter,
                 "ender_alloy",
@@ -118,7 +129,13 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 toolType -> ModItems.TOOLS.get("golden_apple_" + toolType),
                 toolType -> ModItems.TOOLS.get("enchanted_golden_apple_" + toolType),
                 Items.ENCHANTED_GOLDEN_APPLE,
-                Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
+                ModItems.APPLE_UPGRADE_SMITHING_TEMPLATE);
+        generateToolUpgradeRecipes(exporter,
+                "golden_apple",
+                toolType -> ModItems.TOOLS.get("apple_" + toolType),
+                toolType -> ModItems.TOOLS.get("golden_apple_" + toolType),
+                Items.GOLD_INGOT,
+                Items.GOLDEN_APPLE);
     }
 
     private void generateArmorRecipes(Consumer<RecipeJsonProvider> exporter, String material, Item materialItem) {
