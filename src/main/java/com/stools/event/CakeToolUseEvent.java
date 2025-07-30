@@ -1,6 +1,7 @@
 package com.stools.event;
 
 import com.stools.config.ModConfigManager;
+import com.stools.item.ModItems;
 import com.stools.item.materials.ModToolMaterials;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.item.ItemStack;
@@ -29,6 +30,18 @@ public class CakeToolUseEvent {
                         stack.damage(consumeAmount, player, e -> e.sendToolBreakStatus(hand));
 
                         player.getHungerManager().add(2, 0.4F);
+
+                        net.minecraft.util.math.random.Random random = world.getRandom();
+                        int chanceCount = consumeAmount / 10; // 每10点耐久触发一次判定
+
+                        for (int i = 0; i < chanceCount; i++) {
+                            if (random.nextFloat() < 0.05f) { // 5%概率
+                                ItemStack cakeSlice = new ItemStack(ModItems.SLICE_OF_CAKE);
+                                if (!player.getInventory().insertStack(cakeSlice)) {
+                                    player.dropItem(cakeSlice, false);
+                                }
+                            }
+                        }
 
                         world.playSound(null, player.getBlockPos(),
                                 SoundEvents.ENTITY_GENERIC_EAT,

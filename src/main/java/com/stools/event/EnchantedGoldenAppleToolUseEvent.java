@@ -37,7 +37,7 @@ public class EnchantedGoldenAppleToolUseEvent {
                         hungerManager.add(8, 12.8f);
 
                         player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 600 / 2, 4)); // 持续5秒，等级5
-                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 6000 / 2, 0));  // 持续30秒
+                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 3000 / 2, 0));  // 持续15秒
                         player.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 6000 / 2, 0));
                         player.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 1200 / 2, 3)); // 持续10秒，等级4
 

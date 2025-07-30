@@ -23,6 +23,7 @@ public class ModModelsProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        itemModelGenerator.register(ModItems.SLICE_OF_CAKE,Models.GENERATED);
         itemModelGenerator.register(ModItems.TEST_ITEM,Models.HANDHELD);
         itemModelGenerator.register(ModItems.ENDER_ALLOY_INGOT,Models.GENERATED);
         itemModelGenerator.register(ModItems.ENDER_ALLOY_SCRAP,Models.GENERATED);

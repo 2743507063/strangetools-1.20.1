@@ -38,6 +38,8 @@ public class ModItems {
     );
     public static final Item RAW_VOID = registerItem("raw_void", new Item(new Item.Settings()));
 
+    public static final Item SLICE_OF_CAKE = registerItem("slice_of_cake",new Item(new Item.Settings().food(ModFoodComponents.S_CAKE)));
+
     public static final Map<String, Item> TOOLS = new HashMap<>();
     public static final List<String> TOOL_IDS = new ArrayList<>();
     public static final Map<String, Item> ARMORS = new HashMap<>();
