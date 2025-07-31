@@ -41,13 +41,14 @@ public class ModItemGroups {
                             // 主世界工具
                             categoryMap.put("主世界", Arrays.asList(
                                     "dirt", "copper", "emerald", "lapis", "redstone", "coal",
-                                    "obsidian", "prismarine", "rotten_flesh", "blaze_powder",
+                                    "obsidian", "prismarine", "rotten_flesh",
                                     "bone", "glass", "slime", "string"
                             ));
 
                             // 下界工具
                             categoryMap.put("下界", Arrays.asList(
-                                    "netherrack", "quartz", "nether_star","glowstone"
+                                    "netherrack", "quartz", "nether_star","glowstone",
+                                    "blaze_powder"
                             ));
 
                             // 末地工具
@@ -56,7 +57,7 @@ public class ModItemGroups {
                             ));
 
                             // 食物＆农作物工具
-                            categoryMap.put("农业", Arrays.asList(
+                            categoryMap.put("食物&农业", Arrays.asList(
                                     "apple", "golden_apple", "enchanted_golden_apple", "melon",
                                     "chorus_fruit"
                             ));
