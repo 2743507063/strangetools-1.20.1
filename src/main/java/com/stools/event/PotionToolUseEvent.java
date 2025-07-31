@@ -21,7 +21,7 @@ import java.util.List;
 
 public class PotionToolUseEvent {
 
-    private static final int DURABILITY_COST = 25;
+    private static final int DURABILITY_COST = 130;
     private static final List<StatusEffect> ALL_EFFECTS = Arrays.asList(
             StatusEffects.SPEED,
             StatusEffects.SLOWNESS,

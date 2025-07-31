@@ -31,6 +31,7 @@ public class ModEvents {
         VoidToolMiningEvent.register();
         VoidToolUseEvent.register();
         AppleToolUseEvent.register();
+        MelonToolUseEvent.register();
         ServerTickEvents.START_WORLD_TICK.register(world -> {
             EnderAlloyToolUseEvent.tick(world);
             VoidToolUseEvent.updateRifts(world);

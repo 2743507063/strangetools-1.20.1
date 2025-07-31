@@ -28,7 +28,7 @@ public class EnchantedGoldenAppleToolUseEvent {
                     int currentDamage = stack.getDamage();
                     int maxDamage = stack.getMaxDamage();
                     int remainingDurability = maxDamage - currentDamage;
-                    int consumeAmount = Math.min(remainingDurability, 200);
+                    int consumeAmount = Math.min(remainingDurability, 400);
 
                     if (!world.isClient()) {
                         stack.damage(consumeAmount, player, e -> e.sendToolBreakStatus(hand));

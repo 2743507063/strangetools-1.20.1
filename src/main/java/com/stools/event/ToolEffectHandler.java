@@ -91,7 +91,8 @@ public class ToolEffectHandler {
                 break;
 
             case COAL:
-                target.setOnFireFor(3);
+                int fireTime = 1 + random.nextInt(4);
+                target.setOnFireFor(fireTime);
                 break;
 
             case CAKE:

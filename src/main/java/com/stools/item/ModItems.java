@@ -111,6 +111,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.END_STONE, "end_stone");
         registerToolSet(ModToolMaterials.CHORUS_FRUIT, "chorus_fruit");
         registerToolSet(ModToolMaterials.VOID, "void");
+        registerToolSet(ModToolMaterials.WATERMELON,"melon");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");

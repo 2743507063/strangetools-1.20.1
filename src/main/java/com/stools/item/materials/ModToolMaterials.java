@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.world.World;
 
 import java.util.Random;
 import java.util.function.Supplier;
@@ -40,14 +41,7 @@ public enum ModToolMaterials implements ToolMaterial {
     },
     STRING(1, 250, 6.0f, 1.0f, 30, () -> Ingredient.ofItems(Items.STRING), false),
     ENDER_ALLOY(4, 2000, 9.0f, 4.5f, 35, () -> Ingredient.ofItems(ModItems.ENDER_ALLOY_INGOT), false),
-    END_STONE(2, 400, 6.0f, 2.0f, 15, () -> Ingredient.ofItems(Items.END_STONE), false) {
-        // 特殊属性：在末地维度有额外效果
-        @Override
-        public float getMiningSpeedMultiplier() {
-            // 在末地挖掘速度增加
-            return super.getMiningSpeedMultiplier();
-        }
-    },
+    END_STONE(2, 400, 6.0f, 2.0f, 15, () -> Ingredient.ofItems(Items.END_STONE), false),
     CHORUS_FRUIT(2, 500, 6.0f, 2.5f, 20, () -> Ingredient.ofItems(Items.CHORUS_FRUIT), false) {
         @Override
         public float getAttackDamage() {
@@ -61,7 +55,8 @@ public enum ModToolMaterials implements ToolMaterial {
             return 3.5f + (new Random().nextFloat() * 0.5f); // 小幅度随机伤害
         }
     },
-    DIRT(0, 15, 1.0f, 0.0f, 0, () -> Ingredient.ofItems(Items.DIRT,Items.GRASS_BLOCK), false);
+    DIRT(0, 15, 1.0f, 0.0f, 0, () -> Ingredient.ofItems(Items.DIRT,Items.GRASS_BLOCK), false),
+    WATERMELON(1, 300, 4.5f, 2.0f, 0, () -> Ingredient.ofItems(Items.MELON), false);
 
 
     private final int miningLevel;

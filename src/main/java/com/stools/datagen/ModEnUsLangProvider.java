@@ -26,6 +26,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.VOID_ORE, "Void Ore");
         translationBuilder.add(ModItems.ENDER_ALLOY_SCRAP,"Ender Alloy Scrap");
         translationBuilder.add(ModItems.VOID_PEARL, "Void Pearl");
+        translationBuilder.add(ModItems.SLICE_OF_CAKE,"A slice  of cake");
         translationBuilder.add("item.strangetools.ender_alloy_upgrade_smithing_template", "Smithing Template");
         translationBuilder.add("itemGroup.strangetools.tools_group", "Strange Tools");
         translationBuilder.add("itemGroup.strangetools.armor_group", "Strange Armor");

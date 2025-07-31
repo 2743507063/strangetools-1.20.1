@@ -36,7 +36,6 @@ public class ClothModConfig implements ConfigData {
     @ConfigEntry.Category("glass_tool")
     @ConfigEntry.Gui.TransitiveObject
     public BaseModConfig.GlassTool glassTool = new BaseModConfig.GlassTool();
-
     // 从基础配置同步数据
     public void copyFrom(BaseModConfig baseConfig) {
         this.configVersion = baseConfig.configVersion;

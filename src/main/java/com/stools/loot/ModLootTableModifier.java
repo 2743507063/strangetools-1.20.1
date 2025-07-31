@@ -2,15 +2,9 @@ package com.stools.loot;
 
 import com.stools.item.ModItems;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.minecraft.block.Block;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.Item;
 import net.minecraft.loot.LootPool;
-import net.minecraft.loot.LootTable;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.entry.LootPoolEntry;
-import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;

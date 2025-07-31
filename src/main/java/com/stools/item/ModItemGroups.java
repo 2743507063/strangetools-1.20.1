@@ -12,10 +12,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class ModItemGroups {
 
@@ -38,20 +35,41 @@ public class ModItemGroups {
                         .displayName(Text.translatable("itemGroup.strangetools.tools_group"))
                         .icon(() -> new ItemStack(toolsIcon))
                         .entries((displayContext, entries) -> {
-                            List<String> materials = new ArrayList<>();
-                            for (String toolId : ModItems.TOOL_IDS) {
-                                String material = toolId.split("_")[0];
-                                if (!materials.contains(material)) {
-                                    materials.add(material);
-                                }
-                            }
+                            // 按主题分类排序
+                            Map<String, List<String>> categoryMap = new LinkedHashMap<>();
 
-                            for (String material : materials) {
-                                for (String toolId : ModItems.TOOL_IDS) {
-                                    if (toolId.startsWith(material + "_")) {
-                                        Item tool = ModItems.TOOLS.get(toolId);
-                                        if (tool != null) {
-                                            entries.add(tool);
+                            // 主世界工具
+                            categoryMap.put("主世界", Arrays.asList(
+                                    "dirt", "copper", "emerald", "lapis", "redstone", "coal",
+                                    "obsidian", "prismarine", "rotten_flesh", "blaze_powder",
+                                    "bone", "glass", "slime", "string"
+                            ));
+
+                            // 下界工具
+                            categoryMap.put("下界", Arrays.asList(
+                                    "netherrack", "quartz", "nether_star","glowstone"
+                            ));
+
+                            // 末地工具
+                            categoryMap.put("末地", Arrays.asList(
+                                    "ender_alloy", "end_stone", "void"
+                            ));
+
+                            // 食物＆农作物工具
+                            categoryMap.put("农业", Arrays.asList(
+                                    "apple", "golden_apple", "enchanted_golden_apple", "melon",
+                                    "chorus_fruit"
+                            ));
+
+                            // 按分类顺序添加工具
+                            for (List<String> materials : categoryMap.values()) {
+                                for (String material : materials) {
+                                    for (String toolId : ModItems.TOOL_IDS) {
+                                        if (toolId.startsWith(material + "_")) {
+                                            Item tool = ModItems.TOOLS.get(toolId);
+                                            if (tool != null) {
+                                                entries.add(tool);
+                                            }
                                         }
                                     }
                                 }
@@ -104,13 +122,15 @@ public class ModItemGroups {
             entries.addAfter(ModItems.ENDER_ALLOY_INGOT, ModItems.VOID_INGOT);
             entries.addAfter(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE);
             entries.addAfter(Items.ENDER_EYE,ModItems.VOID_PEARL);
+            entries.addAfter(Items.SNORT_POTTERY_SHERD,ModItems.APPLE_UPGRADE_SMITHING_TEMPLATE);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Items.ANCIENT_DEBRIS, ModBlocks.VOID_ORE);
             entries.addAfter(ModBlocks.VOID_ORE, ModBlocks.ENDER_ORE);
         });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
-            entries.addAfter(Items.ENDER_EYE,ModItems.VOID_PEARL);
-        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries ->
+                entries.addAfter(Items.ENDER_EYE,ModItems.VOID_PEARL));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries ->
+                entries.addAfter(Items.CAKE,ModItems.SLICE_OF_CAKE));
         }
     }
