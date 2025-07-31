@@ -43,7 +43,7 @@ public class Strangetools implements ModInitializer {
 		// 注册世界生成
 		CommonLifecycleEvents.TAGS_LOADED.register((registries, client) -> {
 			ModWorldGen.registerBiomeModifications();
-			LOGGER.info("世界生成注册完成!");
+			LOGGER.info("World generation registration completed!");
 		});
 
 		// 引导世界生成
@@ -65,10 +65,10 @@ public class Strangetools implements ModInitializer {
 				// 引导放置特征
 				ModWorldGen.bootstrapPlaced(placedRegistry, configuredRegistry);
 			} else {
-				LOGGER.error("无法获取配置特征或放置特征注册表");
+				LOGGER.error("Failed to obtain configuration features or place feature registry");
 			}
 		});
 
-		LOGGER.info("StrangeTools 模组初始化完成!");
+		LOGGER.info("StrangeTools mod initialization completed!");
 	}
 }

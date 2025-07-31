@@ -14,7 +14,7 @@ public class ModConfigManager {
             Class.forName("me.shedaniel.autoconfig.AutoConfig");
             clothConfigPresent = true;
         } catch (ClassNotFoundException e) {
-            Strangetools.LOGGER.info("未检测到 cloth-config，使用默认配置");
+            Strangetools.LOGGER.info("Cloth-config not detected, using default configuration");
         }
     }
 
@@ -52,9 +52,9 @@ public class ModConfigManager {
             Method copyToMethod = clothConfigClass.getMethod("copyTo", BaseModConfig.class);
             copyToMethod.invoke(clothConfigInstance, CONFIG);
 
-            Strangetools.LOGGER.info("cloth-config 配置加载成功");
+            Strangetools.LOGGER.info("Cloth-config configuration loaded successfully");
         } catch (Exception e) {
-            Strangetools.LOGGER.error("cloth-config 加载失败，使用默认配置", e);
+            Strangetools.LOGGER.error("Cloth-config failed to load, using default configuration", e);
             CONFIG = new BaseModConfig();
         }
     }
@@ -83,7 +83,7 @@ public class ModConfigManager {
         }
 
         // 所有构造函数都不匹配时抛出异常
-        throw new NoSuchMethodException("未找到合适的 JanksonConfigSerializer 构造函数");
+        throw new NoSuchMethodException("No suitable JanksonConfigSerializer constructor found");
     }
 
     public static void reload() {
@@ -105,7 +105,7 @@ public class ModConfigManager {
             Method copyToMethod = clothConfigClass.getMethod("copyTo", BaseModConfig.class);
             copyToMethod.invoke(clothConfigInstance, CONFIG);
         } catch (Exception e) {
-            Strangetools.LOGGER.error("配置重载失败", e);
+            Strangetools.LOGGER.error("Failed to reload configuration", e);
         }
     }
 }
