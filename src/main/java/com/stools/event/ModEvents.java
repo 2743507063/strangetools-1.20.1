@@ -33,6 +33,7 @@ public class ModEvents {
         AppleToolUseEvent.register();
         MelonToolUseEvent.register();
         SweetBerriesToolUseEvent.register();
+        GlowBerriesToolUseEvent.register();
         ServerTickEvents.START_WORLD_TICK.register(world -> {
             EnderAlloyToolUseEvent.tick(world);
             VoidToolUseEvent.updateRifts(world);

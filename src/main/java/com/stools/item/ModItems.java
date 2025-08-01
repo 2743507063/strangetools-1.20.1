@@ -113,6 +113,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.VOID, "void");
         registerToolSet(ModToolMaterials.WATERMELON,"melon");
         registerToolSet(ModToolMaterials.SWEET_BERRIES,"sweet_berries");
+        registerToolSet(ModToolMaterials.GLOW_BERRIES,"glow_berries");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");

@@ -62,7 +62,8 @@ public enum ModToolMaterials implements ToolMaterial {
         }
     },
     WATERMELON(1, 300, 4.5f, 1.5f, 0, () -> Ingredient.ofItems(Items.MELON_SLICE), false),
-    SWEET_BERRIES(1, 150, 4.0f, 1.2f, 12, () -> Ingredient.ofItems(Items.SWEET_BERRIES), false);
+    SWEET_BERRIES(1, 150, 4.0f, 1.2f, 12, () -> Ingredient.ofItems(Items.SWEET_BERRIES), false),
+    GLOW_BERRIES(1, 160, 4.2f, 1.3f, 15, () -> Ingredient.ofItems(Items.GLOW_BERRIES), false);
 
 
     private final int miningLevel;
