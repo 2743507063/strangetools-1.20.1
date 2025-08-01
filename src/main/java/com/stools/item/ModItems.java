@@ -116,6 +116,7 @@ public class ModItems {
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");
+        registerArmorSet(ModArmorMaterials.LAPIS, "lapis");
 
         //重锤
     }

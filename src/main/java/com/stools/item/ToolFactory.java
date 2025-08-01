@@ -2,9 +2,14 @@ package com.stools.item;
 
 import com.stools.item.materials.ModToolMaterials;
 import net.minecraft.item.*;
-import net.minecraft.text.Text;
 
 public class ToolFactory {
+    // 原版攻击速度参考值：
+    // 木剑: -2.4F, 钻石剑: -2.4F
+    // 木镐: -2.8F, 钻石镐: -2.8F
+    // 木斧: -3.2F, 钻石斧: -3.0F
+    // 木铲: -3.0F, 钻石铲: -3.0F
+    // 木锄: -3.0F, 钻石锄: -3.0F
     public static Item createSword(ToolMaterial material, String id) {
         return new SwordItem(material, 3, -2.4F, new Item.Settings().maxDamage(material.getDurability())) {
             @Override
@@ -38,7 +43,9 @@ public class ToolFactory {
     }
 
     public static Item createAxe(ToolMaterial material, String id) {
-        return new AxeItem(material, 5.0F, -3.0F, new Item.Settings().maxDamage(material.getDurability()))  {
+        // 根据材料等级调整攻击速度
+        float attackSpeed = material.getMiningLevel() >= 3 ? -3.0F : -3.2F;
+        return new AxeItem(material, 5.0F, attackSpeed, new Item.Settings().maxDamage(material.getDurability()))  {
             @Override
             public String getTranslationKey() {
                 return "item.strangetools." + id;
@@ -68,8 +75,18 @@ public class ToolFactory {
             }
         };
     }
+
     public static Item createHoe(ToolMaterial material, String id) {
-        return new HoeItem(material, (int) (material.getAttackDamage() - 2), -3.0F, new Item.Settings().maxDamage(material.getDurability()))  {
+        // 防止负攻击伤害
+        int attackDamage = (int) material.getAttackDamage();
+        int hoeDamage = Math.max(0, attackDamage - 2);
+
+        // 对于泥土工具，直接设置为0
+        if (material == ModToolMaterials.DIRT) {
+            hoeDamage = 0;
+        }
+
+        return new HoeItem(material, hoeDamage, -3.0F, new Item.Settings().maxDamage(material.getDurability()))  {
             @Override
             public String getTranslationKey() {
                 return "item.strangetools." + id;

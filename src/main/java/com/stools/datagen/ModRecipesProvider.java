@@ -71,6 +71,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "sweet_berries", Items.SWEET_BERRIES);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
+        generateArmorRecipes(exporter, "lapis", Items.LAPIS_LAZULI);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ENDER_ALLOY_INGOT, 1)
                 .pattern("AAA")
