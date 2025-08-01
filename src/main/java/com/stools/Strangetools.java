@@ -38,7 +38,6 @@ public class Strangetools implements ModInitializer {
 		ModEntities.registerEntities();
 		ModEvents.register();
 		ModSoundEvents.registerSounds();
-		ModEnchantments.registerEnchantments();
 
 		// 注册世界生成
 		CommonLifecycleEvents.TAGS_LOADED.register((registries, client) -> {

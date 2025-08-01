@@ -43,6 +43,10 @@ public class ModItemTagsProvider extends FabricTagProvider.ItemTagProvider {
                 .add(new Identifier(Strangetools.MOD_ID, "emerald_helmet"))
                 .add(new Identifier(Strangetools.MOD_ID, "emerald_chestplate"))
                 .add(new Identifier(Strangetools.MOD_ID, "emerald_leggings"))
-                .add(new Identifier(Strangetools.MOD_ID, "emerald_boots"));
+                .add(new Identifier(Strangetools.MOD_ID, "emerald_boots"))
+                .add(new Identifier(Strangetools.MOD_ID, "lapis_helmet"))
+                .add(new Identifier(Strangetools.MOD_ID, "lapis_chestplate"))
+                .add(new Identifier(Strangetools.MOD_ID, "lapis_leggings"))
+                .add(new Identifier(Strangetools.MOD_ID, "lapis_boots"));
     }
 }
