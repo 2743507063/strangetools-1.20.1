@@ -18,8 +18,6 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
         translationBuilder.add(ModItems.SLICE_OF_CAKE,"蛋糕片");
-        translationBuilder.add(ModItems.MACE,"重锤");
-        translationBuilder.add(ModEnchantments.DENSITY,"致密");
         translationBuilder.add(ModItems.TEST_ITEM,"神秘东西");
         translationBuilder.add(ModItems.ENDER_ALLOY_INGOT,"末影合金锭");
         translationBuilder.add(ModItems.ENDER_ALLOY_SCRAP,"末影合金碎片");

@@ -16,9 +16,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
-        translationBuilder.add(ModItems.MACE,"Mace");
         translationBuilder.add(ModItems.TEST_ITEM,"TestItem:)");
-        translationBuilder.add(ModEnchantments.DENSITY,"Density");
         translationBuilder.add(ModItems.ENDER_ALLOY_INGOT,"Ender Alloy Ingot");
         translationBuilder.add(ModItems.RAW_VOID, "Void Ore Crude");
         translationBuilder.add(ModItems.VOID_INGOT, "Void Ingot");
