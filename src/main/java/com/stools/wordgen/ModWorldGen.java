@@ -4,6 +4,7 @@ import com.stools.Strangetools;
 import com.stools.block.ModBlocks;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.*;
 import net.minecraft.structure.rule.BlockMatchRuleTest;
@@ -19,11 +20,13 @@ import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.placementmodifier.*;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.world.biome.BiomeKeys;
 
 import java.util.List;
 
 public class ModWorldGen {
     public static final RuleTest END_STONE_RULE = new BlockMatchRuleTest(Blocks.END_STONE);
+    private static boolean isBootstrapped = false; // 防止重复初始化
 
     // 矿石注册键
     public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_ENDER_KEY = RegistryKey.of(
@@ -43,6 +46,30 @@ public class ModWorldGen {
             RegistryKeys.PLACED_FEATURE,
             new Identifier(Strangetools.MOD_ID, "ore_void_placed")
     );
+
+    // 注册动态注册表回调
+    public static void registerDynamicRegistry() {
+        DynamicRegistrySetupCallback.EVENT.register(registryManager -> {
+            Strangetools.LOGGER.info("Registering world generation features...");
+
+            // 获取配置特征注册表
+            Registry<ConfiguredFeature<?, ?>> configuredRegistry = registryManager
+                    .getOptional(RegistryKeys.CONFIGURED_FEATURE)
+                    .orElseThrow(() -> new IllegalStateException("Configured feature registry not found"));
+
+            // 获取放置特征注册表
+            Registry<PlacedFeature> placedRegistry = registryManager
+                    .getOptional(RegistryKeys.PLACED_FEATURE)
+                    .orElseThrow(() -> new IllegalStateException("Placed feature registry not found"));
+
+            // 引导注册
+            bootstrapConfigured(configuredRegistry);
+            bootstrapPlaced(placedRegistry, configuredRegistry);
+
+            Strangetools.LOGGER.info("World generation features registered successfully");
+            isBootstrapped = true;
+        });
+    }
 
     // 引导配置特征
     public static void bootstrapConfigured(Registry<ConfiguredFeature<?, ?>> registry) {
@@ -69,18 +96,23 @@ public class ModWorldGen {
         // 注册到注册表
         Registry.register(registry, ORE_ENDER_KEY, oreEnder);
         Registry.register(registry, ORE_VOID_KEY, oreVoid);
+
+        Strangetools.LOGGER.info("Configured features registered: ender_ore, void_ore");
     }
 
     // 引导放置特征
     public static void bootstrapPlaced(Registry<PlacedFeature> registry, Registry<ConfiguredFeature<?, ?>> configuredRegistry) {
-        // 末影矿放置特征
-        ConfiguredFeature<?, ?> enderFeature = configuredRegistry.get(ORE_ENDER_KEY);
-        if (enderFeature == null) {
-            throw new IllegalStateException("配置特征未注册: " + ORE_ENDER_KEY);
-        }
+        // 获取配置特征
+        ConfiguredFeature<?, ?> enderFeature = configuredRegistry.getOrThrow(ORE_ENDER_KEY);
+        ConfiguredFeature<?, ?> voidFeature = configuredRegistry.getOrThrow(ORE_VOID_KEY);
 
+        // 创建配置特征条目（使用更兼容的方式）
+        RegistryEntry<ConfiguredFeature<?, ?>> enderEntry = RegistryEntry.of(enderFeature);
+        RegistryEntry<ConfiguredFeature<?, ?>> voidEntry = RegistryEntry.of(voidFeature);
+
+        // 创建放置特征
         PlacedFeature placedEnder = new PlacedFeature(
-                RegistryEntry.of(enderFeature),
+                enderEntry,
                 List.of(
                         CountPlacementModifier.of(5), // 每区块5个矿脉
                         SquarePlacementModifier.of(),
@@ -92,21 +124,15 @@ public class ModWorldGen {
                 )
         );
 
-        ConfiguredFeature<?, ?> voidFeature = configuredRegistry.get(ORE_VOID_KEY);
-        if (voidFeature == null) {
-            throw new IllegalStateException("配置特征未注册: " + ORE_VOID_KEY);
-        }
-
         PlacedFeature placedVoid = new PlacedFeature(
-                RegistryEntry.of(voidFeature),
+                voidEntry,
                 List.of(
                         CountPlacementModifier.of(10), // 每区块10个矿脉
                         SquarePlacementModifier.of(),
                         HeightRangePlacementModifier.uniform(
-                                YOffset.fixed(5), // 从Y=5开始
-                                YOffset.fixed(25) // 到Y=25结束
+                                YOffset.fixed(5),
+                                YOffset.fixed(25) // 在Y=5到25层生成
                         ),
-                        // 只在岛屿边缘生成
                         BiomePlacementModifier.of(),
                         EnvironmentScanPlacementModifier.of(
                                 Direction.DOWN,
@@ -119,9 +145,18 @@ public class ModWorldGen {
         // 注册放置特征
         Registry.register(registry, ORE_ENDER_PLACED_KEY, placedEnder);
         Registry.register(registry, ORE_VOID_PLACED_KEY, placedVoid);
+
+        Strangetools.LOGGER.info("Placed features registered: ender_ore_placed, void_ore_placed");
     }
 
     public static void registerBiomeModifications() {
+        if (!isBootstrapped) {
+            Strangetools.LOGGER.warn("World generation features not registered yet! Skipping biome modifications.");
+            return;
+        }
+
+        Strangetools.LOGGER.info("Registering biome modifications...");
+
         // 末影矿添加到所有末地生物群系
         BiomeModifications.addFeature(
                 BiomeSelectors.foundInTheEnd(),
@@ -131,11 +166,11 @@ public class ModWorldGen {
 
         // 虚空矿只添加到末地小型岛屿生物群系
         BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(
-                        net.minecraft.world.biome.BiomeKeys.SMALL_END_ISLANDS
-                ),
+                BiomeSelectors.includeByKey(BiomeKeys.SMALL_END_ISLANDS),
                 GenerationStep.Feature.UNDERGROUND_ORES,
                 ORE_VOID_PLACED_KEY
         );
+
+        Strangetools.LOGGER.info("Biome modifications registered successfully");
     }
 }
