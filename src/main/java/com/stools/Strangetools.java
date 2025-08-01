@@ -11,6 +11,7 @@ import com.stools.sound.ModSoundEvents;
 import com.stools.wordgen.ModWorldGen;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.CommonLifecycleEvents;
+import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,14 +34,17 @@ public class Strangetools implements ModInitializer {
 		ModEvents.register();
 		ModSoundEvents.registerSounds();
 
-		// 注册世界生成动态注册表回调
-		ModWorldGen.registerDynamicRegistry();
+		// 在动态注册表设置时注册世界生成特征
+		DynamicRegistrySetupCallback.EVENT.register(registrySetup -> {
+			// 使用 asDynamicRegistryManager() 获取动态注册表管理器
+			ModWorldGen.register(registrySetup.asDynamicRegistryManager());
+			LOGGER.info("World generation features registered successfully in dynamic registry setup");
+		});
 
-		// 注册世界生成生物群系修改
+		// 在标签加载后注册生物群系修改
 		CommonLifecycleEvents.TAGS_LOADED.register((registries, client) -> {
-			// 确保在标签加载后注册生物群系修改
 			ModWorldGen.registerBiomeModifications();
-			LOGGER.info("World generation registration completed!");
+			LOGGER.info("World generation biome modifications completed!");
 		});
 
 		LOGGER.info("StrangeTools mod initialization completed!");
