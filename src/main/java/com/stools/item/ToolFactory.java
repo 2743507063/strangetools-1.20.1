@@ -44,7 +44,17 @@ public class ToolFactory {
 
     public static Item createAxe(ToolMaterial material, String id) {
         // 根据材料等级调整攻击速度
-        float attackSpeed = material.getMiningLevel() >= 3 ? -3.0F : -3.2F;
+        float attackSpeed;
+        int miningLevel = material.getMiningLevel();
+
+        if (miningLevel >= 3) {
+            // 钻石级及以上：基础-3.0F，每超过1级额外+0.1F攻击速度
+            attackSpeed = -3.0F + (miningLevel - 3) * 0.1F;
+        } else if (miningLevel == 2) { // 铁级
+            attackSpeed = -3.1F;
+        } else { // 木头/石头级
+            attackSpeed = -3.2F;
+        }
         return new AxeItem(material, 5.0F, attackSpeed, new Item.Settings().maxDamage(material.getDurability()))  {
             @Override
             public String getTranslationKey() {
