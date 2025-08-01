@@ -303,6 +303,14 @@ public class ToolEffectHandler {
                     target.damage(target.getDamageSources().magic(), extraDamage);
                 }
                 break;
+            case SWEET_BERRIES:
+                float poisonChance = ModConfigManager.CONFIG.toolEffects.sweetBerriesPoisonChance / 100f;
+                if (random.nextFloat() < poisonChance) {
+                    target.addStatusEffect(new StatusEffectInstance(
+                            StatusEffects.POISON, 60, 0 // 3秒中毒（60 ticks），等级0
+                    ));
+                    break;
+                }
         }
     }
     private static boolean isEndMob(LivingEntity entity) {

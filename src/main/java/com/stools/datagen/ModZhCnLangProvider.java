@@ -95,6 +95,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "void" -> "虚空";
             case "dirt" -> "泥土";
             case "melon" -> "西瓜";
+            case "sweet_berries" -> "甜浆果";
             default -> null;
         };
     }

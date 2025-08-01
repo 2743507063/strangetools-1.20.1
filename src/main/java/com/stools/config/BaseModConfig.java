@@ -23,6 +23,7 @@ public class BaseModConfig {
         public float quartzExtraDamage = 2.0f;
         public float rottenFleshHungerChance = 40.0f;
         public float endStoneDamageBonus = 25f; // 对末地生物的额外伤害百分比
+        public float sweetBerriesPoisonChance = 5.0f; // 默认5%概率
     }
 
     public static class ArmorEffects {

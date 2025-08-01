@@ -1,8 +1,10 @@
 package com.stools.config;
 
+import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
+import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 
 // 仅当 cloth-config 存在时，这个类才会被加载
 @Config(name = "strangetools")
@@ -36,6 +38,16 @@ public class ClothModConfig implements ConfigData {
     @ConfigEntry.Category("glass_tool")
     @ConfigEntry.Gui.TransitiveObject
     public BaseModConfig.GlassTool glassTool = new BaseModConfig.GlassTool();
+    public static void init() {
+        // 注册配置类
+        AutoConfig.register(ClothModConfig.class, JanksonConfigSerializer::new);
+
+        // 获取配置实例
+        ClothModConfig config = AutoConfig.getConfigHolder(ClothModConfig.class).getConfig();
+
+        // 同步到基础配置
+        config.copyTo(ModConfigManager.CONFIG);
+    }
     // 从基础配置同步数据
     public void copyFrom(BaseModConfig baseConfig) {
         this.configVersion = baseConfig.configVersion;
