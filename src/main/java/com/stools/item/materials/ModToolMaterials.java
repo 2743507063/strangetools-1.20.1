@@ -61,7 +61,7 @@ public enum ModToolMaterials implements ToolMaterial {
             return 0.0f; // 明确设置为0
         }
     },
-    WATERMELON(1, 300, 4.5f, 1.5f, 0, () -> Ingredient.ofItems(Items.MELON), false),
+    WATERMELON(1, 300, 4.5f, 1.5f, 0, () -> Ingredient.ofItems(Items.MELON_SLICE), false),
     SWEET_BERRIES(1, 150, 4.0f, 1.2f, 12, () -> Ingredient.ofItems(Items.SWEET_BERRIES), false);
 
 

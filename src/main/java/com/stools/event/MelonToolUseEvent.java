@@ -32,10 +32,10 @@ public class MelonToolUseEvent {
                         player.getHungerManager().add(2, 1.2F);
 
                         net.minecraft.util.math.random.Random random = world.getRandom();
-                        int chanceCount = consumeAmount / 10; // 每10点耐久触发一次判定
+                        int chanceCount = consumeAmount / 100; // 每100点耐久触发一次判定
 
                         for (int i = 0; i < chanceCount; i++) {
-                            if (random.nextFloat() < 0.05f) { // 5%概率
+                            if (random.nextFloat() < 0.15f) { // 15%概率
                                 ItemStack cakeSlice = new ItemStack(Items.MELON_SLICE);
                                 if (!player.getInventory().insertStack(cakeSlice)) {
                                     player.dropItem(cakeSlice, false);
