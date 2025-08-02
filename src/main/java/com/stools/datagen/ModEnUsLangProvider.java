@@ -35,7 +35,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("item.strangetools.smithing_template.ender_alloy_upgrade.additions_slot_description", "Add ender alloy ingot");
         generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);
         generateItemTranslations(translationBuilder, ModItems.ARMOR_IDS);
-        translationBuilder.add("item.strangetools.apple_upgrade_smithing_template", "Upgrade Smithing Template");
+        translationBuilder.add("item.strangetools.apple_upgrade_smithing_template", "Smithing Template");
         translationBuilder.add("upgrade.strangetools.apple_upgrade", "Enchanted Golden Apple Upgrade");
         translationBuilder.add("item.strangetools.smithing_template.apple_upgrade.applies_to", "Golden Apple Equipment");
         translationBuilder.add("item.strangetools.smithing_template.apple_upgrade.ingredients", "Enchanted Golden Apple");
