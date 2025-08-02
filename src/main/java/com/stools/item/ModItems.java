@@ -114,6 +114,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.WATERMELON,"melon");
         registerToolSet(ModToolMaterials.SWEET_BERRIES,"sweet_berries");
         registerToolSet(ModToolMaterials.GLOW_BERRIES,"glow_berries");
+        registerToolSet(ModToolMaterials.CARROT,"carrot");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");

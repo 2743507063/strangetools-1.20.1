@@ -1,5 +1,6 @@
 package com.stools.item.materials;
 
+import com.stools.datagen.ModItemTagsProvider;
 import com.stools.item.ModItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -55,15 +56,16 @@ public enum ModToolMaterials implements ToolMaterial {
             return 3.5f + (new Random().nextFloat() * 0.5f); // 小幅度随机伤害
         }
     },
-    DIRT(0, 15, 1.0f, 0.0f, 0, () -> Ingredient.ofItems(Items.DIRT,Items.GRASS_BLOCK), false) {
+    DIRT(0, 15, 1.0f, 0.0f, 0, () -> Ingredient.fromTag(ModItemTagsProvider.DIRT_TAG), false) {
         @Override
         public float getAttackDamage() {
             return 0.0f; // 明确设置为0
         }
     },
     WATERMELON(1, 300, 4.5f, 1.5f, 0, () -> Ingredient.ofItems(Items.MELON_SLICE), false),
-    SWEET_BERRIES(1, 150, 4.0f, 1.2f, 12, () -> Ingredient.ofItems(Items.SWEET_BERRIES), false),
-    GLOW_BERRIES(1, 160, 4.2f, 1.3f, 15, () -> Ingredient.ofItems(Items.GLOW_BERRIES), false);
+    SWEET_BERRIES(0, 150, 4.0f, 1.2f, 12, () -> Ingredient.ofItems(Items.SWEET_BERRIES), false),
+    GLOW_BERRIES(0, 160, 4.2f, 1.3f, 15, () -> Ingredient.ofItems(Items.GLOW_BERRIES), false),
+    CARROT(1, 320, 4.5f, 2.0f, 9, () -> Ingredient.ofItems(Items.CARROT), false);
 
 
     private final int miningLevel;

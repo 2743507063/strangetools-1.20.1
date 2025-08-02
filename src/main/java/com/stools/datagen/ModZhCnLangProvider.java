@@ -95,6 +95,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "melon" -> "西瓜";
             case "sweet_berries" -> "甜浆果";
             case "glow_berries" -> "发光浆果";
+            case "carrot" -> "胡萝卜";
             default -> null;
         };
     }
