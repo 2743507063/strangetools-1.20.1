@@ -34,7 +34,7 @@ public class GoldenCarrotToolUseEvent {
                         HungerManager hungerManager = player.getHungerManager();
                         hungerManager.add(6, 14.4f);
 
-                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 100, 1));
+                        player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 3000, 2));
 
                         world.playSound(null, player.getBlockPos(),
                                 SoundEvents.ENTITY_GENERIC_EAT,
