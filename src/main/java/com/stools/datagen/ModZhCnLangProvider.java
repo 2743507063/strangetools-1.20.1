@@ -98,7 +98,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "carrot" -> "胡萝卜";
             case "golden_carrot" -> "金胡萝卜";
             case "potato" -> "马铃薯";
-            case "poisonous_potato" -> "毒土豆";
+            case "poisonous_potato" -> "毒马铃薯";
             default -> null;
         };
     }
