@@ -3,7 +3,7 @@
 	"id": "strangetools",
 	"version": "${version}",
 	"name": "strangetools",
-	"description": "Added those strange tools.",
+	"description": "Let all items craft tools.",
 	"authors": [
 		"MoQianOver"
 	],
