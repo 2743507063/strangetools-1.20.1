@@ -22,20 +22,18 @@ public class BaseModConfig {
         public float copperIgniteChance = 30.0f;
         public float quartzExtraDamage = 2.0f;
         public float rottenFleshHungerChance = 40.0f;
-        public float endStoneDamageBonus = 25f; // 对末地生物的额外伤害百分比
-        public float sweetBerriesPoisonChance = 5.0f; // 默认5%概率
-        public float poisonousPotatoPoisonChance = 15.0f; // 攻击中毒概率
-        public float poisonousPotatoEatPoisonChance = 60.0f; // 食用中毒概率
+        public float endStoneDamageBonus = 25f;
+        public float sweetBerriesPoisonChance = 5.0f;
+        public float poisonousPotatoPoisonChance = 15.0f;
+        public float poisonousPotatoEatPoisonChance = 60.0f;
     }
 
     public static class ArmorEffects {
         public boolean enableArmorEffects = true;
         public float armorReflectChance = 30.0f;
         public float armorReflectDamage = 2.0f;
-
-        // 添加铜盔甲效果配置
-        public float copperPushChance = 5.0f; // 击退概率（百分比）
-        public float copperCleanseChance = 15.0f; // 净化概率（百分比）
+        public float copperPushChance = 5.0f;
+        public float copperCleanseChance = 15.0f;
     }
 
     public static class GlowstoneEffects {

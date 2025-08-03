@@ -115,7 +115,7 @@ public class ArmorEffectHandler {
                 }
             }
 
-            // 铜盔甲专属效果：独立触发（修复嵌套错误）
+            // 铜盔甲专属效果：独立触发
             if (primaryMaterial == ModArmorMaterials.COPPER) {
                 // 效果1: 简易导电 - 雷暴天气小概率击退敌人
                 if (wearer.getWorld().isThundering()) {

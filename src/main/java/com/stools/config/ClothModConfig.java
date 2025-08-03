@@ -1,76 +1,242 @@
 package com.stools.config;
 
+import com.stools.Strangetools;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
+import net.minecraft.util.ActionResult;
 
 @Config(name = "strangetools")
 public class ClothModConfig implements ConfigData {
     @ConfigEntry.Gui.Excluded
+    @ConfigEntry.Category("general") // 明确指定分类
     public int configVersion = 1;
 
+    // ========== General Settings ==========
     @ConfigEntry.Category("general")
     @ConfigEntry.Gui.TransitiveObject
-    public BaseModConfig.General general = new BaseModConfig.General();
+    public GeneralSettings general = new GeneralSettings();
 
+    public static class GeneralSettings {
+        @ConfigEntry.Gui.Tooltip
+        public boolean enableDebugMode = false;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean enableAllEffects = true;
+    }
+
+    // ========== Tool Effects ==========
     @ConfigEntry.Category("tool_effects")
     @ConfigEntry.Gui.TransitiveObject
-    public BaseModConfig.ToolEffects toolEffects = new BaseModConfig.ToolEffects();
+    public ToolEffectsSettings toolEffects = new ToolEffectsSettings();
 
-    @ConfigEntry.Category("tool_effects")
-    @ConfigEntry.Gui.Tooltip
-    @ConfigEntry.Gui.RequiresRestart(false)
-    public float poisonousPotatoEatPoisonChance = 60.0f;
+    public static class ToolEffectsSettings {
+        @ConfigEntry.Gui.Tooltip
+        public boolean enableToolEffects = true;
 
-    @ConfigEntry.Category("tool_effects")
-    @ConfigEntry.Gui.Tooltip(count = 2)
-    public float endStoneDamageBonus = 25f; // 对末地生物的额外伤害百分比
+        @ConfigEntry.Gui.Tooltip
+        public boolean enableToolSkills = true;
 
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float emeraldDropChance = 1.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float copperIgniteChance = 30.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        public float quartzExtraDamage = 2.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float rottenFleshHungerChance = 40.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float endStoneDamageBonus = 25f;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float sweetBerriesPoisonChance = 5.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float poisonousPotatoPoisonChance = 15.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float poisonousPotatoEatPoisonChance = 60.0f;
+    }
+
+    // ========== Armor Effects ==========
     @ConfigEntry.Category("armor_effects")
     @ConfigEntry.Gui.TransitiveObject
-    public BaseModConfig.ArmorEffects armorEffects = new BaseModConfig.ArmorEffects();
+    public ArmorEffectsSettings armorEffects = new ArmorEffectsSettings();
 
+    public static class ArmorEffectsSettings {
+        @ConfigEntry.Gui.Tooltip
+        public boolean enableArmorEffects = true;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float armorReflectChance = 30.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        public float armorReflectDamage = 2.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float copperPushChance = 5.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float copperCleanseChance = 15.0f;
+    }
+
+    // ========== Glowstone Effects ==========
     @ConfigEntry.Category("glowstone_effects")
-    @ConfigEntry.Gui.CollapsibleObject
-    public BaseModConfig.GlowstoneEffects glowstoneEffects = new BaseModConfig.GlowstoneEffects();
+    @ConfigEntry.Gui.TransitiveObject
+    public GlowstoneEffectsSettings glowstoneEffects = new GlowstoneEffectsSettings();
 
+    public static class GlowstoneEffectsSettings {
+        @ConfigEntry.Gui.Tooltip
+        public boolean enableEffects = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public float damageAmount = 2.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        public float range = 8.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        public int glowingDuration = 10;
+
+        @ConfigEntry.Gui.Tooltip
+        public int speedDuration = 5;
+
+        @ConfigEntry.Gui.Tooltip
+        public int durabilityCost = 10;
+    }
+
+    // ========== Glass Effects ==========
     @ConfigEntry.Category("glass_effects")
-    @ConfigEntry.Gui.CollapsibleObject
-    public BaseModConfig.GlassEffects glassEffects = new BaseModConfig.GlassEffects();
+    @ConfigEntry.Gui.TransitiveObject
+    public GlassEffectsSettings glassEffects = new GlassEffectsSettings();
 
+    public static class GlassEffectsSettings {
+        @ConfigEntry.Gui.Tooltip
+        public boolean enableEffects = true;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float shatterReflectChance = 30.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        public float shatterReflectDamage = 2.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        public int shatterDurabilityCost = 20;
+
+        @ConfigEntry.Gui.Tooltip
+        public int dashDurabilityCost = 30;
+
+        @ConfigEntry.Gui.Tooltip
+        public int dashDuration = 5;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float cutDoubleDropChance = 10.0f;
+    }
+
+    // ========== Glass Tool ==========
     @ConfigEntry.Category("glass_tool")
     @ConfigEntry.Gui.TransitiveObject
-    public BaseModConfig.GlassTool glassTool = new BaseModConfig.GlassTool();
+    public GlassToolSettings glassTool = new GlassToolSettings();
 
-    public static void init() {
-        AutoConfig.register(ClothModConfig.class, JanksonConfigSerializer::new);
-        ClothModConfig config = AutoConfig.getConfigHolder(ClothModConfig.class).getConfig();
-        config.copyTo(ModConfigManager.CONFIG);
+    public static class GlassToolSettings {
+        @ConfigEntry.Gui.Tooltip
+        public boolean enableDoubleDrop = true;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float doubleDropChance = 10.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        public int doubleDropDurabilityCost = 2;
     }
 
-    public void copyFrom(BaseModConfig baseConfig) {
-        this.configVersion = baseConfig.configVersion;
-        this.poisonousPotatoEatPoisonChance = baseConfig.toolEffects.poisonousPotatoEatPoisonChance;
-        this.endStoneDamageBonus = baseConfig.toolEffects.endStoneDamageBonus;
-        this.general = baseConfig.general;
-        this.toolEffects = baseConfig.toolEffects;
-        this.armorEffects = baseConfig.armorEffects;
-        this.glowstoneEffects = baseConfig.glowstoneEffects;
-        this.glassEffects = baseConfig.glassEffects;
-        this.glassTool = baseConfig.glassTool;
-    }
-
+    // 复制配置到基础配置
     public void copyTo(BaseModConfig baseConfig) {
-        baseConfig.toolEffects.poisonousPotatoEatPoisonChance = this.poisonousPotatoEatPoisonChance;
-        baseConfig.toolEffects.endStoneDamageBonus = this.endStoneDamageBonus;
         baseConfig.configVersion = this.configVersion;
-        baseConfig.general = this.general;
-        baseConfig.toolEffects = this.toolEffects;
-        baseConfig.armorEffects = this.armorEffects;
-        baseConfig.glowstoneEffects = this.glowstoneEffects;
-        baseConfig.glassEffects = this.glassEffects;
-        baseConfig.glassTool = this.glassTool;
+
+        // General
+        baseConfig.general.enableDebugMode = this.general.enableDebugMode;
+        baseConfig.general.enableAllEffects = this.general.enableAllEffects;
+
+        // Tool Effects
+        baseConfig.toolEffects.enableToolEffects = this.toolEffects.enableToolEffects;
+        baseConfig.toolEffects.enableToolSkills = this.toolEffects.enableToolSkills;
+        baseConfig.toolEffects.emeraldDropChance = this.toolEffects.emeraldDropChance;
+        baseConfig.toolEffects.copperIgniteChance = this.toolEffects.copperIgniteChance;
+        baseConfig.toolEffects.quartzExtraDamage = this.toolEffects.quartzExtraDamage;
+        baseConfig.toolEffects.rottenFleshHungerChance = this.toolEffects.rottenFleshHungerChance;
+        baseConfig.toolEffects.endStoneDamageBonus = this.toolEffects.endStoneDamageBonus;
+        baseConfig.toolEffects.sweetBerriesPoisonChance = this.toolEffects.sweetBerriesPoisonChance;
+        baseConfig.toolEffects.poisonousPotatoPoisonChance = this.toolEffects.poisonousPotatoPoisonChance;
+        baseConfig.toolEffects.poisonousPotatoEatPoisonChance = this.toolEffects.poisonousPotatoEatPoisonChance;
+
+        // Armor Effects
+        baseConfig.armorEffects.enableArmorEffects = this.armorEffects.enableArmorEffects;
+        baseConfig.armorEffects.armorReflectChance = this.armorEffects.armorReflectChance;
+        baseConfig.armorEffects.armorReflectDamage = this.armorEffects.armorReflectDamage;
+        baseConfig.armorEffects.copperPushChance = this.armorEffects.copperPushChance;
+        baseConfig.armorEffects.copperCleanseChance = this.armorEffects.copperCleanseChance;
+
+        // Glowstone Effects
+        baseConfig.glowstoneEffects.enableEffects = this.glowstoneEffects.enableEffects;
+        baseConfig.glowstoneEffects.damageAmount = this.glowstoneEffects.damageAmount;
+        baseConfig.glowstoneEffects.range = this.glowstoneEffects.range;
+        baseConfig.glowstoneEffects.glowingDuration = this.glowstoneEffects.glowingDuration;
+        baseConfig.glowstoneEffects.speedDuration = this.glowstoneEffects.speedDuration;
+        baseConfig.glowstoneEffects.durabilityCost = this.glowstoneEffects.durabilityCost;
+
+        // Glass Effects
+        baseConfig.glassEffects.enableEffects = this.glassEffects.enableEffects;
+        baseConfig.glassEffects.shatterReflectChance = this.glassEffects.shatterReflectChance;
+        baseConfig.glassEffects.shatterReflectDamage = this.glassEffects.shatterReflectDamage;
+        baseConfig.glassEffects.shatterDurabilityCost = this.glassEffects.shatterDurabilityCost;
+        baseConfig.glassEffects.dashDurabilityCost = this.glassEffects.dashDurabilityCost;
+        baseConfig.glassEffects.dashDuration = this.glassEffects.dashDuration;
+        baseConfig.glassEffects.cutDoubleDropChance = this.glassEffects.cutDoubleDropChance;
+
+        // Glass Tool
+        baseConfig.glassTool.enableDoubleDrop = this.glassTool.enableDoubleDrop;
+        baseConfig.glassTool.doubleDropChance = this.glassTool.doubleDropChance;
+        baseConfig.glassTool.doubleDropDurabilityCost = this.glassTool.doubleDropDurabilityCost;
+    }
+
+    // 初始化 Cloth Config
+    public static void initialize() {
+        if (isClothConfigLoaded()) {
+            AutoConfig.register(ClothModConfig.class, JanksonConfigSerializer::new);
+            AutoConfig.getConfigHolder(ClothModConfig.class).registerSaveListener((manager, data) -> {
+                data.copyTo(ModConfigManager.CONFIG);
+                return ActionResult.SUCCESS;
+            });
+            Strangetools.LOGGER.info("Cloth Config initialized");
+        }
+    }
+
+    // 检查 Cloth Config 是否加载
+    private static boolean isClothConfigLoaded() {
+        try {
+            Class.forName("me.shedaniel.autoconfig.AutoConfig");
+            return true;
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
     }
 }
