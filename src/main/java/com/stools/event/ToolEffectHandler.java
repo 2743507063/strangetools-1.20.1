@@ -324,10 +324,7 @@ public class ToolEffectHandler {
                             false,
                             true
                     ));
-                }  else {
-            // 添加调试日志
-                    Strangetools.LOGGER.info("Poison chance missed: {}%", potatoPoisonChance * 100);
-        }
+                }
                 break;
         }
     }
