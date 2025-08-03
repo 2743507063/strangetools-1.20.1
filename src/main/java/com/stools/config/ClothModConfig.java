@@ -6,10 +6,8 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 
-// 仅当 cloth-config 存在时，这个类才会被加载
 @Config(name = "strangetools")
 public class ClothModConfig implements ConfigData {
-    // 复用基础配置类的字段结构
     @ConfigEntry.Gui.Excluded
     public int configVersion = 1;
 
@@ -20,6 +18,7 @@ public class ClothModConfig implements ConfigData {
     @ConfigEntry.Category("tool_effects")
     @ConfigEntry.Gui.TransitiveObject
     public BaseModConfig.ToolEffects toolEffects = new BaseModConfig.ToolEffects();
+
     @ConfigEntry.Gui.Tooltip(count = 2)
     public float endStoneDamageBonus = 25f; // 对末地生物的额外伤害百分比
 
@@ -38,17 +37,13 @@ public class ClothModConfig implements ConfigData {
     @ConfigEntry.Category("glass_tool")
     @ConfigEntry.Gui.TransitiveObject
     public BaseModConfig.GlassTool glassTool = new BaseModConfig.GlassTool();
+
     public static void init() {
-        // 注册配置类
         AutoConfig.register(ClothModConfig.class, JanksonConfigSerializer::new);
-
-        // 获取配置实例
         ClothModConfig config = AutoConfig.getConfigHolder(ClothModConfig.class).getConfig();
-
-        // 同步到基础配置
         config.copyTo(ModConfigManager.CONFIG);
     }
-    // 从基础配置同步数据
+
     public void copyFrom(BaseModConfig baseConfig) {
         this.configVersion = baseConfig.configVersion;
         this.general = baseConfig.general;
@@ -59,7 +54,6 @@ public class ClothModConfig implements ConfigData {
         this.glassTool = baseConfig.glassTool;
     }
 
-    // 同步到基础配置
     public void copyTo(BaseModConfig baseConfig) {
         baseConfig.configVersion = this.configVersion;
         baseConfig.general = this.general;

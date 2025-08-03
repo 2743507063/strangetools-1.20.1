@@ -30,6 +30,10 @@ public class BaseModConfig {
         public boolean enableArmorEffects = true;
         public float armorReflectChance = 30.0f;
         public float armorReflectDamage = 2.0f;
+
+        // 添加铜盔甲效果配置
+        public float copperPushChance = 5.0f; // 击退概率（百分比）
+        public float copperCleanseChance = 15.0f; // 净化概率（百分比）
     }
 
     public static class GlowstoneEffects {

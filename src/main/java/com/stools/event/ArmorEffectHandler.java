@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,10 +16,10 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import com.stools.item.materials.ModArmorMaterials;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+
+import java.util.*;
 
 public class ArmorEffectHandler {
     private static final Map<ModArmorMaterials, List<StatusEffectInstance>> ARMOR_EFFECTS_MAP =
@@ -29,18 +30,15 @@ public class ArmorEffectHandler {
                 new StatusEffectInstance(StatusEffects.LUCK, 100, 1, false, false, true)
         ));
         ARMOR_EFFECTS_MAP.put(ModArmorMaterials.LAPIS, List.of(
-                new StatusEffectInstance(StatusEffects.RESISTANCE, 100, 0, false, false, true)// 伤害抗性
+                new StatusEffectInstance(StatusEffects.RESISTANCE, 100, 0, false, false, true)
         ));
     }
 
-    // 添加静态Random实例
     private static final Random RANDOM = new Random();
 
     public static void register() {
-        // 初始化效果映射
         initArmorEffects();
 
-        // 注册伤害反射事件
         ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, amount) -> {
             if (!checkConfig()) return true;
             if (source.getAttacker() instanceof LivingEntity attacker) {
@@ -60,7 +58,6 @@ public class ArmorEffectHandler {
             }
         });
 
-        // 注册维度切换事件（确保效果正确应用）
         ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register((player, origin, destination) -> {
             if (!checkConfig()) return;
             applyContinuousEffects(player);
@@ -84,7 +81,7 @@ public class ArmorEffectHandler {
             if (armor.getItem() instanceof ArmorItem armorItem &&
                     armorItem.getMaterial() instanceof ModArmorMaterials mat) {
                 totalEffectPower += mat.getEffectPower();
-                primaryMaterial = mat; // 记录主要材料
+                primaryMaterial = mat;
             }
         }
 
@@ -96,26 +93,64 @@ public class ArmorEffectHandler {
                 wearer.addStatusEffect(new StatusEffectInstance(
                         StatusEffects.GLOWING, 40, 0, true, false));
             }
+
             // 青金石盔甲专属效果：经验窃取
             if (primaryMaterial == ModArmorMaterials.LAPIS) {
-                float xpStealChance = 0.3f; // 30%几率
+                float xpStealChance = 0.3f;
                 if (wearer.getRandom().nextFloat() < xpStealChance) {
-                    int stolenXp = 1 + RANDOM.nextInt(3); // 使用静态RANDOM实例
+                    int stolenXp = 1 + RANDOM.nextInt(3);
 
-                    // 使用getWorld()方法
                     if (attacker instanceof PlayerEntity) {
-                        ((PlayerEntity) attacker).addExperience(-stolenXp); // 从攻击者偷取经验
+                        ((PlayerEntity) attacker).addExperience(-stolenXp);
                     }
                     if (wearer instanceof PlayerEntity) {
-                        ((PlayerEntity) wearer).addExperience(stolenXp); // 给穿戴者经验
+                        ((PlayerEntity) wearer).addExperience(stolenXp);
 
-                        // 粒子效果 - 使用getWorld()获取世界
                         if (wearer.getWorld() instanceof ServerWorld serverWorld) {
                             serverWorld.spawnParticles(ParticleTypes.ENCHANT,
                                     wearer.getX(), wearer.getY() + 1.5, wearer.getZ(),
                                     10, 0.5, 0.5, 0.5, 0.1);
                         }
                     }
+                }
+            }
+
+            // 铜盔甲专属效果：独立触发（修复嵌套错误）
+            if (primaryMaterial == ModArmorMaterials.COPPER) {
+                // 效果1: 简易导电 - 雷暴天气小概率击退敌人
+                if (wearer.getWorld().isThundering()) {
+                    float lightningChance = ModConfigManager.CONFIG.armorEffects.copperPushChance / 100f;
+                    if (RANDOM.nextFloat() < lightningChance) {
+                        // 仅击退效果，不造成伤害
+                        attacker.takeKnockback(0.5f,
+                                wearer.getX() - attacker.getX(),
+                                wearer.getZ() - attacker.getZ());
+
+                        // 音效反馈
+                        wearer.getWorld().playSound(null, attacker.getBlockPos(),
+                                SoundEvents.ENTITY_LIGHTNING_BOLT_THUNDER,
+                                SoundCategory.PLAYERS, 0.5f, 1.5f);
+                    }
+                }
+
+                // 效果2: 基础净化 - 概率清除一个负面效果
+                float cleanseChance = ModConfigManager.CONFIG.armorEffects.copperCleanseChance / 100f;
+                if (RANDOM.nextFloat() < cleanseChance) {
+                    // 仅清除一个负面效果
+                    Optional<StatusEffect> effectToRemove = wearer.getActiveStatusEffects().keySet().stream()
+                            .filter(effect -> !effect.isBeneficial())
+                            .findAny();
+
+                    effectToRemove.ifPresent(effect -> {
+                        wearer.removeStatusEffect(effect);
+
+                        // 简约粒子效果
+                        if (wearer.getWorld() instanceof ServerWorld serverWorld) {
+                            serverWorld.spawnParticles(ParticleTypes.HAPPY_VILLAGER,
+                                    wearer.getX(), wearer.getY() + 1.5, wearer.getZ(),
+                                    5, 0.3, 0.3, 0.3, 0.1);
+                        }
+                    });
                 }
             }
         }
@@ -140,7 +175,7 @@ public class ArmorEffectHandler {
         if (current == null || current.getDuration() <= 10) {
             player.addStatusEffect(new StatusEffectInstance(
                     effect.getEffectType(),
-                    200,  // 延长持续时间减少检查频率
+                    20,
                     effect.getAmplifier(),
                     false, false, true
             ));

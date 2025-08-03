@@ -118,6 +118,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.GOLDEN_CARROT,"golden_carrot");
 
         //盔甲
+        registerArmorSet(ModArmorMaterials.COPPER, "copper");
         registerArmorSet(ModArmorMaterials.EMERALD, "emerald");
         registerArmorSet(ModArmorMaterials.LAPIS, "lapis");
 
