@@ -151,29 +151,30 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
                 "Probability of removing one negative effect from the wearer with copper armor");
 
         // ==== Glowstone Effects ====
+        // ==== Glowstone Effects ====
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.enableEffects", "Enable Glowstone Effects");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.enableEffects.@Tooltip",
                 "Toggle for glowstone-related effects");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.damageAmount", "Damage Amount");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.damageAmount.@Tooltip",
-                "Amount of damage dealt to surrounding entities when attacking with glowstone tools");
+                "Amount of damage dealt to surrounding undead mobs when attacking with glowstone tools");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.range", "Effect Range");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.range.@Tooltip",
-                "Range of effect on surrounding entities when attacking with glowstone tools");
+                "Range of effect on surrounding undead mobs when attacking with glowstone tools");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.glowingDuration", "Glowing Duration (seconds)");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.glowingDuration.@Tooltip",
-                "Duration that targets remain glowing when attacked with glowstone tools");
+                "Duration that undead mobs remain glowing when attacked with glowstone tools");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.speedDuration", "Speed Duration (seconds)");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.speedDuration.@Tooltip",
-                "Duration of speed effect for the user after attacking with glowstone tools");
+                "Duration that undead mobs gain speed when attacked with glowstone tools");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.durabilityCost", "Durability Cost");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.durabilityCost.@Tooltip",
-                "Amount of durability consumed when triggering effects with glowstone tools");
+                "Amount of durability consumed when glowstone tools trigger effects");
 
         // ==== Glass Effects ====
         translationBuilder.add("text.autoconfig.strangetools.option.glassEffects.enableEffects", "Enable Glass Effects");

@@ -210,19 +210,19 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.damageAmount", "伤害值");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.damageAmount.@Tooltip",
-                "萤石工具攻击时对周围生物造成的伤害值");
+                "萤石工具攻击时对周围亡灵生物造成的伤害值");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.range", "效果范围");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.range.@Tooltip",
-                "萤石工具攻击时影响周围生物的范围");
+                "萤石工具攻击时影响周围亡灵生物的范围");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.glowingDuration", "发光持续时间 (秒)");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.glowingDuration.@Tooltip",
-                "萤石工具攻击时使目标发光的持续时间");
+                "萤石工具攻击时使亡灵生物发光的持续时间");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.speedDuration", "速度持续时间 (秒)");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.speedDuration.@Tooltip",
-                "萤石工具攻击后使用者获得速度效果的持续时间");
+                "萤石工具攻击时使亡灵生物获得速度的持续时间");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.durabilityCost", "耐久消耗");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.durabilityCost.@Tooltip",
