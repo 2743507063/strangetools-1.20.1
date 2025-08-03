@@ -19,6 +19,12 @@ public class ClothModConfig implements ConfigData {
     @ConfigEntry.Gui.TransitiveObject
     public BaseModConfig.ToolEffects toolEffects = new BaseModConfig.ToolEffects();
 
+    @ConfigEntry.Category("tool_effects")
+    @ConfigEntry.Gui.Tooltip
+    @ConfigEntry.Gui.RequiresRestart(false)
+    public float poisonousPotatoEatPoisonChance = 60.0f;
+
+    @ConfigEntry.Category("tool_effects")
     @ConfigEntry.Gui.Tooltip(count = 2)
     public float endStoneDamageBonus = 25f; // 对末地生物的额外伤害百分比
 
@@ -46,6 +52,8 @@ public class ClothModConfig implements ConfigData {
 
     public void copyFrom(BaseModConfig baseConfig) {
         this.configVersion = baseConfig.configVersion;
+        this.poisonousPotatoEatPoisonChance = baseConfig.toolEffects.poisonousPotatoEatPoisonChance;
+        this.endStoneDamageBonus = baseConfig.toolEffects.endStoneDamageBonus;
         this.general = baseConfig.general;
         this.toolEffects = baseConfig.toolEffects;
         this.armorEffects = baseConfig.armorEffects;
@@ -55,6 +63,8 @@ public class ClothModConfig implements ConfigData {
     }
 
     public void copyTo(BaseModConfig baseConfig) {
+        baseConfig.toolEffects.poisonousPotatoEatPoisonChance = this.poisonousPotatoEatPoisonChance;
+        baseConfig.toolEffects.endStoneDamageBonus = this.endStoneDamageBonus;
         baseConfig.configVersion = this.configVersion;
         baseConfig.general = this.general;
         baseConfig.toolEffects = this.toolEffects;

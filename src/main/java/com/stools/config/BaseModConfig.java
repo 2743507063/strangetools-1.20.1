@@ -24,6 +24,8 @@ public class BaseModConfig {
         public float rottenFleshHungerChance = 40.0f;
         public float endStoneDamageBonus = 25f; // 对末地生物的额外伤害百分比
         public float sweetBerriesPoisonChance = 5.0f; // 默认5%概率
+        public float poisonousPotatoPoisonChance = 15.0f; // 攻击中毒概率
+        public float poisonousPotatoEatPoisonChance = 60.0f; // 食用中毒概率
     }
 
     public static class ArmorEffects {

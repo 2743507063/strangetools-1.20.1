@@ -1,5 +1,6 @@
 package com.stools.event;
 
+import com.stools.Strangetools;
 import com.stools.config.ModConfigManager;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.entity.EntityType;
@@ -304,13 +305,30 @@ public class ToolEffectHandler {
                 }
                 break;
             case SWEET_BERRIES:
-                float poisonChance = ModConfigManager.CONFIG.toolEffects.sweetBerriesPoisonChance / 100f;
-                if (random.nextFloat() < poisonChance) {
+                float sweetBerryPoisonChance = ModConfigManager.CONFIG.toolEffects.sweetBerriesPoisonChance / 100f;
+                if (random.nextFloat() < sweetBerryPoisonChance) {
                     target.addStatusEffect(new StatusEffectInstance(
                             StatusEffects.POISON, 60, 0 // 3秒中毒（60 ticks），等级0
                     ));
                     break;
                 }
+                break;
+            case POISONOUS_POTATO:
+                float potatoPoisonChance = ModConfigManager.CONFIG.toolEffects.poisonousPotatoPoisonChance / 100f;
+                if (random.nextFloat() < potatoPoisonChance) {
+                    target.addStatusEffect(new StatusEffectInstance(
+                            StatusEffects.POISON,
+                            100,  // 持续时间
+                            0,     // 效果等级（0为1级）
+                            false,
+                            false,
+                            true
+                    ));
+                }  else {
+            // 添加调试日志
+                    Strangetools.LOGGER.info("Poison chance missed: {}%", potatoPoisonChance * 100);
+        }
+                break;
         }
     }
     private static boolean isEndMob(LivingEntity entity) {
