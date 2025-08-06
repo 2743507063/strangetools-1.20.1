@@ -158,23 +158,23 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.damageAmount", "Damage Amount");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.damageAmount.@Tooltip",
-                "Amount of damage dealt to surrounding undead mobs when attacking with glowstone tools");
+                "The amount of damage dealt to surrounding undead mobs when attacking with Glowstone tools");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.range", "Effect Range");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.range.@Tooltip",
-                "Range of effect on surrounding undead mobs when attacking with glowstone tools");
+                "The range affecting surrounding undead mobs when using skills with Glowstone tools");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.glowingDuration", "Glowing Duration (seconds)");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.glowingDuration.@Tooltip",
-                "Duration that undead mobs remain glowing when attacked with glowstone tools");
+                "The duration that undead mobs remain glowing when attacked with Glowstone tools");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.speedDuration", "Speed Duration (seconds)");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.speedDuration.@Tooltip",
-                "Duration that undead mobs gain speed when attacked with glowstone tools");
+                "The duration that undead mobs and the user receive speed effect when using skills with Glowstone tools");
 
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.durabilityCost", "Durability Cost");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.durabilityCost.@Tooltip",
-                "Amount of durability consumed when glowstone tools trigger effects");
+                "The amount of durability consumed when Glowstone tool effects are triggered");
 
         // ==== Glass Effects ====
         translationBuilder.add("text.autoconfig.strangetools.option.glassEffects.enableEffects", "Enable Glass Effects");

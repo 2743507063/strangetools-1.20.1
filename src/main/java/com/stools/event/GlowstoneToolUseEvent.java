@@ -39,9 +39,21 @@ public class GlowstoneToolUseEvent {
     public static void register() {
         UseItemCallback.EVENT.register((player, world, hand) -> {
             ItemStack stack = player.getStackInHand(hand);
+
+            // 添加全局效果开关检查
+            if (!ModConfigManager.CONFIG.general.enableAllEffects) {
+                return TypedActionResult.pass(stack);
+            }
+
             if (!ModConfigManager.CONFIG.toolEffects.enableToolSkills) {
                 return TypedActionResult.pass(stack);
             }
+
+            // 添加萤石效果开关检查
+            if (!ModConfigManager.CONFIG.glowstoneEffects.enableEffects) {
+                return TypedActionResult.pass(stack);
+            }
+
             if (stack.getItem() instanceof ToolItem toolItem) {
                 if (toolItem.getMaterial() == ModToolMaterials.GLOWSTONE) {
                     if (player.isSneaking()) {

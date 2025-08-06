@@ -16,6 +16,9 @@ public class GlassToolBreakEvent {
     public static void register() {
         PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, blockEntity) -> {
             ItemStack stack = player.getMainHandStack();
+            if (!ModConfigManager.CONFIG.glassEffects.enableEffects) {
+                return;
+            }
             if (!(stack.getItem() instanceof ToolItem tool && tool.getMaterial() == ModToolMaterials.GLASS)) return;
             if (!(world instanceof ServerWorld serverWorld)) return;
             if (player.getRandom().nextFloat() >= 0.1F) return; // 10%概率

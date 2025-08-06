@@ -121,6 +121,9 @@ public class ToolEffectHandler {
                 }
                 break;
             case GLOWSTONE:
+                if (!ModConfigManager.CONFIG.glowstoneEffects.enableEffects) {
+                    break; // 开关关闭则不执行效果
+                }
                 target.addStatusEffect(new StatusEffectInstance(
                         StatusEffects.GLOWING, 100, 0, false, true
                 ));
