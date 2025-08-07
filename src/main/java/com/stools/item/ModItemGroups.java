@@ -124,6 +124,7 @@ public class ModItemGroups {
             entries.addAfter(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE);
             entries.addAfter(Items.ENDER_EYE,ModItems.VOID_PEARL);
             entries.addAfter(Items.SNORT_POTTERY_SHERD,ModItems.APPLE_UPGRADE_SMITHING_TEMPLATE);
+            entries.addAfter(Items.GOLD_INGOT,ModItems.AMETHYST_INGOT);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Items.ANCIENT_DEBRIS, ModBlocks.VOID_ORE);
