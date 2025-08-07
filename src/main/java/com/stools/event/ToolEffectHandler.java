@@ -3,6 +3,7 @@ package com.stools.event;
 import com.stools.Strangetools;
 import com.stools.config.ModConfigManager;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -20,6 +21,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -48,7 +50,7 @@ public class ToolEffectHandler {
                 if (stack.getItem() instanceof ToolItem toolItem &&
                         toolItem.getMaterial() instanceof ModToolMaterials material) {
 
-                    applyToolEffect(material, player, (LivingEntity) entity, world);
+                    applyToolEffect(material, player, (LivingEntity) entity, world, stack, hand);
                 }
             }
             return ActionResult.PASS;
@@ -58,7 +60,10 @@ public class ToolEffectHandler {
     private static void applyToolEffect(ModToolMaterials material,
                                         PlayerEntity player,
                                         LivingEntity target,
-                                        World world) {
+                                        World world,
+                                        ItemStack stack,
+                                        Hand hand) {
+
         switch (material) {
             case COPPER:
                 float copperChance = ModConfigManager.CONFIG.toolEffects.copperIgniteChance / 100f;
@@ -327,6 +332,35 @@ public class ToolEffectHandler {
                             false,
                             true
                     ));
+                }
+                break;
+            case AMETHYST:
+                if (!ModConfigManager.CONFIG.amethystEffects.enableEffects) {
+                    break;
+                }
+
+                // 获取配置值
+                float crystalChance = ModConfigManager.CONFIG.amethystEffects.passiveCrystalChance / 100f;
+                float crystalDamage = ModConfigManager.CONFIG.amethystEffects.passiveCrystalDamage;
+
+                // 水晶共鸣被动效果
+                if (random.nextFloat() < crystalChance) {
+                    // 消耗1点耐久
+                    stack.damage(1, player, p -> p.sendToolBreakStatus(hand));
+
+                    // 造成额外伤害
+                    target.damage(target.getDamageSources().magic(), crystalDamage);
+
+                    // 播放音效和粒子
+                    world.playSound(null, target.getBlockPos(),
+                            SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME,
+                            SoundCategory.PLAYERS, 0.8f, 1.2f);
+
+                    if (world instanceof ServerWorld serverWorld) {
+                        serverWorld.spawnParticles(ParticleTypes.ELECTRIC_SPARK,
+                                target.getX(), target.getY() + 1, target.getZ(),
+                                10, 0.5, 0.5, 0.5, 0.05);
+                    }
                 }
                 break;
         }

@@ -2,6 +2,7 @@ package com.stools.datagen;
 
 import com.stools.block.ModBlocks;
 import com.stools.item.ModItems;
+import com.terraformersmc.modmenu.util.mod.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -32,6 +33,7 @@ public class ModModelsProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.VOID_PEARL,Models.GENERATED);
         itemModelGenerator.register(ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE,Models.GENERATED);
         itemModelGenerator.register(ModItems.APPLE_UPGRADE_SMITHING_TEMPLATE,Models.GENERATED);
+        itemModelGenerator.register(ModItems.AMETHYST_INGOT,Models.GENERATED);
         for (String toolId : ModItems.TOOL_IDS) {
             if (toolId.startsWith("glass_")) continue; // 跳过玻璃工具
             Item item = ModItems.TOOLS.get(toolId);

@@ -38,6 +38,7 @@ public class ModEvents {
         GoldenCarrotToolUseEvent.register();
         PotatoToolUseEvent.register();
         PoPotatoToolUseEvent.register();
+        AmethystToolActiveSkillEvent.register();
         ServerTickEvents.START_WORLD_TICK.register(world -> {
             EnderAlloyToolUseEvent.tick(world);
             VoidToolUseEvent.updateRifts(world);

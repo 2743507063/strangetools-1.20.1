@@ -42,7 +42,7 @@ public class ModItemGroups {
                             categoryMap.put("主世界", Arrays.asList(
                                     "dirt", "copper", "emerald", "lapis", "redstone", "coal",
                                     "obsidian", "prismarine", "rotten_flesh",
-                                    "bone", "glass", "slime", "string"
+                                    "bone", "glass", "slime", "string","amethyst","bedrock"
                             ));
 
                             // 下界工具

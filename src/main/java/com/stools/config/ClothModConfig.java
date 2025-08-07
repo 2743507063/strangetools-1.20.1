@@ -101,6 +101,10 @@ public class ClothModConfig implements ConfigData {
     @ConfigEntry.Gui.TransitiveObject
     public GlowstoneEffectsSettings glowstoneEffects = new GlowstoneEffectsSettings();
 
+    @ConfigEntry.Category("amethyst_effects")
+    @ConfigEntry.Gui.TransitiveObject
+    public AmethystEffectsSettings amethystEffects = new AmethystEffectsSettings();
+
     public static class GlowstoneEffectsSettings {
         @ConfigEntry.Gui.Tooltip
         public boolean enableEffects = true;
@@ -167,6 +171,26 @@ public class ClothModConfig implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         public int doubleDropDurabilityCost = 2;
     }
+    public static class AmethystEffectsSettings {
+        @ConfigEntry.Gui.Tooltip(count = 2)
+        public boolean enableEffects = true;
+
+        @ConfigEntry.Gui.Tooltip(count = 2)
+        public float activeDamage = 4.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        public float activeRange = 5.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        public int activeDurabilityCost = 20;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float passiveCrystalChance = 15.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        public float passiveCrystalDamage = 1.0f;
+    }
 
     // 复制配置到基础配置
     public void copyTo(BaseModConfig baseConfig) {
@@ -216,6 +240,13 @@ public class ClothModConfig implements ConfigData {
         baseConfig.glassTool.enableDoubleDrop = this.glassTool.enableDoubleDrop;
         baseConfig.glassTool.doubleDropChance = this.glassTool.doubleDropChance;
         baseConfig.glassTool.doubleDropDurabilityCost = this.glassTool.doubleDropDurabilityCost;
+
+        baseConfig.amethystEffects.enableEffects = this.amethystEffects.enableEffects;
+        baseConfig.amethystEffects.activeDamage = this.amethystEffects.activeDamage;
+        baseConfig.amethystEffects.activeRange = this.amethystEffects.activeRange;
+        baseConfig.amethystEffects.activeDurabilityCost = this.amethystEffects.activeDurabilityCost;
+        baseConfig.amethystEffects.passiveCrystalChance = this.amethystEffects.passiveCrystalChance;
+        baseConfig.amethystEffects.passiveCrystalDamage = this.amethystEffects.passiveCrystalDamage;
     }
 
     // 初始化 Cloth Config

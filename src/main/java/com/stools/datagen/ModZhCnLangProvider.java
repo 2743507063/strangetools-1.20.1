@@ -101,6 +101,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "golden_carrot" -> "金胡萝卜";
             case "potato" -> "马铃薯";
             case "poisonous_potato" -> "毒马铃薯";
+            case "amethyst" -> "紫水晶";
             default -> null;
         };
     }
@@ -269,5 +270,35 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("text.autoconfig.strangetools.option.glassTool.doubleDropDurabilityCost", "双倍掉落耐久消耗");
         translationBuilder.add("text.autoconfig.strangetools.option.glassTool.doubleDropDurabilityCost.@Tooltip",
                 "玻璃工具触发双倍掉落时消耗的额外耐久度");
+        // ==== 紫水晶效果 ====
+        translationBuilder.add("text.autoconfig.strangetools.category.amethyst_effects", "紫水晶效果");
+
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.enableEffects", "启用紫水晶效果");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.enableEffects.@Tooltip[0]",
+                "紫水晶工具效果的总开关");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.enableEffects.@Tooltip[1]",
+                "禁用此选项将关闭所有紫水晶工具的特殊效果");
+
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeDamage", "主动技能伤害");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeDamage.@Tooltip[0]",
+                "紫水晶工具主动技能造成的伤害值");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeDamage.@Tooltip[1]",
+                "注意：主动技能会消耗大量耐久");
+
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeRange", "主动技能范围");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeRange.@Tooltip",
+                "紫水晶工具主动技能的影响范围");
+
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeDurabilityCost", "主动技能耐久消耗");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeDurabilityCost.@Tooltip",
+                "每次使用主动技能消耗的耐久值");
+
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.passiveCrystalChance", "被动水晶触发概率 (%)");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.passiveCrystalChance.@Tooltip",
+                "攻击时触发水晶共鸣造成额外伤害的概率");
+
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.passiveCrystalDamage", "被动水晶额外伤害");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.passiveCrystalDamage.@Tooltip",
+                "水晶共鸣造成的额外伤害值");
     }
 }

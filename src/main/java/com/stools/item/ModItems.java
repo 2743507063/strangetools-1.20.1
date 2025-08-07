@@ -39,6 +39,7 @@ public class ModItems {
     public static final Item RAW_VOID = registerItem("raw_void", new Item(new Item.Settings()));
 
     public static final Item SLICE_OF_CAKE = registerItem("slice_of_cake",new Item(new Item.Settings().food(ModFoodComponents.S_CAKE)));
+    public static final Item AMETHYST_INGOT = registerItem("amethyst_ingot",new Item(new Item.Settings()));
 
     public static final Map<String, Item> TOOLS = new HashMap<>();
     public static final List<String> TOOL_IDS = new ArrayList<>();
@@ -118,6 +119,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.GOLDEN_CARROT,"golden_carrot");
         registerToolSet(ModToolMaterials.POTATO,"potato");
         registerToolSet(ModToolMaterials.POISONOUS_POTATO,"poisonous_potato");
+        registerToolSet(ModToolMaterials.AMETHYST,"amethyst");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.COPPER, "copper");

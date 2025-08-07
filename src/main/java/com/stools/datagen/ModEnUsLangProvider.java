@@ -217,5 +217,35 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("text.autoconfig.strangetools.option.glassTool.doubleDropDurabilityCost", "Double Drop Durability Cost");
         translationBuilder.add("text.autoconfig.strangetools.option.glassTool.doubleDropDurabilityCost.@Tooltip",
                 "Additional durability consumed when triggering double drops with glass tools");
+        // ==== Amethyst Effects ====
+        translationBuilder.add("text.autoconfig.strangetools.category.amethyst_effects", "Amethyst Effects");
+
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.enableEffects", "Enable Amethyst Effects");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.enableEffects.@Tooltip[0]",
+                "Master switch for amethyst tool effects");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.enableEffects.@Tooltip[1]",
+                "Disabling this option will turn off all special effects of amethyst tools");
+
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeDamage", "Active Skill Damage");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeDamage.@Tooltip[0]",
+                "Damage value caused by the active skill of amethyst tools");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeDamage.@Tooltip[1]",
+                "Note: Active skills will consume a large amount of durability");
+
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeRange", "Active Skill Range");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeRange.@Tooltip",
+                "Affect range of the active skill of amethyst tools");
+
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeDurabilityCost", "Active Skill Durability Cost");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.activeDurabilityCost.@Tooltip",
+                "Durability consumed each time the active skill is used");
+
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.passiveCrystalChance", "Passive Crystal Trigger Chance (%)");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.passiveCrystalChance.@Tooltip",
+                "Probability of triggering crystal resonance to cause additional damage when attacking");
+
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.passiveCrystalDamage", "Passive Crystal Additional Damage");
+        translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.passiveCrystalDamage.@Tooltip",
+                "Additional damage value caused by crystal resonance");
     }
 }

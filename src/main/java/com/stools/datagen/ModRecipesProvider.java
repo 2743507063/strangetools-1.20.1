@@ -122,6 +122,15 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.APPLE), conditionsFromItem(Items.APPLE))
                 .criterion(hasItem(Items.GOLDEN_APPLE), conditionsFromItem(Items.GOLDEN_APPLE))
                 .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "golden_apple_upgrade_recipe"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.AMETHYST_INGOT, 1)
+                .pattern("AAA")
+                .pattern("AIA")
+                .pattern("AAA")
+                .input('A', Items.AMETHYST_SHARD)
+                .input('I', Items.IRON_INGOT)
+                .criterion(hasItem(Items.AMETHYST_SHARD), conditionsFromItem(Items.AMETHYST_SHARD))
+                .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "amethyst_ingot_recipe"));
 
         generateToolUpgradeRecipes(exporter,
                 "ender_alloy",

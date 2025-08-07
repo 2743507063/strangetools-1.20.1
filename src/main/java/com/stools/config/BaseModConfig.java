@@ -9,6 +9,7 @@ public class BaseModConfig {
     public GlowstoneEffects glowstoneEffects = new GlowstoneEffects();
     public GlassEffects glassEffects = new GlassEffects();
     public GlassTool glassTool = new GlassTool();
+    public AmethystEffects amethystEffects = new AmethystEffects();
 
     public static class General {
         public boolean enableDebugMode = false;
@@ -59,5 +60,13 @@ public class BaseModConfig {
         public boolean enableDoubleDrop = true;
         public float doubleDropChance = 10.0f;
         public int doubleDropDurabilityCost = 2;
+    }
+    public static class AmethystEffects {
+        public boolean enableEffects = true;
+        public float activeDamage = 4.0f;
+        public float activeRange = 5.0f;
+        public int activeDurabilityCost = 20;
+        public float passiveCrystalChance = 15.0f;
+        public float passiveCrystalDamage = 1.0f;
     }
 }
