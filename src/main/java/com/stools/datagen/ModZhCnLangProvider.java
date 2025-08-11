@@ -17,6 +17,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
         // 物品翻译
+        translationBuilder.add(ModItems.AMETHYST_INGOT,"紫水晶锭");
         translationBuilder.add(ModItems.SLICE_OF_CAKE, "蛋糕片");
         translationBuilder.add(ModItems.TEST_ITEM, "神秘东西");
         translationBuilder.add(ModItems.ENDER_ALLOY_INGOT, "末影合金锭");
@@ -102,6 +103,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "potato" -> "马铃薯";
             case "poisonous_potato" -> "毒马铃薯";
             case "amethyst" -> "紫水晶";
+            case "flint" -> "燧石";
             default -> null;
         };
     }

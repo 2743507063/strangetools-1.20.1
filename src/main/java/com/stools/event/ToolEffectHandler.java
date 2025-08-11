@@ -363,6 +363,14 @@ public class ToolEffectHandler {
                     }
                 }
                 break;
+            case FLINT:
+                if (random.nextFloat() < 0.25f) {
+                    // 随机生成1或2秒的火焰持续时间
+                    int fireSeconds = random.nextBoolean() ? 1 : 2;
+                    // 为目标实体设置火焰效果
+                    target.setOnFireFor(fireSeconds * 20);
+                }
+                break;
         }
     }
     private static boolean isEndMob(LivingEntity entity) {

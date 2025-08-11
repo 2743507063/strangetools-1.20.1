@@ -1,4 +1,3 @@
-
 package com.stools.event;
 
 import com.stools.config.ModConfigManager;
@@ -58,6 +57,20 @@ public class AmethystToolActiveSkillEvent {
                 // 播放准备音效
                 world.playSound(player, player.getBlockPos(), SoundEvents.BLOCK_AMETHYST_BLOCK_HIT,
                         SoundCategory.PLAYERS, 1.0f, 1.2f);
+
+                // 客户端粒子效果
+                for (int i = 0; i < 15; i++) {
+                    double offsetX = (world.random.nextDouble() - 0.5) * 2.0;
+                    double offsetY = world.random.nextDouble() * 1.5;
+                    double offsetZ = (world.random.nextDouble() - 0.5) * 2.0;
+
+                    world.addParticle(ParticleTypes.REVERSE_PORTAL,
+                            player.getX(),
+                            player.getY() + 1.5,
+                            player.getZ(),
+                            offsetX * 0.1, offsetY * 0.1, offsetZ * 0.1);
+                }
+
                 return TypedActionResult.success(stack);
             }
 
@@ -96,9 +109,9 @@ public class AmethystToolActiveSkillEvent {
 
                     // 粒子效果
                     if (world instanceof ServerWorld serverWorld) {
-                        serverWorld.spawnParticles(ParticleTypes.ELECTRIC_SPARK,
+                        serverWorld.spawnParticles(ParticleTypes.REVERSE_PORTAL,
                                 entity.getX(), entity.getY() + 1, entity.getZ(),
-                                5, 0.3, 0.3, 0.3, 0.05);
+                                15, 0.5, 0.5, 0.5, 0.1);
                     }
                 }
 
@@ -106,9 +119,9 @@ public class AmethystToolActiveSkillEvent {
                 if (world instanceof ServerWorld serverWorld) {
                     for (double d = 0; d <= range; d += 0.5) {
                         Vec3d pos = origin.add(direction.multiply(d));
-                        serverWorld.spawnParticles(ParticleTypes.GLOW,
+                        serverWorld.spawnParticles(ParticleTypes.REVERSE_PORTAL,
                                 pos.x, pos.y, pos.z,
-                                1, 0, 0, 0, 0);
+                                3, 0.1, 0.1, 0.1, 0.05);
                     }
                 }
             }
@@ -122,6 +135,13 @@ public class AmethystToolActiveSkillEvent {
                 Block block = world.getBlockState(pos).getBlock();
                 if (isGlassBlock(world.getBlockState(pos))) {
                     world.breakBlock(pos, true);
+
+                    // 玻璃破碎粒子
+                    if (world instanceof ServerWorld serverWorld) {
+                        serverWorld.spawnParticles(ParticleTypes.WAX_OFF,
+                                pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                                10, 0.5, 0.5, 0.5, 0.1);
+                    }
                 }
             }
 
@@ -134,6 +154,13 @@ public class AmethystToolActiveSkillEvent {
                 if (block == Blocks.AMETHYST_CLUSTER || block == Blocks.LARGE_AMETHYST_BUD) {
                     world.setBlockState(pos, Blocks.AMETHYST_CLUSTER.getDefaultState());
                     world.scheduleBlockTick(pos, block, 2); // 触发红石更新
+
+                    // 紫水晶激活粒子
+                    if (world instanceof ServerWorld serverWorld) {
+                        serverWorld.spawnParticles(ParticleTypes.ELECTRIC_SPARK,
+                                pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                                5, 0.3, 0.3, 0.3, 0.05);
+                    }
                 }
             }
 
@@ -142,6 +169,13 @@ public class AmethystToolActiveSkillEvent {
             world.playSound(null, player.getBlockPos(),
                     SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME,
                     SoundCategory.PLAYERS, 1.5f, 0.8f);
+
+            // 8. 释放技能后的粒子爆发
+            if (world instanceof ServerWorld serverWorld) {
+                serverWorld.spawnParticles(ParticleTypes.REVERSE_PORTAL,
+                        player.getX(), player.getY() + 1.5, player.getZ(),
+                        50, 1.0, 1.0, 1.0, 0.2);
+            }
 
             return TypedActionResult.success(stack);
         });

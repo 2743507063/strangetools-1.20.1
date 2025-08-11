@@ -21,7 +21,8 @@ public class ModItemTagsProvider extends FabricTagProvider.ItemTagProvider {
     private static final String[] ARMOR_MATERIALS = {
             "emerald",
             "lapis",
-            "copper"
+            "copper",
+            "redstone"
     };
 
     public ModItemTagsProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {

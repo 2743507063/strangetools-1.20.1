@@ -17,6 +17,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
         // 物品翻译
+        translationBuilder.add(ModItems.AMETHYST_INGOT,"Amethyst Ingot");
         translationBuilder.add(ModItems.TEST_ITEM, "TestItem:)");
         translationBuilder.add(ModItems.ENDER_ALLOY_INGOT, "Ender Alloy Ingot");
         translationBuilder.add(ModItems.RAW_VOID, "Void Ore Crude");

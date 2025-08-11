@@ -69,7 +69,8 @@ public enum ModToolMaterials implements ToolMaterial {
     GOLDEN_CARROT(2, 500, 6.0f, 2.5f, 20, () -> Ingredient.ofItems(Items.CARROT), false),
     POTATO(0, 250, 3.5f, 1.8f, 5, () -> Ingredient.ofItems(Items.POTATO), false),
     POISONOUS_POTATO(1, 450, 6.0f, 2.2f, 18, () -> Ingredient.ofItems(Items.POISONOUS_POTATO), false),
-    AMETHYST(2, 850, 7.5f, 3.5f, 35, () -> Ingredient.ofItems(ModItems.AMETHYST_INGOT), false);
+    AMETHYST(2, 850, 7.5f, 3.5f, 35, () -> Ingredient.ofItems(ModItems.AMETHYST_INGOT), false),
+    FLINT(1, 50, 3.5f, 0.5f, 1, () -> Ingredient.ofItems(Items.FLINT), false);
 
 
     private final int miningLevel;
