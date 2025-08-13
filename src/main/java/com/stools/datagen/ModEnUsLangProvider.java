@@ -16,6 +16,44 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
+        translationBuilder.add("advancement.strangetools.tool_master.title", "Tool Master");
+        translationBuilder.add("advancement.strangetools.tool_master.description", "Craft three different types of tools: sword, pickaxe, axe");
+
+        translationBuilder.add("advancement.strangetools.armor_master.title", "Armor Master");
+        translationBuilder.add("advancement.strangetools.armor_master.description", "Craft three armor pieces: helmet, chestplate, leggings");
+
+        translationBuilder.add("advancement.strangetools.ender_alloy_master.title", "Ender Alloy Master");
+        translationBuilder.add("advancement.strangetools.ender_alloy_master.description", "Craft an ender alloy ingot");
+
+        translationBuilder.add("advancement.strangetools.ender_alloy_tool.title", "Ender Alloy Tool");
+        translationBuilder.add("advancement.strangetools.ender_alloy_tool.description", "Craft an ender alloy tool");
+
+        translationBuilder.add("advancement.strangetools.explorer.title", "Explorer");
+        translationBuilder.add("advancement.strangetools.explorer.description", "Begin your exploration journey");
+
+        translationBuilder.add("advancement.strangetools.root.title", "Strange Toolsmith");
+        translationBuilder.add("advancement.strangetools.root.description", "Craft your first strange tool using vanilla items");
+
+        translationBuilder.add("advancement.strangetools.anything_tool.title", "Anything Can Be a Tool");
+        translationBuilder.add("advancement.strangetools.anything_tool.description", "Craft a tool using dirt");
+
+        translationBuilder.add("advancement.strangetools.edible_weapon.title", "Cake Sword");
+        translationBuilder.add("advancement.strangetools.edible_weapon.description", "Craft a weapon using cake");
+
+        translationBuilder.add("advancement.strangetools.redstone_armor.title", "Redstone Protection");
+        translationBuilder.add("advancement.strangetools.redstone_armor.description", "Craft redstone armor");
+
+        translationBuilder.add("advancement.strangetools.full_weird_set.title", "Lapis Lazuli Coverage");
+        translationBuilder.add("advancement.strangetools.full_weird_set.description", "Collect a full set of lapis lazuli armor");
+
+        translationBuilder.add("advancement.strangetools.alloy_master.title", "Netherite");
+        translationBuilder.add("advancement.strangetools.alloy_master.description", "Obtain a netherite ingot");
+
+        translationBuilder.add("advancement.strangetools.void_explorer.title", "Void Explorer");
+        translationBuilder.add("advancement.strangetools.void_explorer.description", "Obtain a void pearl");
+
+        translationBuilder.add("advancement.strangetools.obsidian_tool.title", "Looks Good");
+        translationBuilder.add("advancement.strangetools.obsidian_tool.description", "Obtain an obsidian pickaxe");
         // 物品翻译
         translationBuilder.add(ModItems.AMETHYST_INGOT,"Amethyst Ingot");
         translationBuilder.add(ModItems.TEST_ITEM, "TestItem:)");

@@ -16,6 +16,42 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
+        translationBuilder.add("advancement.strangetools.tool_master.title", "工具大师");
+
+        translationBuilder.add("advancement.strangetools.armor_master.title", "护甲大师");
+        translationBuilder.add("advancement.strangetools.tool_master.description", "制作剑、镐、斧三种不同类型的工具");
+        translationBuilder.add("advancement.strangetools.armor_master.description", "制作头盔、胸甲、护腿三种不同部位的盔甲");
+
+        translationBuilder.add("advancement.strangetools.ender_alloy_master.title", "末影合金大师");
+        translationBuilder.add("advancement.strangetools.ender_alloy_master.description", "合成末影合金锭");
+
+        translationBuilder.add("advancement.strangetools.ender_alloy_tool.title", "末影合金工具");
+        translationBuilder.add("advancement.strangetools.ender_alloy_tool.description", "制作末影合金工具");
+
+        translationBuilder.add("advancement.strangetools.explorer.title", "探险家");
+        translationBuilder.add("advancement.strangetools.explorer.description", "开始你的探索之旅");
+        translationBuilder.add("advancement.strangetools.root.title", "奇怪的工具匠");
+        translationBuilder.add("advancement.strangetools.root.description", "用原版物品制作第一件奇怪的工具");
+
+        translationBuilder.add("advancement.strangetools.anything_tool.title", "万物皆可工具");
+        translationBuilder.add("advancement.strangetools.anything_tool.description", "用泥土制作工具");
+
+        translationBuilder.add("advancement.strangetools.edible_weapon.title", "蛋糕之剑");
+        translationBuilder.add("advancement.strangetools.edible_weapon.description", "用蛋糕制作武器");
+
+        translationBuilder.add("advancement.strangetools.redstone_armor.title", "红石护体");
+        translationBuilder.add("advancement.strangetools.redstone_armor.description", "制作红石盔甲");
+
+        translationBuilder.add("advancement.strangetools.full_weird_set.title", "青金覆体");
+        translationBuilder.add("advancement.strangetools.full_weird_set.description", "收集全套青金石盔甲");
+        translationBuilder.add("advancement.strangetools.alloy_master.title", "下界合金");
+        translationBuilder.add("advancement.strangetools.alloy_master.description", "获得下界合金锭");
+
+        translationBuilder.add("advancement.strangetools.void_explorer.title", "虚空探险者");
+        translationBuilder.add("advancement.strangetools.void_explorer.description", "获得虚空珍珠");
+
+        translationBuilder.add("advancement.strangetools.obsidian_tool.title", "看着不错");
+        translationBuilder.add("advancement.strangetools.obsidian_tool.description", "获得黑曜石镐");
         // 物品翻译
         translationBuilder.add(ModItems.AMETHYST_INGOT,"紫水晶锭");
         translationBuilder.add(ModItems.SLICE_OF_CAKE, "蛋糕片");
