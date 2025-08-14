@@ -70,7 +70,8 @@ public enum ModToolMaterials implements ToolMaterial {
     POTATO(0, 250, 3.5f, 1.8f, 5, () -> Ingredient.ofItems(Items.POTATO), false),
     POISONOUS_POTATO(1, 450, 6.0f, 2.2f, 18, () -> Ingredient.ofItems(Items.POISONOUS_POTATO), false),
     AMETHYST(2, 850, 7.5f, 3.5f, 35, () -> Ingredient.ofItems(ModItems.AMETHYST_INGOT), false),
-    FLINT(1, 50, 3.5f, 0.5f, 1, () -> Ingredient.ofItems(Items.FLINT), false);
+    FLINT(1, 50, 3.5f, 0.5f, 1, () -> Ingredient.ofItems(Items.FLINT), false),
+    WHEAT(1, 35, 2.5f, 0.5f, 0, () -> Ingredient.ofItems(Items.WHEAT), false);
 
 
     private final int miningLevel;

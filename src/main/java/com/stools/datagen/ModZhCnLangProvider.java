@@ -140,6 +140,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "poisonous_potato" -> "毒马铃薯";
             case "amethyst" -> "紫水晶";
             case "flint" -> "燧石";
+            case "wheat" -> "小麦";
             default -> null;
         };
     }

@@ -6,6 +6,7 @@ import com.stools.entity.ModEntities;
 import com.stools.event.ModEvents;
 import com.stools.item.ModItemGroups;
 import com.stools.item.ModItems;
+import com.stools.item.ModTrades;
 import com.stools.loot.ModLootTableModifier;
 import com.stools.sound.ModSoundEvents;
 import com.stools.wordgen.ModWorldGen;
@@ -27,6 +28,7 @@ public class Strangetools implements ModInitializer {
 		// 注册基础内容
 		ModItems.registerItems();
 		ModBlocks.registerModBlocks();
+        ModTrades.registerTrades();
 		ModItemGroups.registerGroups();
 		ModItemGroups.modifyVanillaGroups();
 		ModLootTableModifier.registerModifications();

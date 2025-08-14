@@ -53,9 +53,7 @@ public class ModAdvancementsProvider extends FabricAdvancementProvider {
                 .criterion("has_sword", InventoryChangedCriterion.Conditions.items(ModItems.TOOLS.get("dirt_sword")))
                 .criterion("has_pickaxe", InventoryChangedCriterion.Conditions.items(ModItems.TOOLS.get("copper_pickaxe")))
                 .criterion("has_axe", InventoryChangedCriterion.Conditions.items(ModItems.TOOLS.get("cake_axe")))
-                .requirements(new String[][]{
-                        {"has_tool1", "has_tool2", "has_tool3"}
-                })
+                .requirements(new String[][]{{"has_sword", "has_pickaxe", "has_axe"}})
                 .build(consumer, Strangetools.MOD_ID + ":tool_master");
 
         createToolAdvancement(consumer, toolBranch, "dirt_sword", "anything_tool");
@@ -76,9 +74,7 @@ public class ModAdvancementsProvider extends FabricAdvancementProvider {
                 .criterion("has_helmet", InventoryChangedCriterion.Conditions.items(ModItems.ARMORS.get("copper_helmet")))
                 .criterion("has_chestplate", InventoryChangedCriterion.Conditions.items(ModItems.ARMORS.get("redstone_chestplate")))
                 .criterion("has_leggings", InventoryChangedCriterion.Conditions.items(ModItems.ARMORS.get("lapis_leggings")))
-                .requirements(new String[][]{
-                        {"has_armor1", "has_armor2", "has_armor3"}
-                })
+                .requirements(new String[][]{{"has_helmet", "has_chestplate", "has_leggings"}})
                 .build(consumer, Strangetools.MOD_ID + ":armor_master");
 
         createArmorAdvancement(consumer, armorBranch, "redstone", "redstone_armor");
@@ -157,7 +153,7 @@ public class ModAdvancementsProvider extends FabricAdvancementProvider {
                         Text.translatable("advancement.strangetools." + advancementId + ".title"),
                         Text.translatable("advancement.strangetools." + advancementId + ".description"),
                         null,
-                        AdvancementFrame.TASK,
+                        AdvancementFrame.CHALLENGE,
                         true, true, false
                 )
                 .criterion("has_item", InventoryChangedCriterion.Conditions.items(item))

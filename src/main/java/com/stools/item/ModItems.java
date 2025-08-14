@@ -121,6 +121,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.POISONOUS_POTATO,"poisonous_potato");
         registerToolSet(ModToolMaterials.AMETHYST,"amethyst");
         registerToolSet(ModToolMaterials.FLINT,"flint");
+        registerToolSet(ModToolMaterials.WHEAT,"wheat");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.COPPER, "copper");
