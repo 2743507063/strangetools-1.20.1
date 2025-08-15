@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ModItems {
+    public static final Item BK_TEST_ITEM = registerItem("bk_test_item",new Item(new Item.Settings()));
     public static final Item TEST_ITEM = registerItem("test_item", new SwordItem(ToolMaterials.WOOD, 6, 1, new Item.Settings().maxDamage(1)));
     public static final Item MACE = registerItem("mace",
             new MaceItem(ModMaceMaterials.IRON, new Item.Settings().maxCount(1))
