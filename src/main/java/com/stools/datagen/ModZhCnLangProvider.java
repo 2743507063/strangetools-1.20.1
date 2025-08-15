@@ -2,6 +2,7 @@ package com.stools.datagen;
 
 import com.stools.Strangetools;
 import com.stools.block.ModBlocks;
+import com.stools.integration.FarmerDelightIntegration;
 import com.stools.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -141,6 +142,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "amethyst" -> "紫水晶";
             case "flint" -> "燧石";
             case "wheat" -> "小麦";
+            case "beetroot" -> "甜菜根";
             default -> null;
         };
     }

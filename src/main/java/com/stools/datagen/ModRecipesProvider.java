@@ -77,6 +77,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "amethyst", ModItems.AMETHYST_INGOT);
         generateToolRecipes(exporter, "flint", Items.FLINT);
         generateToolRecipes(exporter, "wheat", Items.WHEAT);
+        generateToolRecipes(exporter, "beetroot", Items.BEETROOT);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
         generateArmorRecipes(exporter, "lapis", Items.LAPIS_LAZULI);

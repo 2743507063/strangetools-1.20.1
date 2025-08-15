@@ -4,6 +4,8 @@ import com.stools.block.ModBlocks;
 import com.stools.config.ModConfigManager;
 import com.stools.entity.ModEntities;
 import com.stools.event.ModEvents;
+import com.stools.integration.FarmerDelightIntegration;
+import com.stools.integration.farmersdelight.FarmerDelightToolMaterials;
 import com.stools.item.ModItemGroups;
 import com.stools.item.ModItems;
 import com.stools.item.ModTrades;
@@ -35,6 +37,7 @@ public class Strangetools implements ModInitializer {
 		ModEntities.registerEntities();
 		ModEvents.register();
 		ModSoundEvents.registerSounds();
+        FarmerDelightIntegration.register();
 
 		// 在动态注册表设置时注册世界生成特征
 		DynamicRegistrySetupCallback.EVENT.register(registrySetup -> {

@@ -3,6 +3,7 @@ package com.stools.datagen;
 import com.stools.Strangetools;
 import com.stools.block.ModBlocks;
 import com.stools.config.ClothModConfig;
+import com.stools.integration.FarmerDelightIntegration;
 import com.stools.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;

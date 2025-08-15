@@ -2,6 +2,7 @@ package com.stools.item.materials;
 
 import com.stools.datagen.ModItemTagsProvider;
 import com.stools.item.ModItems;
+import com.stools.item.ToolFactory;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
@@ -11,7 +12,7 @@ import net.minecraft.world.World;
 import java.util.Random;
 import java.util.function.Supplier;
 
-public enum ModToolMaterials implements ToolMaterial {
+public enum ModToolMaterials implements ToolMaterial, ToolFactory.Glintable {
     COPPER(2, 500, 5.0f, 1.5f, 15, () -> Ingredient.ofItems(Items.COPPER_INGOT),false),
     EMERALD(3, 2000, 8.0f, 3.0f, 25, () -> Ingredient.ofItems(Items.EMERALD),false),
     LAPIS(2, 600, 6.0f, 1.5f, 35, () -> Ingredient.ofItems(Items.LAPIS_LAZULI),false),
@@ -71,7 +72,8 @@ public enum ModToolMaterials implements ToolMaterial {
     POISONOUS_POTATO(1, 450, 6.0f, 2.2f, 18, () -> Ingredient.ofItems(Items.POISONOUS_POTATO), false),
     AMETHYST(2, 850, 7.5f, 3.5f, 35, () -> Ingredient.ofItems(ModItems.AMETHYST_INGOT), false),
     FLINT(1, 50, 3.5f, 0.5f, 1, () -> Ingredient.ofItems(Items.FLINT), false),
-    WHEAT(1, 35, 2.5f, 0.5f, 0, () -> Ingredient.ofItems(Items.WHEAT), false);
+    WHEAT(1, 430, 4.5f, 0.5f, 4, () -> Ingredient.ofItems(Items.WHEAT), false),
+    BEETROOT(1, 386, 4.0f, 2.5f, 9, () -> Ingredient.ofItems(Items.BEETROOT), false);
 
 
     private final int miningLevel;

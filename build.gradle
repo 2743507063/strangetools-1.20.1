@@ -22,6 +22,8 @@ repositories {
 	maven { url "https://maven.terraformersmc.com/releases/" }
 	// 添加 Fabric 仓库
 	maven { url "https://maven.fabricmc.net/" }
+    //农夫乐事
+    maven { url "https://api.modrinth.com/maven" }
 }
 
 loom {
@@ -57,6 +59,7 @@ dependencies {
 	//include "blue.endless:jankson:1.2.3"
 
 	//include "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
+    modCompileOnly "maven.modrinth:farmers-delight-fabric:${farmers_delight_version}"
 }
 
 processResources {

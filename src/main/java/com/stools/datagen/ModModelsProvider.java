@@ -1,6 +1,7 @@
 package com.stools.datagen;
 
 import com.stools.block.ModBlocks;
+import com.stools.integration.FarmerDelightIntegration;
 import com.stools.item.ModItems;
 import com.terraformersmc.modmenu.util.mod.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;

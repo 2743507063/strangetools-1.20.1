@@ -47,7 +47,7 @@ public class ModItems {
     public static final Map<String, Item> ARMORS = new HashMap<>();
     public static final List<String> ARMOR_IDS = new ArrayList<>();
 
-    private static void registerToolSet(ModToolMaterials material, String materialName) {
+    public static void registerToolSet(ModToolMaterials material, String materialName) {
         String prefix = materialName + "_";
 
         registerTool(prefix + "sword", ToolFactory.createSword(material, prefix + "sword"));
@@ -66,9 +66,8 @@ public class ModItems {
         registerArmor(prefix + "boots", ArmorFactory.createBoots(material, prefix + "boots"));
     }
 
-    private static void registerTool(String id, Item item) {
+    public static void registerTool(String id, Item item) {
         Item registeredItem = registerItem(id, item);
-
         TOOLS.put(id, registeredItem);
         TOOL_IDS.add(id);
     }
@@ -123,6 +122,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.AMETHYST,"amethyst");
         registerToolSet(ModToolMaterials.FLINT,"flint");
         registerToolSet(ModToolMaterials.WHEAT,"wheat");
+        registerToolSet(ModToolMaterials.BEETROOT,"beetroot");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.COPPER, "copper");

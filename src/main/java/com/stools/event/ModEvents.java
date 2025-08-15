@@ -39,6 +39,7 @@ public class ModEvents {
         PotatoToolUseEvent.register();
         PoPotatoToolUseEvent.register();
         AmethystToolActiveSkillEvent.register();
+        BeetrootToolUseEvent.register();
         ServerTickEvents.START_WORLD_TICK.register(world -> {
             EnderAlloyToolUseEvent.tick(world);
             VoidToolUseEvent.updateRifts(world);

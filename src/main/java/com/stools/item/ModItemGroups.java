@@ -59,7 +59,8 @@ public class ModItemGroups {
                             // 食物＆农作物工具
                             categoryMap.put("食物&农业", Arrays.asList(
                                     "apple", "golden_apple", "enchanted_golden_apple", "melon",
-                                    "sweet_berries","glow_berries","carrot","golden_carrot","potato","poisonous_potato","wheat","chorus_fruit","cake"
+                                    "sweet_berries","glow_berries","carrot","golden_carrot","potato",
+                                    "poisonous_potato","beetroot","wheat","chorus_fruit","cake"
                             ));
 
                             // 按分类顺序添加工具
