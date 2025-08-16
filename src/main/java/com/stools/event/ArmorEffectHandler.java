@@ -208,6 +208,21 @@ public class ArmorEffectHandler {
                 }
             }
         }
+        if (primaryMaterial == ModArmorMaterials.COAL) {
+            //被攻击时概率点燃攻击者
+            float igniteChance = 0.15f + (totalEffectPower * 0.05f); // 基础15% + 每件盔甲增加5%
+            if (RANDOM.nextFloat() < igniteChance) {
+                int fireTime = 1 + RANDOM.nextInt(3); // 1-3秒燃烧时间
+                attacker.setOnFireFor(fireTime * 20); // 转换为游戏刻
+
+                // 粒子效果
+                if (wearer.getWorld() instanceof ServerWorld serverWorld) {
+                    serverWorld.spawnParticles(ParticleTypes.FLAME,
+                            attacker.getX(), attacker.getY() + 1.0, attacker.getZ(),
+                            10, 0.3, 0.3, 0.3, 0.05);
+                }
+            }
+        }
     }
     private static void applyContinuousEffects(PlayerEntity player) {
         for (Map.Entry<ModArmorMaterials, List<StatusEffectInstance>> entry : ARMOR_EFFECTS_MAP.entrySet()) {
