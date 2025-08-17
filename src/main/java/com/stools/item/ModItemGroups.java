@@ -41,7 +41,7 @@ public class ModItemGroups {
                             // 主世界工具
                             categoryMap.put("主世界", Arrays.asList(
                                     "dirt", "copper", "emerald", "lapis", "redstone", "coal",
-                                    "obsidian", "prismarine","blue_ice", "rotten_flesh",
+                                    "obsidian", "prismarine","blue_ice","leather", "rotten_flesh",
                                     "bone", "glass", "slime", "string","amethyst","flint","bedrock"
                             ));
 

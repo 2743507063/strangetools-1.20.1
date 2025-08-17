@@ -4,16 +4,19 @@ import com.stools.entity.ModEntities;
 import com.stools.item.ModItems;
 import com.stools.render.entity.EnderPhantomRenderer;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import net.minecraft.item.DyeableItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 
 public class StrangetoolsClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
+        registerLeatherToolsColorProvider();
 		ModItems.TOOLS.forEach((id, item) -> {
 			if (id.startsWith("glass_")) {
 				ModelPredicateProviderRegistry.register(item,
@@ -37,4 +40,17 @@ public class StrangetoolsClient implements ClientModInitializer {
 		EntityRendererRegistry.register(ModEntities.VOID_PEARL,
 				context -> new FlyingItemEntityRenderer<>(context, 1.5f, true)); //渲染尺寸
 	}
+    private void registerLeatherToolsColorProvider() {
+        // 为所有皮革工具注册颜色提供器
+        ModItems.TOOLS.forEach((id, item) -> {
+            if (id.startsWith("leather_")) {
+                ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+                    if (tintIndex == 0 && stack.getItem() instanceof DyeableItem dyeableItem) {
+                        return dyeableItem.getColor(stack);
+                    }
+                    return -1; // 默认颜色（白色）
+                }, item);
+            }
+        });
+    }
 }

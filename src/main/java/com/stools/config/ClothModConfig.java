@@ -25,6 +25,8 @@ public class ClothModConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean enableAllEffects = true;
+        @ConfigEntry.Gui.Tooltip(count = 2)
+        public boolean coloredDurabilityBar = false;
     }
 
     // ========== Tool Effects ==========
@@ -251,6 +253,8 @@ public class ClothModConfig implements ConfigData {
         baseConfig.amethystEffects.activeDurabilityCost = this.amethystEffects.activeDurabilityCost;
         baseConfig.amethystEffects.passiveCrystalChance = this.amethystEffects.passiveCrystalChance;
         baseConfig.amethystEffects.passiveCrystalDamage = this.amethystEffects.passiveCrystalDamage;
+        baseConfig.general.coloredDurabilityBar = this.general.coloredDurabilityBar;
+        baseConfig.toolEffects.blueIceSlowChance = this.toolEffects.blueIceSlowChance;
     }
 
     // 初始化 Cloth Config

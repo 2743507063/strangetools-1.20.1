@@ -42,6 +42,7 @@ public class ModEvents {
         BeetrootToolUseEvent.register();
         BlueIceToolUseEvent.register();
         RawBeefToolUseEvent.register();
+        DriedKelpToolUseEvent.register();
         ServerTickEvents.START_WORLD_TICK.register(world -> {
             EnderAlloyToolUseEvent.tick(world);
             VoidToolUseEvent.updateRifts(world);

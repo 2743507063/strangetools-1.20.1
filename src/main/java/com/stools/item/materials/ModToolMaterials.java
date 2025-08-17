@@ -31,7 +31,7 @@ public enum ModToolMaterials implements ToolMaterial, ToolFactory.Glintable {
     BONE(2, 250, 5.5f, 2.5f, 15, () -> Ingredient.ofItems(Items.BONE), false),
     NETHERRACK(2, 350, 5.5f, 2.0f, 10, () -> Ingredient.ofItems(Items.NETHERRACK), false),
     NETHER_STAR(5, 2200, 10.0f, 5.0f, 30, () -> Ingredient.ofItems(Items.NETHER_STAR), true),
-    GLASS(2, 100, 7.0f, 1.0f, 25, () -> Ingredient.ofItems(Items.GLASS), false),
+    GLASS(2, 100, 7.0f, 2.0f, 25, () -> Ingredient.ofItems(Items.GLASS), false),
     SLIME(1, 120, 7.0f, 1.0f, 25, () -> Ingredient.ofItems(Items.SLIME_BALL), false),
     POTION(2, 650, 6.0f, 3.0f, 30, () -> Ingredient.ofItems(Items.GLASS_BOTTLE), true) {
         // 随机浮动伤害 (3.0-5.0)
@@ -71,7 +71,8 @@ public enum ModToolMaterials implements ToolMaterial, ToolFactory.Glintable {
     BEETROOT(1, 386, 4.0f, 2.5f, 9, () -> Ingredient.ofItems(Items.BEETROOT), false),
     DRIED_KELP(0, 20, 1.0f, 0.1f, 1, () -> Ingredient.ofItems(Items.DRIED_KELP), false),
     BLUE_ICE(1, 180, 4.5f, 1.8f, 18, () -> Ingredient.ofItems(Items.BLUE_ICE), false),
-    RAW_BEEF(0, 150, 3.0f, 1.5f, 5, () -> Ingredient.ofItems(Items.BEEF), false);
+    RAW_BEEF(0, 150, 3.0f, 1.5f, 5, () -> Ingredient.ofItems(Items.BEEF), false),
+    LEATHER(0, 80, 1.0f, 0.0f, 15, () -> Ingredient.ofItems(Items.LEATHER), false);
 
 
     private final int miningLevel;

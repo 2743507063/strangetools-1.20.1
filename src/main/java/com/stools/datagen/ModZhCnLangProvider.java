@@ -115,12 +115,12 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "prismarine" -> "海晶石";
             case "rotten_flesh" -> "腐肉";
             case "glowstone" -> "萤石";
-            case "blaze_powder" -> "烈焰粉";
+            case "blaze_powder" -> "烈焰";
             case "apple" -> "苹果";
             case "golden_apple" -> "金苹果";
             case "enchanted_golden_apple" -> "附魔金苹果";
             case "bedrock" -> "基岩";
-            case "bone" -> "骨头";
+            case "bone" -> "骨";
             case "nether_star" -> "下界之星";
             case "netherrack" -> "下界岩";
             case "glass" -> "玻璃";
@@ -146,6 +146,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "dried_kelp" -> "干海带";
             case "blue_ice" -> "蓝冰";
             case "raw_beef" -> "生牛肉";
+            case "leather" -> "皮革";
             default -> null;
         };
     }
@@ -347,5 +348,10 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("text.autoconfig.strangetools.option.toolEffects.blueIceSlowChance", "减速触发概率 (%)");
         translationBuilder.add("text.autoconfig.strangetools.option.toolEffects.blueIceSlowChance.@Tooltip",
                 "蓝冰工具命中实体触发缓慢效果的概率");
+        translationBuilder.add("text.autoconfig.strangetools.option.general.coloredDurabilityBar", "皮革工具耐久度条颜色");
+        translationBuilder.add("text.autoconfig.strangetools.option.general.coloredDurabilityBar.@Tooltip[0]",
+                "开启之后始终显示耐久度条,颜色为染色的颜色");
+        translationBuilder.add("text.autoconfig.strangetools.option.general.coloredDurabilityBar.@Tooltip[1]",
+                "关闭之后则消耗耐久后显示耐久度条,颜色为原版耐久条颜色");
     }
 }

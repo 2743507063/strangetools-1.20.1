@@ -123,6 +123,7 @@ public class ModItems {
         registerToolSet(ModToolMaterials.DRIED_KELP,"dried_kelp");
         registerToolSet(ModToolMaterials.BLUE_ICE,"blue_ice");
         registerToolSet(ModToolMaterials.RAW_BEEF,"raw_beef");
+        registerToolSet(ModToolMaterials.LEATHER,"leather");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.COPPER, "copper");

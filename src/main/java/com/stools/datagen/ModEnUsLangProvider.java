@@ -290,5 +290,10 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("text.autoconfig.strangetools.option.toolEffects.blueIceSlowChance", "Slowdown Trigger Chance (%)");
         translationBuilder.add("text.autoconfig.strangetools.option.toolEffects.blueIceSlowChance.@Tooltip",
                 "The probability that Blue Ice Tools trigger the Slowness effect when hitting an entity");
+        translationBuilder.add("text.autoconfig.strangetools.option.general.coloredDurabilityBar", "Leather Tool Durability Bar Color");
+        translationBuilder.add("text.autoconfig.strangetools.option.general.coloredDurabilityBar.@Tooltip[0]",
+                "When enabled, durability bar is always visible with dyed color");
+        translationBuilder.add("text.autoconfig.strangetools.option.general.coloredDurabilityBar.@Tooltip[1]",
+                "When disabled, durability bar only appears after durability loss with vanilla color");
     }
 }

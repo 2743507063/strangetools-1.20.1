@@ -37,11 +37,12 @@ public class ModModelsProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.AMETHYST_INGOT,Models.GENERATED);
         for (String toolId : ModItems.TOOL_IDS) {
             if (toolId.startsWith("glass_")) continue; // 跳过玻璃工具
+            if (toolId.startsWith("leather_")) continue; // 跳过皮革工具
             Item item = ModItems.TOOLS.get(toolId);
             if (item != null) {
-                itemModelGenerator.register(item, Models.HANDHELD);
+                    itemModelGenerator.register(item, Models.HANDHELD);
+                }
             }
-        }
         // 盔甲模型
         for (String armorId : ModItems.ARMOR_IDS) {
             Item item = ModItems.ARMORS.get(armorId);

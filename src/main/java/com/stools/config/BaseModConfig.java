@@ -14,6 +14,7 @@ public class BaseModConfig {
     public static class General {
         public boolean enableDebugMode = false;
         public boolean enableAllEffects = true;
+        public boolean coloredDurabilityBar = false;
     }
 
     public static class ToolEffects {
