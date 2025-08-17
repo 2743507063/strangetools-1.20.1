@@ -145,6 +145,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "beetroot" -> "甜菜根";
             case "dried_kelp" -> "干海带";
             case "blue_ice" -> "蓝冰";
+            case "raw_beef" -> "生牛肉";
             default -> null;
         };
     }

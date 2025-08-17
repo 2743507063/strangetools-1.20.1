@@ -3,6 +3,7 @@ package com.stools.datagen;
 import com.stools.Strangetools;
 import com.stools.block.ModBlocks;
 import com.stools.item.ModItems;
+import com.terraformersmc.modmenu.util.mod.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
@@ -79,6 +80,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "wheat", Items.WHEAT);
         generateToolRecipes(exporter, "beetroot", Items.BEETROOT);
         generateToolRecipes(exporter, "dried_kelp", Items.DRIED_KELP);
+        generateToolRecipes(exporter, "blue_ice", Items.BLUE_ICE);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
         generateArmorRecipes(exporter, "lapis", Items.LAPIS_LAZULI);

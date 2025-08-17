@@ -17,7 +17,7 @@ public class ModTrades {
     private static final List<String> MAIN_WORLD_MATERIALS = Arrays.asList(
             "dirt", "copper", "emerald", "lapis", "redstone", "coal",
             "obsidian", "prismarine", "rotten_flesh",
-            "bone", "glass", "slime", "string", "amethyst", "flint"
+            "bone", "glass", "slime", "string", "amethyst", "flint","blue_ice"
     );
 
     // 盔甲材料
@@ -44,7 +44,7 @@ public class ModTrades {
 
         // 工具匠等级3交易（中级工具）
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.TOOLSMITH, 3, factories -> {
-            addToolsForMaterials(factories, Arrays.asList("copper", "lapis", "redstone", "bone", "slime", "glass"), 3, 7);
+            addToolsForMaterials(factories, Arrays.asList("copper", "lapis", "redstone", "bone", "slime", "glass","blue_ice"), 3, 7);
         });
 
         // 工具匠等级4-5交易（高级工具）

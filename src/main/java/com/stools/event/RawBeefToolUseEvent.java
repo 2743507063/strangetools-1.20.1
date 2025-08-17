@@ -11,7 +11,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.TypedActionResult;
 
-public class DriedKelpToolUseEvent {
+public class RawBeefToolUseEvent {
 
     public static void register() {
         UseItemCallback.EVENT.register((player, world, hand) -> {
@@ -20,7 +20,7 @@ public class DriedKelpToolUseEvent {
                 return TypedActionResult.pass(stack);
             }
             if (player.isSneaking() && stack.getItem() instanceof ToolItem toolItem) {
-                if (toolItem.getMaterial() == ModToolMaterials.DRIED_KELP) {
+                if (toolItem.getMaterial() == ModToolMaterials.RAW_BEEF) {
                     int currentDamage = stack.getDamage();
                     int maxDamage = stack.getMaxDamage();
                     int remainingDurability = maxDamage - currentDamage;
@@ -30,7 +30,7 @@ public class DriedKelpToolUseEvent {
                         stack.damage(consumeAmount, player, e -> e.sendToolBreakStatus(hand));
 
                         HungerManager hungerManager = player.getHungerManager();
-                        hungerManager.add(1, 0.6f);
+                        hungerManager.add(3, 1.8f);
 
                         world.playSound(null, player.getBlockPos(),
                                 SoundEvents.ENTITY_GENERIC_EAT,
