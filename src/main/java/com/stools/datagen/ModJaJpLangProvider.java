@@ -14,7 +14,6 @@ public class ModJaJpLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
-        translationBuilder.add(ModItems.MACE, "重槌（じゅうつい）");
         translationBuilder.add("itemGroup.strangetools.tools_group", "変わったツール");
         translationBuilder.add("itemGroup.strangetools.armor_group", "変わった鎧");
         generateItemTranslations(translationBuilder, ModItems.TOOL_IDS);

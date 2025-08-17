@@ -78,11 +78,13 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "flint", Items.FLINT);
         generateToolRecipes(exporter, "wheat", Items.WHEAT);
         generateToolRecipes(exporter, "beetroot", Items.BEETROOT);
+        generateToolRecipes(exporter, "dried_kelp", Items.DRIED_KELP);
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
         generateArmorRecipes(exporter, "lapis", Items.LAPIS_LAZULI);
         generateArmorRecipes(exporter, "copper", Items.COPPER_INGOT);
         generateArmorRecipes(exporter, "redstone", Items.REDSTONE);
+        generateArmorRecipes(exporter, "coal", Items.COAL);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ENDER_ALLOY_INGOT, 1)
                 .pattern("AAA")

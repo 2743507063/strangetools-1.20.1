@@ -371,6 +371,27 @@ public class ToolEffectHandler {
                     target.setOnFireFor(fireSeconds * 20);
                 }
                 break;
+            case BLUE_ICE:
+                float slowChance = ModConfigManager.CONFIG.toolEffects.blueIceSlowChance / 100f;
+                if (random.nextFloat() < slowChance) {
+                    target.addStatusEffect(new StatusEffectInstance(
+                            StatusEffects.SLOWNESS,
+                            60,  // 3秒持续时间
+                            0    // 等级I
+                    ));
+
+                    // 粒子效果
+                    if (world.isClient()) {
+                        for (int i = 0; i < 5; i++) {
+                            world.addParticle(ParticleTypes.SNOWFLAKE,
+                                    target.getX(),
+                                    target.getY() + 1,
+                                    target.getZ(),
+                                    0, 0.1, 0);
+                        }
+                    }
+                }
+                break;
         }
     }
     private static boolean isEndMob(LivingEntity entity) {

@@ -143,6 +143,8 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "flint" -> "燧石";
             case "wheat" -> "小麦";
             case "beetroot" -> "甜菜根";
+            case "dried_kelp" -> "干海带";
+            case "blue_ice" -> "蓝冰";
             default -> null;
         };
     }
@@ -341,5 +343,8 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.passiveCrystalDamage", "被动水晶额外伤害");
         translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.passiveCrystalDamage.@Tooltip",
                 "水晶共鸣造成的额外伤害值");
+        translationBuilder.add("text.autoconfig.strangetools.option.toolEffects.blueIceSlowChance", "减速触发概率 (%)");
+        translationBuilder.add("text.autoconfig.strangetools.option.toolEffects.blueIceSlowChance.@Tooltip",
+                "蓝冰工具命中实体触发缓慢效果的概率");
     }
 }

@@ -287,5 +287,8 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.passiveCrystalDamage", "Passive Crystal Additional Damage");
         translationBuilder.add("text.autoconfig.strangetools.option.amethystEffects.passiveCrystalDamage.@Tooltip",
                 "Additional damage value caused by crystal resonance");
+        translationBuilder.add("text.autoconfig.strangetools.option.toolEffects.blueIceSlowChance", "Slowdown Trigger Chance (%)");
+        translationBuilder.add("text.autoconfig.strangetools.option.toolEffects.blueIceSlowChance.@Tooltip",
+                "The probability that Blue Ice Tools trigger the Slowness effect when hitting an entity");
     }
 }

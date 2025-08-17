@@ -7,7 +7,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.world.World;
 
 import java.util.Random;
 import java.util.function.Supplier;
@@ -52,10 +51,6 @@ public enum ModToolMaterials implements ToolMaterial, ToolFactory.Glintable {
     },
 
     VOID(4, 1800, 8.0f, 3.5f, 18, () -> Ingredient.ofItems(ModItems.VOID_INGOT), false) {
-        @Override
-        public float getAttackDamage() {
-            return 3.5f + (new Random().nextFloat() * 0.5f); // 小幅度随机伤害
-        }
     },
     DIRT(0, 15, 1.0f, 0.0f, 0, () -> Ingredient.fromTag(ModItemTagsProvider.DIRT_TAG), false) {
         @Override
@@ -73,7 +68,9 @@ public enum ModToolMaterials implements ToolMaterial, ToolFactory.Glintable {
     AMETHYST(2, 850, 7.5f, 3.5f, 35, () -> Ingredient.ofItems(ModItems.AMETHYST_INGOT), false),
     FLINT(1, 50, 3.5f, 0.5f, 1, () -> Ingredient.ofItems(Items.FLINT), false),
     WHEAT(1, 430, 4.5f, 0.5f, 4, () -> Ingredient.ofItems(Items.WHEAT), false),
-    BEETROOT(1, 386, 4.0f, 2.5f, 9, () -> Ingredient.ofItems(Items.BEETROOT), false);
+    BEETROOT(1, 386, 4.0f, 2.5f, 9, () -> Ingredient.ofItems(Items.BEETROOT), false),
+    DRIED_KELP(0, 20, 1.0f, 0.1f, 1, () -> Ingredient.ofItems(Items.DRIED_KELP), false),
+    BLUE_ICE(1, 180, 4.5f, 1.8f, 18, () -> Ingredient.ofItems(Items.BLUE_ICE), false);
 
 
     private final int miningLevel;

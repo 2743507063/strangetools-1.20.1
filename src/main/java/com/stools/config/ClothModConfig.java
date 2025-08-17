@@ -69,6 +69,10 @@ public class ClothModConfig implements ConfigData {
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
         public float poisonousPotatoEatPoisonChance = 60.0f;
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public float blueIceSlowChance = 10.0f;
     }
 
     // ========== Armor Effects ==========

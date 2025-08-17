@@ -27,6 +27,7 @@ public class BaseModConfig {
         public float sweetBerriesPoisonChance = 5.0f;
         public float poisonousPotatoPoisonChance = 15.0f;
         public float poisonousPotatoEatPoisonChance = 60.0f;
+        public float blueIceSlowChance = 10.0f;
     }
 
     public static class ArmorEffects {

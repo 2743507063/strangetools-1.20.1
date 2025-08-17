@@ -111,7 +111,7 @@ public class ModAdvancementsProvider extends FabricAdvancementProvider {
                         Text.translatable("advancement.strangetools." + advancementId + ".title"),
                         Text.translatable("advancement.strangetools." + advancementId + ".description"),
                         null,
-                        AdvancementFrame.TASK,
+                        AdvancementFrame.CHALLENGE,
                         true, true, false
                 )
                 .criterion("has_tool", InventoryChangedCriterion.Conditions.items(toolItem))
@@ -140,7 +140,6 @@ public class ModAdvancementsProvider extends FabricAdvancementProvider {
                 .build(consumer, Strangetools.MOD_ID + ":" + advancementId);
     }
 
-    // 修改这个方法使其返回 Advancement
     private Advancement createMaterialAdvancement(Consumer<Advancement> consumer,
                                                   Advancement parent,
                                                   ItemConvertible item,
