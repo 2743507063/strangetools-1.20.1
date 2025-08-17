@@ -29,8 +29,8 @@ import java.util.UUID;
 
 public class BoneToolUseEvent {
 
-    private static final int DURABILITY_COST = 30;
-    private static final int SHIELD_DURATION = 200; // 10秒
+    private static final int DURABILITY_COST = 250/5;
+    private static final int SHIELD_DURATION = 100; // 10秒
     private static final Map<UUID, Long> activeShields = new HashMap<>(); // 玩家UUID到结束时间的映射
     private static final Map<UUID, List<Entity>> playerBones = new HashMap<>(); // 玩家UUID到骨头实体的映射
 
