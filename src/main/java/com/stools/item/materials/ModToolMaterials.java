@@ -72,6 +72,7 @@ public enum ModToolMaterials implements ToolMaterial, ToolFactory.Glintable {
     DRIED_KELP(0, 20, 1.0f, 0.1f, 1, () -> Ingredient.ofItems(Items.DRIED_KELP), false),
     BLUE_ICE(1, 180, 4.5f, 1.8f, 18, () -> Ingredient.ofItems(Items.BLUE_ICE), false),
     RAW_BEEF(0, 150, 3.0f, 1.5f, 5, () -> Ingredient.ofItems(Items.BEEF), false),
+    STEAK(0, 250, 4.5f, 2.0f, 10, () -> Ingredient.ofItems(Items.COOKED_BEEF), false),
     LEATHER(0, 80, 1.0f, 0.0f, 15, () -> Ingredient.ofItems(Items.LEATHER), false);
 
 

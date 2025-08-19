@@ -33,8 +33,8 @@ public class BaseModConfig {
 
     public static class ArmorEffects {
         public boolean enableArmorEffects = true;
-        public float armorReflectChance = 30.0f;
-        public float armorReflectDamage = 2.0f;
+        public float emeraldDropBaseChance = 15.0f; // 基础掉落概率百分比
+        public float emeraldDamageMultiplier = 0.5f; // 伤害转绿宝石系数
         public float copperPushChance = 5.0f;
         public float copperCleanseChance = 15.0f;
     }

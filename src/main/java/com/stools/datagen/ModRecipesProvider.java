@@ -17,6 +17,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -82,6 +83,9 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "dried_kelp", Items.DRIED_KELP);
         generateToolRecipes(exporter, "blue_ice", Items.BLUE_ICE);
         generateToolRecipes(exporter, "leather", Items.LEATHER);
+        generateToolRecipes(exporter, "raw_beef", Items.BEEF);
+        generateToolRecipes(exporter, "steak", Items.COOKED_BEEF);
+
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
         generateArmorRecipes(exporter, "lapis", Items.LAPIS_LAZULI);
@@ -166,6 +170,57 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 toolType -> ModItems.TOOLS.get("golden_apple_" + toolType),
                 Items.GOLD_INGOT,
                 Items.GOLDEN_APPLE);
+
+        // 牛肉 -> 熟牛肉(牛排)
+        String[] toolTypes = {"sword", "pickaxe", "axe", "shovel", "hoe"};
+        for (String toolType : toolTypes) {
+            Item rawTool = ModItems.TOOLS.get("raw_beef_" + toolType);
+            Item cookedTool = ModItems.TOOLS.get("steak_" + toolType);
+
+            if (rawTool != null && cookedTool != null) {
+                // 1. 熔炉配方
+                CookingRecipeJsonBuilder.createSmelting(
+                                Ingredient.ofItems(rawTool),
+                                RecipeCategory.TOOLS,
+                                cookedTool,
+                                0.35f, // 经验值
+                                200    // 烹饪时间（刻）
+                        )
+                        .criterion(hasItem(rawTool), conditionsFromItem(rawTool))
+                        .offerTo(exporter, new Identifier(
+                                Strangetools.MOD_ID,
+                                "steak_" + toolType + "_from_smelting"
+                        ));
+
+                // 2. 烟熏炉配方
+                CookingRecipeJsonBuilder.createSmoking(
+                                Ingredient.ofItems(rawTool),
+                                RecipeCategory.TOOLS,
+                                cookedTool,
+                                0.35f, // 经验值
+                                100    // 烹饪时间（刻）
+                        )
+                        .criterion(hasItem(rawTool), conditionsFromItem(rawTool))
+                        .offerTo(exporter, new Identifier(
+                                Strangetools.MOD_ID,
+                                "steak_" + toolType + "_from_smoking"
+                        ));
+
+                // 3. 营火配方
+                CookingRecipeJsonBuilder.createCampfireCooking(
+                                Ingredient.ofItems(rawTool),
+                                RecipeCategory.TOOLS,
+                                cookedTool,
+                                0.35f, // 经验值
+                                600    // 烹饪时间（刻）
+                        )
+                        .criterion(hasItem(rawTool), conditionsFromItem(rawTool))
+                        .offerTo(exporter, new Identifier(
+                                Strangetools.MOD_ID,
+                                "steak_" + toolType + "_from_campfire_cooking"
+                        ));
+            }
+        }
     }
 
     private void generateArmorRecipes(Consumer<RecipeJsonProvider> exporter, String material, Item materialItem) {

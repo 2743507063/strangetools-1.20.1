@@ -146,6 +146,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "dried_kelp" -> "干海带";
             case "blue_ice" -> "蓝冰";
             case "raw_beef" -> "生牛肉";
+            case "steak" -> "牛排";
             case "leather" -> "皮革";
             default -> null;
         };
@@ -233,13 +234,13 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.enableArmorEffects.@Tooltip",
                 "所有盔甲相关效果的总开关");
 
-        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.armorReflectChance", "盔甲反弹概率 (%)");
-        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.armorReflectChance.@Tooltip",
-                "盔甲将伤害反弹给攻击者的概率");
+        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.emeraldDropBaseChance", "绿宝石基础掉落概率 (%)");
+        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.emeraldDropBaseChance.@Tooltip",
+                "穿戴整套绿宝石盔甲时，受到伤害掉落绿宝石的基础概率");
 
-        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.armorReflectDamage", "盔甲反弹伤害");
-        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.armorReflectDamage.@Tooltip",
-                "盔甲反弹给攻击者的伤害值");
+        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.emeraldDamageMultiplier", "绿宝石掉落伤害系数");
+        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.emeraldDamageMultiplier.@Tooltip",
+                "穿戴整套绿宝石盔甲时，掉落绿宝石数量 = 伤害值 × 此系数（最大不超过5个）");
 
         translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.copperPushChance", "铜击退概率 (%)");
         translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.copperPushChance.@Tooltip",

@@ -174,13 +174,14 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.enableArmorEffects.@Tooltip",
                 "Master switch for all armor-related effects");
 
-        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.armorReflectChance", "Armor Reflect Chance (%)");
-        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.armorReflectChance.@Tooltip",
-                "Probability of reflecting damage back to attackers");
+        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.emeraldDropBaseChance", "Emerald Base Drop Chance (%)");
+        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.emeraldDropBaseChance.@Tooltip",
+                "Base chance to drop emeralds when taking damage while wearing a full set of emerald armor");
 
-        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.armorReflectDamage", "Armor Reflect Damage");
-        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.armorReflectDamage.@Tooltip",
-                "Amount of damage reflected back to attackers");
+        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.emeraldDamageMultiplier", "Emerald Drop Damage Multiplier");
+        translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.emeraldDamageMultiplier.@Tooltip",
+                "Number of emeralds dropped = damage taken × this multiplier (capped at 5) when wearing full emerald armor");
+
 
         translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.copperPushChance", "Copper Push Chance (%)");
         translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.copperPushChance.@Tooltip",
@@ -190,7 +191,6 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("text.autoconfig.strangetools.option.armorEffects.copperCleanseChance.@Tooltip",
                 "Probability of removing one negative effect from the wearer with copper armor");
 
-        // ==== Glowstone Effects ====
         // ==== Glowstone Effects ====
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.enableEffects", "Enable Glowstone Effects");
         translationBuilder.add("text.autoconfig.strangetools.option.glowstoneEffects.enableEffects.@Tooltip",

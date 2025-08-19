@@ -85,13 +85,12 @@ public class ClothModConfig implements ConfigData {
     public static class ArmorEffectsSettings {
         @ConfigEntry.Gui.Tooltip
         public boolean enableArmorEffects = true;
-
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
-        public float armorReflectChance = 30.0f;
+        public float emeraldDropBaseChance = 15.0f;
 
         @ConfigEntry.Gui.Tooltip
-        public float armorReflectDamage = 2.0f;
+        public float emeraldDamageMultiplier = 0.5f;
 
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
@@ -220,11 +219,10 @@ public class ClothModConfig implements ConfigData {
 
         // Armor Effects
         baseConfig.armorEffects.enableArmorEffects = this.armorEffects.enableArmorEffects;
-        baseConfig.armorEffects.armorReflectChance = this.armorEffects.armorReflectChance;
-        baseConfig.armorEffects.armorReflectDamage = this.armorEffects.armorReflectDamage;
         baseConfig.armorEffects.copperPushChance = this.armorEffects.copperPushChance;
         baseConfig.armorEffects.copperCleanseChance = this.armorEffects.copperCleanseChance;
-
+        baseConfig.armorEffects.emeraldDropBaseChance = this.armorEffects.emeraldDropBaseChance;
+        baseConfig.armorEffects.emeraldDamageMultiplier = this.armorEffects.emeraldDamageMultiplier;
         // Glowstone Effects
         baseConfig.glowstoneEffects.enableEffects = this.glowstoneEffects.enableEffects;
         baseConfig.glowstoneEffects.damageAmount = this.glowstoneEffects.damageAmount;

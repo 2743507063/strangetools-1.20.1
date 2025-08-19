@@ -61,7 +61,7 @@ public class ModItemGroups {
                                     "apple", "golden_apple", "enchanted_golden_apple", "melon",
                                     "sweet_berries","glow_berries","carrot","golden_carrot","potato",
                                     "poisonous_potato","beetroot","wheat","dried_kelp","raw_beef",
-                                    "chorus_fruit", "cake"
+                                    "steak","chorus_fruit", "cake"
                             ));
 
                             // 按分类顺序添加工具

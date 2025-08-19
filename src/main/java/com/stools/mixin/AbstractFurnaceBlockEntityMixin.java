@@ -20,15 +20,27 @@ public class AbstractFurnaceBlockEntityMixin {
         Map<Item, Integer> fuelMap = cir.getReturnValue();
 
         addCoalToolsAsFuel(fuelMap);
+        addBlazeToolsAsFuel(fuelMap);
     }
 
     private static void addCoalToolsAsFuel(Map<Item, Integer> fuelMap) {
         int fuelTime = 2400;
-
         fuelMap.put(ModItems.TOOLS.get("coal_sword"), fuelTime);
         fuelMap.put(ModItems.TOOLS.get("coal_pickaxe"), fuelTime);
         fuelMap.put(ModItems.TOOLS.get("coal_axe"), fuelTime);
         fuelMap.put(ModItems.TOOLS.get("coal_shovel"), fuelTime);
         fuelMap.put(ModItems.TOOLS.get("coal_hoe"), fuelTime);
+        fuelMap.put(ModItems.ARMORS.get("coal_boots"), fuelTime);
+        fuelMap.put(ModItems.ARMORS.get("coal_helmet"), fuelTime);
+        fuelMap.put(ModItems.ARMORS.get("coal_chestplate"), fuelTime);
+        fuelMap.put(ModItems.ARMORS.get("coal_leggings"), fuelTime);
+    }
+    private static void addBlazeToolsAsFuel(Map<Item, Integer> fuelMap) {
+        int fuelTime = 3600;
+        fuelMap.put(ModItems.TOOLS.get("blaze_powder_sword"), fuelTime);
+        fuelMap.put(ModItems.TOOLS.get("blaze_powder_pickaxe"), fuelTime);
+        fuelMap.put(ModItems.TOOLS.get("blaze_powder_axe"), fuelTime);
+        fuelMap.put(ModItems.TOOLS.get("blaze_powder_shovel"), fuelTime);
+        fuelMap.put(ModItems.TOOLS.get("blaze_powder_hoe"), fuelTime);
     }
 }
