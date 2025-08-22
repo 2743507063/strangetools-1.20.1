@@ -132,6 +132,7 @@ public class ModItems {
         registerArmorSet(ModArmorMaterials.LAPIS, "lapis");
         registerArmorSet(ModArmorMaterials.REDSTONE, "redstone");
         registerArmorSet(ModArmorMaterials.COAL, "coal");
+        registerArmorSet(ModArmorMaterials.OBSIDIAN, "obsidian");
 
         //重锤
     }

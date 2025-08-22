@@ -24,6 +24,7 @@ import net.minecraft.sound.SoundEvents;
 import org.joml.Vector3f;
 
 import java.util.*;
+import net.minecraft.registry.tag.DamageTypeTags;
 
 public class ArmorEffectHandler {
     private static final Map<ModArmorMaterials, List<StatusEffectInstance>> ARMOR_EFFECTS_MAP =
@@ -36,6 +37,10 @@ public class ArmorEffectHandler {
         ARMOR_EFFECTS_MAP.put(ModArmorMaterials.LAPIS, List.of(
                 new StatusEffectInstance(StatusEffects.RESISTANCE, 100, 0, false, false, true)
         ));
+        ARMOR_EFFECTS_MAP.put(ModArmorMaterials.OBSIDIAN, List.of(
+                new StatusEffectInstance(StatusEffects.RESISTANCE, 100, 0, false, false, true),
+                new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 0, false, false, true)
+        ));
     }
 
     private static final Random RANDOM = new Random();
@@ -47,6 +52,34 @@ public class ArmorEffectHandler {
             if (!ModConfigManager.CONFIG.toolEffects.enableToolSkills ||
                     !ModConfigManager.CONFIG.armorEffects.enableArmorEffects) {
                 return true;
+            }
+
+            // 黑曜石盔甲爆炸免疫处理
+            if (source.isIn(DamageTypeTags.IS_EXPLOSION) && hasAnyObsidianArmor(entity)) {
+                // 消耗每件黑曜石盔甲10%耐久
+                for (ItemStack armor : entity.getArmorItems()) {
+                    if (isObsidianArmor(armor)) {
+                        int maxDamage = armor.getMaxDamage();
+                        int damageToApply = maxDamage / 10; // 10%耐久消耗
+                        armor.setDamage(armor.getDamage() + damageToApply);
+
+                        if (armor.getDamage() >= maxDamage) {
+                            armor.decrement(1); // 盔甲损坏
+                        }
+                    }
+                }
+
+                        // 播放爆炸吸收效果
+                if (entity.getWorld() instanceof ServerWorld serverWorld) {
+                    serverWorld.spawnParticles(ParticleTypes.LARGE_SMOKE,
+                            entity.getX(), entity.getY() + 1.0, entity.getZ(),
+                            20, 0.5, 0.5, 0.5, 0.1);
+                    serverWorld.playSound(null, entity.getBlockPos(),
+                            SoundEvents.BLOCK_ANVIL_PLACE,
+                            SoundCategory.PLAYERS, 0.8f, 0.5f);
+                }
+
+                return false; // 取消爆炸伤害
             }
 
             if (source.getAttacker() instanceof LivingEntity attacker) {
@@ -66,6 +99,7 @@ public class ArmorEffectHandler {
             for (PlayerEntity player : world.getPlayers()) {
                 if (player instanceof ServerPlayerEntity) {
                     applyContinuousEffects(player);
+                    applyObsidianFullSetEffects(player);
                 }
             }
         });
@@ -263,6 +297,30 @@ public class ArmorEffectHandler {
                             SoundCategory.PLAYERS, 0.6f, 1.8f);
                 }
                 break;
+
+            case OBSIDIAN:
+                // 黑曜石盔甲专属效果：黑曜石碎片反射
+                float reflectChance = 0.15f;
+                if (RANDOM.nextFloat() < reflectChance) {
+                    // 造成3点伤害
+                    attacker.damage(attacker.getDamageSources().thorns(wearer), 3.0f);
+
+                    // 击退效果
+                    attacker.takeKnockback(0.5f,
+                            wearer.getX() - attacker.getX(),
+                            wearer.getZ() - attacker.getZ());
+
+                    // 粒子效果和音效
+                    if (wearer.getWorld() instanceof ServerWorld serverWorld) {
+                        serverWorld.spawnParticles(ParticleTypes.CRIT,
+                                attacker.getX(), attacker.getY() + 1.0, attacker.getZ(),
+                                10, 0.3, 0.3, 0.3, 0.1);
+                        serverWorld.playSound(null, attacker.getBlockPos(),
+                                SoundEvents.BLOCK_GLASS_BREAK,
+                                SoundCategory.PLAYERS, 0.8f, 1.2f);
+                    }
+                }
+                break;
         }
     }
 
@@ -274,6 +332,23 @@ public class ArmorEffectHandler {
         }
         return null;
     }
+
+    // 检查是否穿戴任意黑曜石盔甲
+    private static boolean hasAnyObsidianArmor(LivingEntity entity) {
+        for (ItemStack armor : entity.getArmorItems()) {
+            if (isObsidianArmor(armor)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 检查单件盔甲是否为黑曜石材质
+    private static boolean isObsidianArmor(ItemStack stack) {
+        return stack.getItem() instanceof ArmorItem armorItem &&
+                armorItem.getMaterial() == ModArmorMaterials.OBSIDIAN;
+    }
+
     private static void applyContinuousEffects(PlayerEntity player) {
         for (Map.Entry<ModArmorMaterials, List<StatusEffectInstance>> entry : ARMOR_EFFECTS_MAP.entrySet()) {
             ModArmorMaterials material = entry.getKey();
@@ -282,6 +357,21 @@ public class ArmorEffectHandler {
             if (hasFullSet(player, material)) {
                 for (StatusEffectInstance effect : effects) {
                     applyEffectWithRefresh(player, effect);
+                }
+            }
+        }
+    }
+
+    // 应用黑曜石全套特殊效果
+    private static void applyObsidianFullSetEffects(PlayerEntity player) {
+        if (hasFullSet(player, ModArmorMaterials.OBSIDIAN)) {
+            // 这里可以添加黑曜石全套的特殊效果
+            // 例如每5秒回复1点耐久
+            if (player.getWorld().getTime() % 100 == 0) { // 每5秒
+                for (ItemStack armor : player.getArmorItems()) {
+                    if (armor.isDamaged() && isObsidianArmor(armor)) {
+                        armor.setDamage(armor.getDamage() - 1);
+                    }
                 }
             }
         }

@@ -92,6 +92,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateArmorRecipes(exporter, "copper", Items.COPPER_INGOT);
         generateArmorRecipes(exporter, "redstone", Items.REDSTONE);
         generateArmorRecipes(exporter, "coal", Items.COAL);
+        generateArmorRecipes(exporter, "obsidian", Items.OBSIDIAN);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ENDER_ALLOY_INGOT, 1)
                 .pattern("AAA")

@@ -23,7 +23,8 @@ public class ModItemTagsProvider extends FabricTagProvider.ItemTagProvider {
             "lapis",
             "copper",
             "redstone",
-            "coal"
+            "coal",
+            "obsidian"
     };
 
     public ModItemTagsProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
