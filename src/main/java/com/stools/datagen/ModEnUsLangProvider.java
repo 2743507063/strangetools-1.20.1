@@ -17,6 +17,8 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
+        translationBuilder.add(ModItems.LAVA_INGOT,"Lava Ingot");
+        translationBuilder.add(ModItems.WATER_INGOT,"Water Ingot");
         translationBuilder.add("advancement.strangetools.tool_master.title", "Tool Master");
         translationBuilder.add("advancement.strangetools.tool_master.description", "Craft three different types of tools: sword, pickaxe, axe");
 

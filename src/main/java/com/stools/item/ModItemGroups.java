@@ -40,14 +40,14 @@ public class ModItemGroups {
 
                             // 主世界工具
                             categoryMap.put("主世界", Arrays.asList(
-                                    "dirt", "copper", "emerald", "lapis", "redstone", "coal",
+                                    "water","dirt", "copper", "emerald", "lapis", "redstone", "coal",
                                     "obsidian", "prismarine","blue_ice","leather", "rotten_flesh",
                                     "bone", "glass", "slime", "string","amethyst","flint","bedrock"
                             ));
 
                             // 下界工具
                             categoryMap.put("下界", Arrays.asList(
-                                    "netherrack", "quartz", "nether_star","glowstone",
+                                    "lava","netherrack", "quartz", "nether_star","glowstone",
                                     "blaze_powder"
                             ));
 

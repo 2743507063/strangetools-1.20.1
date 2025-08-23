@@ -3,7 +3,6 @@ package com.stools.datagen;
 import com.stools.Strangetools;
 import com.stools.block.ModBlocks;
 import com.stools.item.ModItems;
-import com.terraformersmc.modmenu.util.mod.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
@@ -85,6 +84,8 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         generateToolRecipes(exporter, "leather", Items.LEATHER);
         generateToolRecipes(exporter, "raw_beef", Items.BEEF);
         generateToolRecipes(exporter, "steak", Items.COOKED_BEEF);
+        generateToolRecipes(exporter, "lava", ModItems.LAVA_INGOT);
+        generateToolRecipes(exporter, "water", ModItems.WATER_INGOT);
 
 
         generateArmorRecipes(exporter, "emerald", Items.EMERALD);
@@ -146,6 +147,25 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.AMETHYST_SHARD), conditionsFromItem(Items.AMETHYST_SHARD))
                 .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
                 .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "amethyst_ingot_recipe"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.LAVA_INGOT, 1)
+                .pattern("LLL")
+                .pattern("L I")
+                .pattern("III")
+                .input('L', Items.LAVA_BUCKET)
+                .input('I', Items.GOLD_INGOT)
+                .criterion(hasItem(Items.LAVA_BUCKET), conditionsFromItem(Items.LAVA_BUCKET))
+                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "lava_ingot_recipe"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WATER_INGOT, 1)
+                .pattern("WWW")
+                .pattern("W I")
+                .pattern("III")
+                .input('W', Items.WATER_BUCKET)
+                .input('I', Items.IRON_INGOT)
+                .criterion(hasItem(Items.WATER_BUCKET), conditionsFromItem(Items.WATER_BUCKET))
+                .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                .offerTo(exporter, new Identifier(Strangetools.MOD_ID, "water_ingot_recipe"));
+
 
         generateToolUpgradeRecipes(exporter,
                 "ender_alloy",

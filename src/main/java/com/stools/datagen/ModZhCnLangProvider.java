@@ -55,6 +55,8 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("advancement.strangetools.obsidian_tool.description", "获得黑曜石镐");
         // 物品翻译
         translationBuilder.add(ModItems.AMETHYST_INGOT,"紫水晶锭");
+        translationBuilder.add(ModItems.LAVA_INGOT,"熔岩锭");
+        translationBuilder.add(ModItems.WATER_INGOT,"水锭");
         translationBuilder.add(ModItems.SLICE_OF_CAKE, "蛋糕片");
         translationBuilder.add(ModItems.TEST_ITEM, "神秘东西");
         translationBuilder.add(ModItems.ENDER_ALLOY_INGOT, "末影合金锭");
@@ -148,6 +150,8 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
             case "raw_beef" -> "生牛肉";
             case "steak" -> "牛排";
             case "leather" -> "皮革";
+            case "lava" -> "熔岩";
+            case "water" -> "水";
             default -> null;
         };
     }

@@ -73,7 +73,9 @@ public enum ModToolMaterials implements ToolMaterial, ToolFactory.Glintable {
     BLUE_ICE(1, 180, 4.5f, 1.8f, 18, () -> Ingredient.ofItems(Items.BLUE_ICE), false),
     RAW_BEEF(0, 150, 3.0f, 1.5f, 5, () -> Ingredient.ofItems(Items.BEEF), false),
     STEAK(0, 250, 4.5f, 2.0f, 10, () -> Ingredient.ofItems(Items.COOKED_BEEF), false),
-    LEATHER(0, 80, 1.0f, 0.0f, 15, () -> Ingredient.ofItems(Items.LEATHER), false);
+    LEATHER(0, 80, 1.0f, 0.0f, 15, () -> Ingredient.ofItems(Items.LEATHER), false),
+    LAVA(3, 750, 7.0f, 3.5f, 5, () -> Ingredient.ofItems(ModItems.LAVA_INGOT), false),
+    WATER(2, 1000, 6.5f, 2.5f, 25, () -> Ingredient.ofItems(ModItems.WATER_INGOT), false);
 
 
     private final int miningLevel;

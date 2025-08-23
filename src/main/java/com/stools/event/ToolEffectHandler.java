@@ -392,6 +392,70 @@ public class ToolEffectHandler {
                     }
                 }
                 break;
+            case LAVA:
+                // 基础点燃效果
+                target.setOnFireFor(5); // 5秒燃烧
+
+                // 25%概率产生熔岩池
+                if (random.nextFloat() < 0.25f) {
+                    BlockPos targetPos = target.getBlockPos();
+                    if (world.getBlockState(targetPos).isAir()) {
+                        world.setBlockState(targetPos, Blocks.LAVA.getDefaultState());
+
+                        // 粒子效果和音效
+                        if (world instanceof ServerWorld serverWorld) {
+                            serverWorld.spawnParticles(ParticleTypes.LAVA,
+                                    targetPos.getX() + 0.5, targetPos.getY() + 0.5, targetPos.getZ() + 0.5,
+                                    10, 0.3, 0.3, 0.3, 0.1);
+                            serverWorld.playSound(null, targetPos,
+                                    SoundEvents.BLOCK_LAVA_POP,
+                                    SoundCategory.PLAYERS, 0.8f, 1.0f);
+                        }
+                    }
+                }
+
+                // 10%概率产生爆炸
+                if (random.nextFloat() < 0.10f) {
+                    world.createExplosion(null,
+                            target.getX(), target.getY(), target.getZ(),
+                            1.5f, false, World.ExplosionSourceType.NONE);
+                }
+                break;
+            case WATER:
+                // 缓速效果
+                target.addStatusEffect(new StatusEffectInstance(
+                        StatusEffects.SLOWNESS, 80, 1 // 4秒缓速II
+                ));
+
+                // 30%概率 extinguishes fire on target
+                if (random.nextFloat() < 0.30f && target.isOnFire()) {
+                    target.extinguish();
+
+                    // 粒子效果和音效
+                    if (world instanceof ServerWorld serverWorld) {
+                        serverWorld.spawnParticles(ParticleTypes.SPLASH,
+                                target.getX(), target.getY() + 1.0, target.getZ(),
+                                15, 0.5, 0.5, 0.5, 0.1);
+                        serverWorld.playSound(null, target.getBlockPos(),
+                                SoundEvents.ENTITY_GENERIC_SPLASH,
+                                SoundCategory.PLAYERS, 0.8f, 1.0f);
+                    }
+                }
+
+                // 20%概率给予玩家生命恢复
+                if (random.nextFloat() < 0.20f) {
+                    player.addStatusEffect(new StatusEffectInstance(
+                            StatusEffects.REGENERATION, 60, 0 // 3秒生命恢复I
+                    ));
+
+                    // 粒子效果
+                    if (world instanceof ServerWorld serverWorld) {
+                        serverWorld.spawnParticles(ParticleTypes.DOLPHIN,
+                                player.getX(), player.getY() + 1.0, player.getZ(),
+                                5, 0.3, 0.3, 0.3, 0.1);
+                    }
+                }
+                break;
         }
     }
     private static boolean isEndMob(LivingEntity entity) {

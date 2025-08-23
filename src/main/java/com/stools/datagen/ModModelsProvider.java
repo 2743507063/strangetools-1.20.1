@@ -30,6 +30,8 @@ public class ModModelsProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ENDER_ALLOY_INGOT,Models.GENERATED);
         itemModelGenerator.register(ModItems.ENDER_ALLOY_SCRAP,Models.GENERATED);
         itemModelGenerator.register(ModItems.VOID_INGOT,Models.GENERATED);
+        itemModelGenerator.register(ModItems.WATER_INGOT,Models.GENERATED);
+        itemModelGenerator.register(ModItems.LAVA_INGOT,Models.GENERATED);
         itemModelGenerator.register(ModItems.RAW_VOID,Models.GENERATED);
         itemModelGenerator.register(ModItems.VOID_PEARL,Models.GENERATED);
         itemModelGenerator.register(ModItems.ENDER_ALLOY_UPGRADE_SMITHING_TEMPLATE,Models.GENERATED);

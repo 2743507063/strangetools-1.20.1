@@ -26,10 +26,12 @@ import java.util.Optional;
 @Mixin(Block.class)
 public class BlockMixin {
 
+    @Unique
     private static final ModToolMaterials[] FLAME_MATERIALS = {
             ModToolMaterials.BLAZE_POWDER,
             ModToolMaterials.NETHERRACK,
             ModToolMaterials.COAL,
+            ModToolMaterials.LAVA,
     };
 
     @Inject(method = "afterBreak", at = @At("HEAD"), cancellable = true)

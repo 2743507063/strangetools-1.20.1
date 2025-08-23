@@ -1,7 +1,6 @@
 package com.stools.item;
 
 import com.stools.Strangetools;
-import com.stools.item.custom.MaceItem;
 import com.stools.item.custom.VoidPearlItem;
 import com.stools.item.materials.ModArmorMaterials;
 import com.stools.item.materials.ModMaceMaterials;
@@ -38,7 +37,8 @@ public class ModItems {
 
     public static final Item SLICE_OF_CAKE = registerItem("slice_of_cake",new Item(new Item.Settings().food(ModFoodComponents.S_CAKE)));
     public static final Item AMETHYST_INGOT = registerItem("amethyst_ingot",new Item(new Item.Settings()));
-
+    public static final Item LAVA_INGOT = registerItem("lava_ingot", new Item(new Item.Settings()));
+    public static final Item WATER_INGOT = registerItem("water_ingot", new Item(new Item.Settings()));
     public static final Map<String, Item> TOOLS = new HashMap<>();
     public static final List<String> TOOL_IDS = new ArrayList<>();
     public static final Map<String, Item> ARMORS = new HashMap<>();
@@ -125,6 +125,8 @@ public class ModItems {
         registerToolSet(ModToolMaterials.RAW_BEEF,"raw_beef");
         registerToolSet(ModToolMaterials.STEAK, "steak");
         registerToolSet(ModToolMaterials.LEATHER,"leather");
+        registerToolSet(ModToolMaterials.LAVA,"lava");
+        registerToolSet(ModToolMaterials.WATER,"water");
 
         //盔甲
         registerArmorSet(ModArmorMaterials.COPPER, "copper");
