@@ -127,6 +127,8 @@ public class ModItemGroups {
             entries.addAfter(Items.ENDER_EYE,ModItems.VOID_PEARL);
             entries.addAfter(Items.SNORT_POTTERY_SHERD,ModItems.APPLE_UPGRADE_SMITHING_TEMPLATE);
             entries.addAfter(Items.GOLD_INGOT,ModItems.AMETHYST_INGOT);
+            entries.addAfter(Items.GOLD_NUGGET,ModItems.WATER_INGOT);
+            entries.addAfter(ModItems.WATER_INGOT,ModItems.LAVA_INGOT);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.addAfter(Items.ANCIENT_DEBRIS, ModBlocks.VOID_ORE);

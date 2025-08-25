@@ -51,10 +51,10 @@ public enum ModArmorMaterials implements StringIdentifiable, ArmorMaterial {
     }), 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
             0.0F, 0.0F, () -> Ingredient.ofItems(Items.COAL), 0.15f),
     OBSIDIAN("obsidian", 35, Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-        map.put(ArmorItem.Type.BOOTS, 4);
-        map.put(ArmorItem.Type.LEGGINGS, 7);
-        map.put(ArmorItem.Type.CHESTPLATE, 9);
-        map.put(ArmorItem.Type.HELMET, 4);
+        map.put(ArmorItem.Type.BOOTS, 3);
+        map.put(ArmorItem.Type.LEGGINGS, 6);
+        map.put(ArmorItem.Type.CHESTPLATE, 8);
+        map.put(ArmorItem.Type.HELMET, 3);
     }), 12, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
             3.0F, 0.1F, () -> Ingredient.ofItems(Items.OBSIDIAN), 0.4f);
     private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY = Util.make(new EnumMap(ArmorItem.Type.class), map -> {
